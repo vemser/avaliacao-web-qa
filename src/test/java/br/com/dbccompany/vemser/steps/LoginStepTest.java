@@ -7,7 +7,7 @@ import io.qameta.allure.Story;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LoginStep extends BaseSteps{
+public class LoginStepTest extends BaseSteps{
     BasePage basePage = new BasePage();
 //    @Test
 //    @Story("Usuário faz login")
