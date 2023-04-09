@@ -8,5 +8,6 @@ public class Usuarios {
 //    public static final String SENHA = USUARIO_DADOS[1];
 //    public static final String NOME = USUARIO_DADOS[2];
     public static final String USUARIO = System.getenv("DBC_USER");
+    public static final String NOME = USUARIO.split("\\.")[0];
     public static final String SENHA = System.getenv("DBC_PASSWORD");
 }

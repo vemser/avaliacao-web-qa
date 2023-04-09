@@ -16,9 +16,9 @@ public class Seletores {
     public static String menu(String info) {
         switch (info) {
             case "nomeUsuario":
-                return "div.MuiBox-root.css-iexd2a > p > span > strong";
+                return "div.MuiBox-root.css-iexd2a > p > strong";
             case "botaoSair":
-                return "nav > div:nth-child(6) > div.MuiListItemIcon-root.css-1f8bwsm";
+                return "#root > div.MuiDrawer-root.MuiDrawer-docked.css-1tu59u4 > div > aside > div.MuiBox-root.css-1rr4qq7 > nav > div:nth-child(4)";
             default:
                 return null;
         }

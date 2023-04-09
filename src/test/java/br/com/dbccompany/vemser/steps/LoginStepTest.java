@@ -21,14 +21,13 @@ public class LoginStepTest extends BaseSteps{
     @Description("Administrador faz login com sucesso via pagina de login")
     public void testLoginComUsuarioESenha(){
         basePage.logarComUsuario(Usuarios.USUARIO, Usuarios.SENHA);
-        Assert.assertEquals("Usuarios.NOME", basePage.consultarUsuarioLogado());
+        Assert.assertEquals(Usuarios.NOME.toLowerCase(), basePage.consultarUsuarioLogado().toLowerCase());
     }
     @Test
     @Story("Usuário faz login")
-    @Description("Usuário faz login e sai de sua conta com sucesso")
+    @Description("Usuário faz logout de sua conta com sucesso")
     public void testLogout(){
         basePage.logarComUsuario(Usuarios.USUARIO, Usuarios.SENHA);
-        Assert.assertEquals("Usuarios.NOME", basePage.consultarUsuarioLogado());
         basePage.sairDaConta();
         Assert.assertTrue(basePage.isPaginaDeLogin());
     }
