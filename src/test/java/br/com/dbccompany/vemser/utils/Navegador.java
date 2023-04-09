@@ -3,11 +3,11 @@ package br.com.dbccompany.vemser.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.html5.LocalStorage;
-import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
+import static br.com.dbccompany.vemser.utils.Elementos.esperarTempo;
 
 public class Navegador {
     public static WebDriver driver;
@@ -21,7 +21,8 @@ public class Navegador {
         //Maximizar tela do navegador
         driver.manage().window().maximize();
         //Aguardar 2 segundos para iniciar testes
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        esperarTempo(2000);
     }
     public void fecharNavegador(){
         //Fecha o navegador
