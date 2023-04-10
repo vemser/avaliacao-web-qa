@@ -1,10 +1,9 @@
 package br.com.dbccompany.vemser.utils;
 
-import br.com.dbccompany.vemser.steps.BaseSteps;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class Elementos extends BaseSteps {
+public class Elementos extends Navegador {
     public static void esperarTempo(int tempo){
         try {
             Thread.sleep(tempo);
