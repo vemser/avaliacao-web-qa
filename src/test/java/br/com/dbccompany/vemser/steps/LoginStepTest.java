@@ -1,34 +1,34 @@
 package br.com.dbccompany.vemser.steps;
 
-import br.com.dbccompany.vemser.pages.BasePage;
-import br.com.dbccompany.vemser.utils.Usuarios;
+import br.com.dbccompany.vemser.pages.AcessoPage;
+import br.com.dbccompany.vemser.pages.LoginPage;
+import br.com.dbccompany.vemser.utils.Navegador;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-public class LoginStepTest extends BaseSteps{
-    BasePage basePage = new BasePage();
+public class LoginStepTest extends Navegador {
+    AcessoPage acessoPage = new AcessoPage();
+    LoginPage loginPage = new LoginPage();
+    @Test
+    @Story("Usuário faz login")
+    @Description("Usuário faz login com sucesso")
+    @DisplayName("Usuário faz login com sucesso")
+    public void testLoginComUsuarioESenha(){
+        loginPage.acessarPagina();
+        loginPage.preencherUsuarioValido();
+        loginPage.preencherSenhaValida();
+        loginPage.clicarBotaoLogin();
+        Assertions.assertEquals(loginPage.consultarUsuarioValido(), acessoPage.consultarUsuarioLogado());
+        Assertions.assertEquals(loginPage.consultarNomeUsuarioValido(), acessoPage.consultarNomeUsuarioLogado());
+    }
 //    @Test
 //    @Story("Usuário faz login")
-//    @Description("Administrador faz login com sucesso via token")
-//    public void testLoginComToken(){
-//        basePage.logarComToken(Usuarios.TOKEN_ADMIN);
-//        Assert.assertEquals(Usuarios.NOME_ADMIN, basePage.consultarUsuarioLogado());
+//    @Description("Usuário faz logout de sua conta com sucesso")
+//    public void testLogout(){
+//        loginPage.realizarLoginComSucesso();
+//
 //    }
-    @Test
-    @Story("Usuário faz login")
-    @Description("Administrador faz login com sucesso via pagina de login")
-    public void testLoginComUsuarioESenha(){
-        basePage.logarComUsuario(Usuarios.USUARIO, Usuarios.SENHA);
-        Assert.assertEquals(Usuarios.NOME.toLowerCase(), basePage.consultarUsuarioLogado().toLowerCase());
-    }
-    @Test
-    @Story("Usuário faz login")
-    @Description("Usuário faz logout de sua conta com sucesso")
-    public void testLogout(){
-        basePage.logarComUsuario(Usuarios.USUARIO, Usuarios.SENHA);
-        basePage.sairDaConta();
-        Assert.assertTrue(basePage.isPaginaDeLogin());
-    }
 }
