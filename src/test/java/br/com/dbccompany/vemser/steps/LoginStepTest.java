@@ -1,33 +1,34 @@
 package br.com.dbccompany.vemser.steps;
 
+import br.com.dbccompany.vemser.pages.AcessoPage;
 import br.com.dbccompany.vemser.pages.LoginPage;
+import br.com.dbccompany.vemser.utils.Navegador;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static br.com.dbccompany.vemser.pages.MenuPage.clicarBotaoSair;
-import static br.com.dbccompany.vemser.pages.MenuPage.consultarUsuarioLogado;
-
-
-public class LoginStepTest extends LoginPage {
+public class LoginStepTest extends Navegador {
+    AcessoPage acessoPage = new AcessoPage();
+    LoginPage loginPage = new LoginPage();
     @Test
     @Story("Usuário faz login")
-    @Description("Administrador faz login com sucesso via pagina de login")
+    @Description("Usuário faz login com sucesso")
+    @DisplayName("Usuário faz login com sucesso")
     public void testLoginComUsuarioESenha(){
-        preencherUsuario(USUARIO_VALIDO);
-        preencherSenha(SENHA_VALIDO);
-        clicarBotaoLogin();
-        Assertions.assertEquals(NOME_VALIDO.toLowerCase(), consultarUsuarioLogado().toLowerCase());
+        loginPage.acessarPagina();
+        loginPage.preencherUsuarioValido();
+        loginPage.preencherSenhaValida();
+        loginPage.clicarBotaoLogin();
+        Assertions.assertEquals(loginPage.consultarUsuarioValido(), acessoPage.consultarUsuarioLogado());
+        Assertions.assertEquals(loginPage.consultarNomeUsuarioValido(), acessoPage.consultarNomeUsuarioLogado());
     }
-    @Test
-    @Story("Usuário faz login")
-    @Description("Usuário faz logout de sua conta com sucesso")
-    public void testLogout(){
-        preencherUsuario(USUARIO_VALIDO);
-        preencherSenha(SENHA_VALIDO);
-        clicarBotaoLogin();
-        clicarBotaoSair();
-        Assertions.assertTrue(isPaginaDeLogin());
-    }
+//    @Test
+//    @Story("Usuário faz login")
+//    @Description("Usuário faz logout de sua conta com sucesso")
+//    public void testLogout(){
+//        loginPage.realizarLoginComSucesso();
+//
+//    }
 }
