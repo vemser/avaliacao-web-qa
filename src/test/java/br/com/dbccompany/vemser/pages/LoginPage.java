@@ -10,7 +10,7 @@ public class LoginPage extends Elementos {
     private static final String SELETOR_BOTAO_MOSTRAR_SENHA = "#root > div.MuiBox-root.css-9yu00z > main > div > div.MuiBox-root.css-1v9gjd5 > form > div.MuiFormControl-root.css-1179acg > div > div > button > svg";
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");
-    private static final String URL_PAGINA = URL_BASE;
+    private static final String URL_PAGINA = URL_BASE + "/vemser-front";
     // endregion
 
     public void acessarPagina() {
@@ -18,7 +18,6 @@ public class LoginPage extends Elementos {
     }
     public void clicarBotaoLogin() {
         clicar(SELETOR_BOTAO_LOGIN);
-        esperarUrl(URL_PAGINA);
     }
     public String consultarNomeUsuarioValido() {
         return USUARIO_VALIDO.replace("@dbccompany.com.br", "").replace(".", " ").toLowerCase();
@@ -47,6 +46,7 @@ public class LoginPage extends Elementos {
         preencherSenha(SENHA_VALIDO);
     }
     public void realizarLoginComSucesso() {
+        acessarPagina();
         preencherUsuarioValido();
         preencherSenhaValida();
         clicarBotaoLogin();
