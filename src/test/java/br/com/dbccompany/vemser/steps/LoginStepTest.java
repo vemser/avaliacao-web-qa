@@ -33,6 +33,7 @@ public class LoginStepTest extends Navegador {
     @Test
     @Story("Usuário faz login")
     @Description("Usuário faz logout de sua conta com sucesso")
+    @DisplayName("Usuário faz logout de sua conta com sucesso")
     public void testLogout(){
         loginPage.realizarLoginComSucesso();
         acessoPage.clicarIconeUsuario();

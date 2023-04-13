@@ -8,6 +8,7 @@ public class AcessoPage extends Elementos {
     public static final String SELETOR_ICONE_USUARIO = "[data-testid=\"PersonIcon\"]";
     public static final String SELETOR_NOME_USUARIO = "div.nome-usuario > h3";
     public static final String SELETOR_USUARIO = "div.nome-usuario > span";
+    public static final String URL_PAGINA = URL_BASE + "/avaliacao-front";
     public void clicarBotaoAvaliacao() {
         driver.findElement(By.linkText("Avaliação")).click();
     }
@@ -24,6 +25,9 @@ public class AcessoPage extends Elementos {
     public String consultarUsuarioLogado() {
         esperarConteudoNaoVazio(SELETOR_USUARIO);
         return consultarTexto(SELETOR_USUARIO).toLowerCase();
+    }
+    public Boolean estaNaPaginaAcesso() {
+        return driver.getCurrentUrl().equals(URL_PAGINA);
     }
     public void realizarLogoutComSucesso() {
         clicarIconeUsuario();

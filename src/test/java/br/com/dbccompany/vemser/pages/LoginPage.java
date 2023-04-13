@@ -1,7 +1,6 @@
 package br.com.dbccompany.vemser.pages;
 
 import br.com.dbccompany.vemser.utils.Elementos;
-import org.openqa.selenium.By;
 
 public class LoginPage extends Elementos {
     // region Atributos
@@ -11,15 +10,15 @@ public class LoginPage extends Elementos {
     private static final String SELETOR_BOTAO_MOSTRAR_SENHA = "#root > div.MuiBox-root.css-9yu00z > main > div > div.MuiBox-root.css-1v9gjd5 > form > div.MuiFormControl-root.css-1179acg > div > div > button > svg";
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");
-    private static final String URL_PAGINA_LOGIN = "http://vemser-dbc.dbccompany.com.br:39000/vemser/vemser-front";
+    private static final String URL_PAGINA = URL_BASE;
     // endregion
 
     public void acessarPagina() {
-        acessarUrl(URL_PAGINA_LOGIN);
+        acessarUrl(URL_PAGINA);
     }
     public void clicarBotaoLogin() {
         clicar(SELETOR_BOTAO_LOGIN);
-        esperarUrl(URL_PAGINA_LOGIN);
+        esperarUrl(URL_PAGINA);
     }
     public String consultarNomeUsuarioValido() {
         return USUARIO_VALIDO.replace("@dbccompany.com.br", "").replace(".", " ").toLowerCase();
@@ -32,7 +31,7 @@ public class LoginPage extends Elementos {
                 && estaVisivel(SELETOR_CAMPO_SENHA)
                 && estaVisivel(SELETOR_CAMPO_USUARIO)
                 && estaVisivel(SELETOR_BOTAO_MOSTRAR_SENHA)
-                && driver.getCurrentUrl().equals(URL_PAGINA_LOGIN)
+                && driver.getCurrentUrl().equals(URL_PAGINA)
                 ;
     }
     public void preencherUsuario(String usuario) {
