@@ -12,12 +12,13 @@ import java.util.concurrent.TimeUnit;
 public class Navegador {
     public static WebDriver driver;
     public static WebDriverWait wait;
+    public static final String URL_BASE = "http://vemser-dbc.dbccompany.com.br:39000/vemser";
     @BeforeAll
     public static void abrirNavegador(){
         System.setProperty("webdriver.chrome.driver","driver/chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.navigate().to("http://vemser-dbc.dbccompany.com.br:39000/vemser/vemser-front");
+        driver.navigate().to(URL_BASE + "/vemser-front");
         driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
         driver.manage().window().maximize();
     }
