@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Elementos extends Navegador {
-    public void acessarUrl(String url){
+    public static void acessarUrl(String url){
         driver.navigate().to(url);
     }
     public void clicar(String seletor){
@@ -14,6 +14,9 @@ public class Elementos extends Navegador {
     public static String consultarTexto(String seletor){
         esperarElemento(By.cssSelector(seletor));
         return driver.findElement(By.cssSelector(seletor)).getText();
+    }
+    public static String consultarUrl(){
+        return driver.getCurrentUrl();
     }
     public static void esperarConteudoNaoVazio(String seletor){
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.cssSelector(seletor), "")));

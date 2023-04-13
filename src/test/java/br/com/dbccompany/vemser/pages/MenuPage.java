@@ -9,6 +9,7 @@ public class MenuPage extends Elementos {
     private static final String SELETOR_BOTAO_CONFIGURACOES = "[data-testid=\"configuracoes-menu-btn\"]";
     private static final String SELETOR_BOTAO_DASHBOARD = "[data-testid=\"dashboard-menu-btn\"]";
     private static final String SELETOR_BOTAO_ESTAGIARIOS = "[data-testid=\"estagiarios-menu-btn\"]";
+    private static final String SELETOR_BOTAO_MENU = "[data-testid=\"MenuIcon\"]";
     private static final String SELETOR_BOTAO_TECNICO = "[data-testid=\"tecnico-menu-btn\"]";
     private static final String SELETOR_BOTAO_VOLTAR = "[data-testid=\"sair-menu-btn\"]";
     private static final String SELETOR_TITULO_ATUAL = "[data-testid*=\"header\"] h1";
@@ -27,6 +28,9 @@ public class MenuPage extends Elementos {
     public void clicarBotaoEstagiarios() {
         clicar(SELETOR_BOTAO_ESTAGIARIOS);
     }
+    public void clicarBotaoMenu() {
+        clicar(SELETOR_BOTAO_MENU);
+    }
     public void clicarBotaoTecnico() {
         clicar(SELETOR_BOTAO_TECNICO);
     }
@@ -40,5 +44,9 @@ public class MenuPage extends Elementos {
     public String consultarTituloAtual() {
         esperarConteudoNaoVazio(SELETOR_TITULO_ATUAL);
         return consultarTexto(SELETOR_TITULO_ATUAL).toLowerCase();
+    }
+
+    public void acessarPagina() {
+        DashboardPage.acessarPagina();
     }
 }
