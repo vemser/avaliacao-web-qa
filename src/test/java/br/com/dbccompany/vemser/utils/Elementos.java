@@ -1,6 +1,7 @@
 package br.com.dbccompany.vemser.utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Elementos extends Navegador {
@@ -17,6 +18,10 @@ public class Elementos extends Navegador {
     }
     public static String consultarUrl(){
         return driver.getCurrentUrl();
+    }
+    public static String consultarValor(String seletor){
+        esperarElemento(By.cssSelector(seletor));
+        return driver.findElement(By.cssSelector(seletor)).getAttribute("value");
     }
     public static void esperarConteudoNaoVazio(String seletor){
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.cssSelector(seletor), "")));
@@ -40,6 +45,11 @@ public class Elementos extends Navegador {
     }
     public static void preencher(String seletor, String texto){
         esperarElemento(By.cssSelector(seletor));
+        driver.findElement(By.cssSelector(seletor)).sendKeys(texto);
+    }
+    public static void preencherDepoisDeLimpar(String seletor, String texto){
+        esperarElemento(By.cssSelector(seletor));
+        driver.findElement(By.cssSelector(seletor)).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         driver.findElement(By.cssSelector(seletor)).sendKeys(texto);
     }
 }
