@@ -9,6 +9,9 @@ public class AcessoPage extends Elementos {
     public static final String SELETOR_NOME_USUARIO = "div.nome-usuario > h3";
     public static final String SELETOR_USUARIO = "div.nome-usuario > span";
     public static final String URL_PAGINA = URL_BASE + "/vemser-front/acesso";
+    public void acessarPagina() {
+        acessarUrl(URL_PAGINA);
+    }
     public void clicarBotaoAvaliacao() {
         driver.findElement(By.linkText("Avaliação")).click();
     }

@@ -8,6 +8,7 @@ public class LoginPage extends Elementos {
     private static final String SELETOR_CAMPO_SENHA = "#senha";
     private static final String SELETOR_BOTAO_LOGIN = "#root > div.MuiBox-root.css-9yu00z > main > div > div.MuiBox-root.css-1v9gjd5 > form > button";
     private static final String SELETOR_BOTAO_MOSTRAR_SENHA = "#root > div.MuiBox-root.css-9yu00z > main > div > div.MuiBox-root.css-1v9gjd5 > form > div.MuiFormControl-root.css-1179acg > div > div > button > svg";
+    private static final String SELETOR_MODAL_SESSAO_EXPIRADA = "div.Toastify__toast-body > div:nth-child(2)";
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");
     public static final String URL_PAGINA = URL_BASE + "/vemser-front";
@@ -32,6 +33,11 @@ public class LoginPage extends Elementos {
                 && estaVisivel(SELETOR_BOTAO_MOSTRAR_SENHA)
                 && driver.getCurrentUrl().equals(URL_PAGINA)
                 ;
+    }
+    public boolean existeMensagemDeSessaoExpirada() {
+        esperarUrl(URL_PAGINA);
+        esperarConteudoNaoVazio(SELETOR_MODAL_SESSAO_EXPIRADA);
+        return estaVisivel(SELETOR_MODAL_SESSAO_EXPIRADA);
     }
     public void preencherUsuario(String usuario) {
         preencher(SELETOR_CAMPO_USUARIO, usuario);

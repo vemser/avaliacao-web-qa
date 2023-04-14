@@ -9,6 +9,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class LoginStepTest extends Navegador {
     AcessoPage acessoPage = new AcessoPage();
@@ -39,5 +41,19 @@ public class LoginStepTest extends Navegador {
         acessoPage.clicarIconeUsuario();
         acessoPage.clicarBotaoSair();
         Assertions.assertTrue(loginPage.estaNaPaginaDeLogin());
+    }
+    @ParameterizedTest(name = "Login com usuário e/ou senha inválidos")
+    @Story("Usuário faz login")
+    @Description("Usuário faz login com dados inválidos")
+    @DisplayName("Usuário faz login com dados inválidos")
+    @MethodSource("dataFactory.DataFactory#provideLoginsInvalidos")
+    public void testLoginComUsuarioESenhaInvalidos(String usuario, String senha){
+        loginPage.acessarPagina();
+        loginPage.preencherUsuario(usuario);
+        loginPage.preencherSenha(senha);
+        loginPage.clicarBotaoLogin();
+        acessoPage.acessarPagina();
+        Assertions.assertTrue(loginPage.estaNaPaginaDeLogin());
+        Assertions.assertTrue(loginPage.existeMensagemDeSessaoExpirada());
     }
 }
