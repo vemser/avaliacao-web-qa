@@ -1,14 +1,12 @@
-package br.com.dbccompany.vemser.utils;
+package service;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class UsuarioController {
+public class UsuarioService {
     private static final String URL_BASE = "http://vemser-dbc.dbccompany.com.br:39000/vemser/usuario-back/usuario";
     public static void setUp() {
         RestAssured.baseURI = URL_BASE;
