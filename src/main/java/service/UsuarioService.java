@@ -8,14 +8,10 @@ import static io.restassured.RestAssured.given;
 
 public class UsuarioService {
     private static final String URL_BASE = "http://vemser-dbc.dbccompany.com.br:39000/vemser/usuario-back/usuario";
-    public static void setUp() {
-        RestAssured.baseURI = URL_BASE;
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-    }
-    public String gerarToken() {
+    public static String gerarToken() {
         return
                 given()
-                    .contentType(ContentType.JSON)
+                    .contentType(ContentType.JSON).baseUri(URL_BASE)
                     .body("""
                             {
                              "username": "%s",
@@ -33,7 +29,7 @@ public class UsuarioService {
     public Integer consultarIdUsuario() {
         return
                 given()
-                        .contentType(ContentType.JSON)
+                        .contentType(ContentType.JSON).baseUri(URL_BASE)
                         .header("Authorization", gerarToken())
                 .when()
                         .get("/logged-user")
@@ -47,7 +43,7 @@ public class UsuarioService {
     public void definirCargo(String json) {
         given()
             .contentType(ContentType.JSON)
-            .header("Authorization", gerarToken())
+            .header("Authorization", gerarToken()).baseUri(URL_BASE)
             .pathParam("idUsuario", consultarIdUsuario())
             .body(json)
         .when()
@@ -65,14 +61,5 @@ public class UsuarioService {
           ]
         }
          */
-    }
-//    @BeforeAll
-    public static void setUpClass() {
-        setUp();
-    }
-//    @Test
-    public void teste() {
-        System.out.println(gerarToken());
-        System.out.println(consultarIdUsuario());
     }
 }

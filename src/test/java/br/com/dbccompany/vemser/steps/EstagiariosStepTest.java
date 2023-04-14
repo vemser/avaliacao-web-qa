@@ -7,6 +7,7 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class EstagiariosStepTest extends Navegador {
     private static AcessoPage acessoPage = new AcessoPage();
@@ -18,21 +19,32 @@ public class EstagiariosStepTest extends Navegador {
     public static void acessarPaginaAvaliacao() {
         loginPage.realizarLoginComSucesso();
         acessoPage.estaNaPaginaAcesso();
-        estagiariosPage.acessarPagina();
     }
-    @ParameterizedTest(name = "Candidato - CPF: {0} - Nome: {1} - E-mail: {2}")
+    @ParameterizedTest(name = "Candidato {index}- CPF: {0}")
     @Story("Cadastro de Estagiários")
     @Description("Cadastro de Estagiários por busca de candidato")
     @DisplayName("Cadastro de Estagiários por busca de candidato")
-    @CsvSource({"17004082083,MARIAN STARK REILLY V,email@mail.com"})
+    @MethodSource("dataFactory.DataFactory#provideCanditadosEdicaoAtual")
     public void testCadastroEstagiarioPorBuscaCandidato(String cpfCandidato, String nomeCandidato, String emailCandidato) {
+        estagiariosPage.acessarPagina();
         estagiariosPage.clicarBotaoCadastroEstagiario();
         Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
         estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidato);
         estagiariosCadastroPage.clicarBotaoBuscaCpf();
         Assertions.assertEquals(nomeCandidato, estagiariosCadastroPage.consultarCampoNome());
         Assertions.assertEquals(emailCandidato, estagiariosCadastroPage.consultarCampoEmailPessoal());
-//        Assertions.assertTrue(estagiariosCadastroPage.existeMensagemDeCpfNaoEncontrado());
-//        Assertions.assertEquals(nomeCandidato, estagiariosCadastroPage.consultarNomeCandidato());
+    }
+    @ParameterizedTest(name = "Candidato inválido {index}- CPF: {0}")
+    @Story("Cadastro de Estagiários")
+    @Description("Cadastro de Estagiários por busca de CPF não cadastrado")
+    @DisplayName("Cadastro de Estagiários por busca de CPF não cadastrado")
+    @MethodSource("dataFactory.DataFactory#provideCpfNaoCadastrado")
+    public void testCadastroEstagiarioPorBuscaDeCpfNaoCadastrado(String cpfCandidatoInvalido) {
+        estagiariosPage.acessarPagina();
+        estagiariosPage.clicarBotaoCadastroEstagiario();
+        Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
+        estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidatoInvalido);
+        estagiariosCadastroPage.clicarBotaoBuscaCpf();
+        Assertions.assertTrue(estagiariosCadastroPage.existeMensagemDeCpfNaoEncontrado());
     }
 }

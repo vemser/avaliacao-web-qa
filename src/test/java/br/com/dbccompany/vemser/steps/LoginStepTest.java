@@ -42,7 +42,7 @@ public class LoginStepTest extends Navegador {
         acessoPage.clicarBotaoSair();
         Assertions.assertTrue(loginPage.estaNaPaginaDeLogin());
     }
-    @ParameterizedTest(name = "Login com usuário e/ou senha inválidos")
+    @ParameterizedTest(name = "{index} - Login com usuário: {0}")
     @Story("Usuário faz login")
     @Description("Usuário faz login com dados inválidos")
     @DisplayName("Usuário faz login com dados inválidos")
