@@ -1,6 +1,7 @@
 package br.com.dbccompany.vemser.pages;
 
 import br.com.dbccompany.vemser.utils.Elementos;
+import br.com.dbccompany.vemser.utils.Tabelas;
 import org.junit.jupiter.params.provider.Arguments;
 import org.openqa.selenium.By;
 
@@ -31,7 +32,8 @@ public class EstagiariosPage extends Elementos {
     }
     public List<String> consultarIdsEstagiarios() {
         //executa um getText para os 10 primeiros elementos correposndentes ao seletor
-        return driver.findElements(By.cssSelector(SELETOR_COLUNA_IDS_ESTAGIARIOS)).stream().limit(10).map(webElement -> webElement.getText()).toList();
+//        return driver.findElements(By.cssSelector(SELETOR_COLUNA_IDS_ESTAGIARIOS)).stream().limit(10).map(webElement -> webElement.getText()).toList();
+        return Tabelas.consultarIds(10);
     }
     public String consultarNomeEstagiarioPorId(String idEstagiario) {
         return consultarTexto(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_CONSULTAR_NOME_ESTAGIARIO);

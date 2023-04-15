@@ -19,7 +19,7 @@ public class ConfiguracoesPage extends Elementos {
     public void clicarBotaoTrilhasConfig() {
         clicar(SELETOR_BOTAO_TRILHAS_CONFIG);
     }
-    public boolean estaNaPaginaDashboard() {
-        return driver.getCurrentUrl().equals(URL_PAGINA);
+    public boolean estaNaPaginaConfiguracoes() {
+        return consultarUrl().equals(URL_PAGINA);
     }
 }
