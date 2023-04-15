@@ -1,13 +1,18 @@
 package dataFactory;
 
 import model.CandidatosModel;
+import net.datafaker.Faker;
 import org.junit.jupiter.params.provider.Arguments;
 import service.CaptacaoService;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Stream;
 
 public class DataFactory {
+    public static Faker faker = new Faker(new Locale("pt-BR"));
+    // region Login
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");
     public static Stream<Arguments> provideLoginsInvalidos() {
@@ -20,53 +25,9 @@ public class DataFactory {
                 Arguments.of("", "")
         );
     }
-    public static void consultarCanditadosEdicaoAtual() {
-        String nomeEdicaoAtual = CaptacaoService.consultarEdicaoAtual();
-        List<CandidatosModel> response = CaptacaoService
-                .consultarListaDeCandidatos(0, 20, "edicao", 1)
-                    .extract()
-                    .jsonPath()
-                    .getList("elementos", CandidatosModel.class)
-        ;
-        response.stream()
-                .filter(candidatosModel ->
-                    candidatosModel.getEdicao().getNome().equals(nomeEdicaoAtual)
-//                            &&
-//                        CaptacaoService.consultarSeCandidatoEstaNaEdicaoAtual(candidatosModel.getCpf())
-                )
-                .map((candidatosModel) ->
-                        {
-                            System.out.println("\"%s\", \"%s\", \"%s\""
-                                    .formatted(
-                                            candidatosModel.getCpf().replace(".", "").replace("-", ""),
-                                            candidatosModel.getNome(),
-                                            candidatosModel.getEmail()
-                                    )
-                            );
-                            return null;
-                        }
-                )
-                .toArray()
-        ;
-    }
-
-//        return
-////        String[][] candidatos =
-//                response.stream()
-//                .filter(candidatosModel ->
-//                    candidatosModel.getEdicao().getNome().equals(nomeEdicaoAtual) &&
-//                        CaptacaoService.consultarSeCandidatoEstaNaEdicaoAtual(candidatosModel.getCpf())
-//                )
-//                .map(candidatosModel ->
-//                    new String[]
-//                        {
-//                            candidatosModel.getCpf().replace(".", "").replace("-", ""),
-//                            candidatosModel.getNome(),
-//                            candidatosModel.getEmail()
-//                        }
-//                )
-//                .toArray(String[][]::new);
-    public static Stream<Arguments> provideCanditadosEdicaoAtual() {
+    // endregion
+    // region Estagiarios
+    public static Stream<Arguments> provideCandidatosEdicaoAtualEstatico() {
         return Stream.of(
                 Arguments.of("77515675039", "FREDERICO CASTELO DA NÓBREGA", "mariacecilia.caldas@yahoo.com"),
                 Arguments.of("17318662325", "REBECA MANGUEIRA DA CRUZ", "dalila.martim@yahoo.com"),
@@ -86,10 +47,41 @@ public class DataFactory {
                 Arguments.of("31842721097", "DRA WARLEY MOREIRA RIBAS", "washington.assumpcao@yahoo.com")
         );
     }
-    public static Stream<Arguments> provideCpfNaoCadastrado() {
+    public static Stream<Arguments> provideCandidatosEdicaoAtual() {
+        String nomeEdicaoAtual = CaptacaoService.consultarEdicaoAtual();
+        String cpfInvalidos = "15880472884, 53332231901";
+        return CaptacaoService.consultarListaDeCandidatos(0, 10, "edicao", 1)
+                .extract()
+                .jsonPath()
+                .getList("elementos", CandidatosModel.class)
+                .stream()
+                .filter(candidatosModel ->
+                        candidatosModel.getEdicao().getNome().equals(nomeEdicaoAtual)
+                        &&
+                        !cpfInvalidos.contains(candidatosModel.getCpf().replace(".", "").replace("-", ""))
+                )
+                .map(candidatosModel ->
+                        new String[]
+                                {
+                                        candidatosModel.getCpf().replace(".", "").replace("-", ""),
+                                        candidatosModel.getNome(),
+                                        candidatosModel.getEmail()
+                                }
+                )
+                .map(Arguments::of);
+    }
+    public static Stream<Arguments> provideCpfNaoCadastradoEstatico() {
         return Stream.of(
                 Arguments.of("15880472884"),
                 Arguments.of("53332231901")
         );
     }
+    public static Stream<Arguments> provideCpfNaoCadastradoNaEdicaoAtual() {
+        List<String> cpfInvalidos = new ArrayList<>();
+        for(int i = 0; i < 10; i++) {
+            cpfInvalidos.add(faker.cpf().invalid());
+        }
+        return cpfInvalidos.stream().map(Arguments::of);
+    }
+    // endregion
 }

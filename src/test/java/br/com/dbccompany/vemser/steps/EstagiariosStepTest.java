@@ -6,7 +6,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class EstagiariosStepTest extends Navegador {
@@ -24,7 +23,7 @@ public class EstagiariosStepTest extends Navegador {
     @Story("Cadastro de Estagiários")
     @Description("Cadastro de Estagiários por busca de candidato")
     @DisplayName("Cadastro de Estagiários por busca de candidato")
-    @MethodSource("dataFactory.DataFactory#provideCanditadosEdicaoAtual")
+    @MethodSource("dataFactory.DataFactory#provideCandidatosEdicaoAtual")
     public void testCadastroEstagiarioPorBuscaCandidato(String cpfCandidato, String nomeCandidato, String emailCandidato) {
         estagiariosPage.acessarPagina();
         estagiariosPage.clicarBotaoCadastroEstagiario();
@@ -38,7 +37,7 @@ public class EstagiariosStepTest extends Navegador {
     @Story("Cadastro de Estagiários")
     @Description("Cadastro de Estagiários por busca de CPF não cadastrado")
     @DisplayName("Cadastro de Estagiários por busca de CPF não cadastrado")
-    @MethodSource("dataFactory.DataFactory#provideCpfNaoCadastrado")
+    @MethodSource("dataFactory.DataFactory#provideCpfNaoCadastradoNaEdicaoAtual")
     public void testCadastroEstagiarioPorBuscaDeCpfNaoCadastrado(String cpfCandidatoInvalido) {
         estagiariosPage.acessarPagina();
         estagiariosPage.clicarBotaoCadastroEstagiario();
