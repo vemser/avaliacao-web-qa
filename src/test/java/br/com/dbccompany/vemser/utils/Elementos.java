@@ -12,6 +12,10 @@ public class Elementos extends Navegador {
         esperarElemento(By.cssSelector(seletor));
         driver.findElement(By.cssSelector(seletor)).click();
     }
+    public void clicarNoElementoIndex(String seletor, int index){
+        esperarElemento(By.cssSelector(seletor));
+        driver.findElements(By.cssSelector(seletor)).get(index).click();
+    }
     public static String consultarTexto(String seletor){
         esperarElemento(By.cssSelector(seletor));
         return driver.findElement(By.cssSelector(seletor)).getText();
