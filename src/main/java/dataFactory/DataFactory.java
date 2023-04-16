@@ -5,6 +5,7 @@ import net.datafaker.Faker;
 import org.junit.jupiter.params.provider.Arguments;
 import service.CaptacaoService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
 
 public class DataFactory {
     public static Faker faker = new Faker(new Locale("pt-BR"));
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     // region Login
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");

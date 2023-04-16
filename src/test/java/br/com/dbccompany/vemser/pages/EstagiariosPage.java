@@ -14,9 +14,9 @@ public class EstagiariosPage extends Elementos {
     private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-id=\"1\"] [data-field=\"info\"] > div";
     private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";
     private static final String SELETOR_CAMPO_BUSCAR_NOME_ESTAGIARIO = "[id=\"nome\"]";
-    private static final String SELETOR_COLUNA_IDS_ESTAGIARIOS = "div.MuiDataGrid-row [data-field=\"id\"]";
     private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "[data-id=\"%s\"]";
     private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex=\"1\"]";
+    private static final String SELETOR_MODAL = "div.Toastify__toast-body > div:nth-child(2)";
     public static final String URL_PAGINA = URL_BASE + "/avaliacao-front/estagiarios";
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
@@ -41,6 +41,10 @@ public class EstagiariosPage extends Elementos {
     public String consultarNomeEstagiarioInformacoes() {
         esperarConteudoNaoVazio(SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO);
         return consultarTexto(SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO);
+    }
+    public String consultarMensagemModal() {
+        esperarConteudoNaoVazio(SELETOR_MODAL);
+        return consultarTexto(SELETOR_MODAL);
     }
     public boolean estaNaPaginaEstagiarios() {
         esperarUrl(URL_PAGINA);

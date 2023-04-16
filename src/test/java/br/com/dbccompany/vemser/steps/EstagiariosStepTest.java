@@ -49,6 +49,49 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.acessarPagina();
             estagiariosPage.clicarBotaoCadastroEstagiario();
         }
+        @Test
+        @Story("Cadastro de Estagiários")
+        @Description("Cadastro de Estagiários manualmente com sucesso")
+        @DisplayName("Cadastro de Estagiários manualmente com sucesso")
+        public void testCadastroEstagiarioManual() {
+            Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
+//            estagiariosCadastroPage.preencherCampoNome("Teste Estagiário");
+//            estagiariosCadastroPage.preencherCampoCpf("12345678901");
+//            estagiariosCadastroPage.preencherCampoEmailPessoal("testes@teste.com");
+//            estagiariosCadastroPage.preencherCampoEmailCorporativo("testes@dbccompany.com.br");
+//            estagiariosCadastroPage.preencherCampoTelefone("11999999999");
+//            estagiariosCadastroPage.preencherCampoDataNascimento("01/01/1990");
+//            estagiariosCadastroPage.preencherCampoEstado("SP");
+//            estagiariosCadastroPage.preencherCampoCidade("São Paulo");
+//            estagiariosCadastroPage.preencherCampoInstituicaoEnsino("Universidade de São Paulo");
+//            estagiariosCadastroPage.preencherCampoCurso("Ciência da Computação");
+//            estagiariosCadastroPage.preencherCampoGithub("https://github.com/vemser/avaliacao-api-qa");
+//            estagiariosCadastroPage.preencherCampoLinkedin("https://www.linkedin.com/in/vemser/");
+//            estagiariosCadastroPage.preencherCampoObservacoes("Teste de cadastro de estagiário");
+            estagiariosCadastroPage.preencherCampoNomeValido();
+            estagiariosCadastroPage.preencherCampoCpfValido();
+            estagiariosCadastroPage.preencherCampoEmailPessoalValido();
+            estagiariosCadastroPage.preencherCampoEmailCorporativoValido();
+            estagiariosCadastroPage.preencherCampoTelefoneValido();
+            estagiariosCadastroPage.preencherCampoDataNascimentoValido();
+            estagiariosCadastroPage.preencherCampoEstadoValido();
+            estagiariosCadastroPage.preencherCampoCidadeValido();
+            estagiariosCadastroPage.preencherCampoInstituicaoEnsinoValido();
+            estagiariosCadastroPage.preencherCampoCursoValido();
+            estagiariosCadastroPage.preencherCampoGithubValido();
+            estagiariosCadastroPage.preencherCampoLinkedinValido();
+            estagiariosCadastroPage.preencherCampoObservacoesValido();
+            estagiariosCadastroPage.clicarSelecionarPrograma();
+            estagiariosCadastroPage.selecionarOpcaoPrograma(0);
+            estagiariosCadastroPage.clicarSelecionarTrilha();
+            estagiariosCadastroPage.selecionarOpcaoTrilha(0);
+            estagiariosCadastroPage.clicarSelecionarStatus();
+            estagiariosCadastroPage.selecionarOpcaoStatus(0);
+            estagiariosCadastroPage.clicarBotaoCadastrar();
+            estagiariosPage.estaNaPaginaEstagiarios();
+            Assertions.assertEquals("Estágiario criado", estagiariosPage.consultarMensagemModal());
+        }
+
         @ParameterizedTest(name = "Candidato {index}- CPF: {0}")
         @Story("Cadastro de Estagiários")
         @Description("Cadastro de Estagiários por busca de candidato")
