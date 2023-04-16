@@ -7,10 +7,7 @@ import br.com.dbccompany.vemser.pages.LoginPage;
 import br.com.dbccompany.vemser.utils.Navegador;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class ConfiguracoesStepTest extends Navegador {
     static LoginPage loginPage = new LoginPage();
@@ -23,10 +20,11 @@ public class ConfiguracoesStepTest extends Navegador {
         acessoPage.estaNaPaginaAcesso();
         configuracoesPage.acessarPagina();
     }
-//    @Test
-//    @Story("Configurações de Programas")
-//    @Description("Criar um novo programa")
-//    @DisplayName("Criar um novo programa")
+    @Test
+    @Disabled
+    @Story("Configurações de Programas")
+    @Description("Criar um novo programa")
+    @DisplayName("Criar um novo programa")
     public void testCriarNovoPrograma() {
         Assertions.assertTrue(configuracoesPage.estaNaPaginaConfiguracoes());
         configuracoesPage.clicarBotaoProgramasConfig();
@@ -40,6 +38,7 @@ public class ConfiguracoesStepTest extends Navegador {
         configuracoesProgramasPage.clicarBotaoCriarSituacaoPrograma();
         configuracoesProgramasPage.clicarBotaoCriarSituacaoOpcoes(1);
         configuracoesProgramasPage.clicarBotaoCriarProsseguirPrograma();
+        Assertions.assertFalse(configuracoesProgramasPage.estaNaPaginaCriarPrograma());
         //Necessário aguardar pelo deploy das páginas seguintes
     }
 }

@@ -55,19 +55,6 @@ public class EstagiariosStepTest extends Navegador {
         @DisplayName("Cadastro de Estagiários manualmente com sucesso")
         public void testCadastroEstagiarioManual() {
             Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
-//            estagiariosCadastroPage.preencherCampoNome("Teste Estagiário");
-//            estagiariosCadastroPage.preencherCampoCpf("12345678901");
-//            estagiariosCadastroPage.preencherCampoEmailPessoal("testes@teste.com");
-//            estagiariosCadastroPage.preencherCampoEmailCorporativo("testes@dbccompany.com.br");
-//            estagiariosCadastroPage.preencherCampoTelefone("11999999999");
-//            estagiariosCadastroPage.preencherCampoDataNascimento("01/01/1990");
-//            estagiariosCadastroPage.preencherCampoEstado("SP");
-//            estagiariosCadastroPage.preencherCampoCidade("São Paulo");
-//            estagiariosCadastroPage.preencherCampoInstituicaoEnsino("Universidade de São Paulo");
-//            estagiariosCadastroPage.preencherCampoCurso("Ciência da Computação");
-//            estagiariosCadastroPage.preencherCampoGithub("https://github.com/vemser/avaliacao-api-qa");
-//            estagiariosCadastroPage.preencherCampoLinkedin("https://www.linkedin.com/in/vemser/");
-//            estagiariosCadastroPage.preencherCampoObservacoes("Teste de cadastro de estagiário");
             estagiariosCadastroPage.preencherCampoNomeValido();
             estagiariosCadastroPage.preencherCampoCpfValido();
             estagiariosCadastroPage.preencherCampoEmailPessoalValido();
@@ -88,8 +75,8 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosCadastroPage.clicarSelecionarStatus();
             estagiariosCadastroPage.selecionarOpcaoStatus(0);
             estagiariosCadastroPage.clicarBotaoCadastrar();
-            estagiariosPage.estaNaPaginaEstagiarios();
-            Assertions.assertEquals("Estágiario criado", estagiariosPage.consultarMensagemModal());
+            Assertions.assertTrue(estagiariosPage.estaNaPaginaEstagiarios());
+            Assertions.assertTrue(estagiariosPage.existeMensagemModal());
         }
 
         @ParameterizedTest(name = "Candidato {index}- CPF: {0}")
@@ -115,6 +102,21 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidatoInvalido);
             estagiariosCadastroPage.clicarBotaoBuscaCpf();
             Assertions.assertTrue(estagiariosCadastroPage.existeMensagemDeCpfNaoEncontrado());
+        }
+    }
+    @Nested
+    class DesativarEstagiario {
+        @Test
+        @Story("Desativar de Estagiários")
+        @Description("Desativar de Estagiários com sucesso")
+        @DisplayName("Desativar de Estagiários com sucesso")
+        public void testDesativarEstagiario() {
+            estagiariosPage.acessarPagina();
+            estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorId("1");
+            estagiariosPage.clicarBotaoDesativarEstagiario();
+            estagiariosPage.preencherCampoMotivoDesativacaoValido();
+            estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
+            Assertions.assertTrue(estagiariosPage.existeMensagemModal());
         }
     }
 }

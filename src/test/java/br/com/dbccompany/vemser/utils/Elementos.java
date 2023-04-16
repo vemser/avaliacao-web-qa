@@ -56,4 +56,8 @@ public class Elementos extends Navegador {
         driver.findElement(By.cssSelector(seletor)).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         driver.findElement(By.cssSelector(seletor)).sendKeys(texto);
     }
+    public static void limparCampo(String seletor){
+        esperarElemento(By.cssSelector(seletor));
+        driver.findElement(By.cssSelector(seletor)).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+    }
 }

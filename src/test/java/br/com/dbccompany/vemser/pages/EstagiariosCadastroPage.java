@@ -27,6 +27,7 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     private static final String SELETOR_MENSAGEM_CPF_NAO_ENCONTRADO = "div.Toastify__toast-body > div:nth-child(2)";
     // endregion
     public static final String URL_PAGINA = EstagiariosPage.URL_PAGINA + "/cadastro";
+    private static final String SELETOR_BOTAO_EDITAR = "form > div > button";
 
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
@@ -151,6 +152,14 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     }
     public void preencherCampoObservacoesValido() {
         preencherCampoObservacoes(EstagiarioDataFactory.gerarObservacoesValidas());
+    }
+
+    public void limparCampoNome() {
+        limparCampo(SELETOR_CAMPO_NOME);
+    }
+
+    public void clicarBotaoEditar() {
+        clicar(SELETOR_BOTAO_EDITAR);
     }
     // endregion
 }

@@ -11,18 +11,45 @@ import java.util.stream.Stream;
 public class EstagiariosPage extends Elementos {
     private static final String SELETOR_BOTAO_CADASTRO_ESTAGIARIO = "[data-testid=\"AddOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_INFORMACOES_VOLTAR = "[data-testid=\"programa-create-voltar-btn\"]";
+    private static final String SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO = "button.MuiButton-outlined.MuiButton-outlinedError";
     private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-id=\"1\"] [data-field=\"info\"] > div";
     private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";
     private static final String SELETOR_CAMPO_BUSCAR_NOME_ESTAGIARIO = "[id=\"nome\"]";
     private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "[data-id=\"%s\"]";
     private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex=\"1\"]";
     private static final String SELETOR_MODAL = "div.Toastify__toast-body > div:nth-child(2)";
+    // region Página desativar estagiário
+    private static final String SELETOR_BOTAO_DESATIVAR_ESTAGIARIO = "div > form > div > button";
+    private static final String SELETOR_BOTAO_CAMPO_MOTIVO_DESATIVACAO = "[id=\"observacao\"]";
+    public void clicarBotaoConfirmarDesativarEstagiario() {
+        clicar(SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO);
+    }
+    public void preencherCampoMotivoDesativacao(String motivo) {
+        preencher(SELETOR_BOTAO_CAMPO_MOTIVO_DESATIVACAO, motivo);
+    }
+    public void preencherCampoMotivoDesativacaoValido() {
+        preencherCampoMotivoDesativacao("Quando se trata de trabalho em equipe, é importante que todos os membros estejam alinhados com os objetivos e metas do projeto. Infelizmente, às vezes pode ser necessário realizar o desligamento de algum integrante da equipe. Embora seja uma decisão difícil, pode ser necessária para garantir que o projeto continue progredindo de forma eficiente e eficaz.");
+    }
+    // endregion
+    // region Página detalhes do estagiário
+    private static final String SELETOR_BOTAO_ABA_INFORMACOES_DO_PROGRAMA = "[id=\"simple-tab-1\"]";
+    private static final String SELETOR_BOTAO_ABA_ACOMPANHAMENTOS_DO_ESTAGIARIO = "[id=\"simple-tab-2\"]";
+    public void clicarAbaInformacoesDoPrograma() {
+        clicar(SELETOR_BOTAO_ABA_INFORMACOES_DO_PROGRAMA);
+    }
+    public void clicarAbaAcompanhamentosDoEstagiario() {
+        clicar(SELETOR_BOTAO_ABA_ACOMPANHAMENTOS_DO_ESTAGIARIO);
+    }
+    // endregion
     public static final String URL_PAGINA = URL_BASE + "/avaliacao-front/estagiarios";
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
     }
     public void clicarBotaoCadastroEstagiario() {
         clicar(SELETOR_BOTAO_CADASTRO_ESTAGIARIO);
+    }
+    public void clicarBotaoDesativarEstagiario() {
+        clicar(SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO);
     }
     public void clicarBotaoDetalhesDoEstagiarioPorId(String idEstagiario) {
         clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS);
@@ -49,5 +76,9 @@ public class EstagiariosPage extends Elementos {
     public boolean estaNaPaginaEstagiarios() {
         esperarUrl(URL_PAGINA);
         return driver.getCurrentUrl().equals(URL_PAGINA);
+    }
+    public boolean existeMensagemModal() {
+        esperarConteudoNaoVazio(SELETOR_MODAL);
+        return estaVisivel(SELETOR_MODAL);
     }
 }
