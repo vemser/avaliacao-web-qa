@@ -11,6 +11,7 @@ public class MenuPage extends Elementos {
     private static final String SELETOR_BOTAO_ESTAGIARIOS = "[data-testid=\"estagiarios-menu-btn\"]";
     private static final String SELETOR_BOTAO_MENU = "[data-testid=\"MenuIcon\"]";
     private static final String SELETOR_BOTAO_TECNICO = "[data-testid=\"tecnico-menu-btn\"]";
+    private static final String SELETOR_BOTAO_TECNICO_FEEDBACK = "nav svg[data-testid=\"ThumbUpOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_VOLTAR = "[data-testid=\"sair-menu-btn\"]";
     private static final String SELETOR_TITULO_ATUAL = "[data-testid*=\"header\"] h1";
     public void clicarBotaoAcompanhamentos() {
@@ -33,6 +34,9 @@ public class MenuPage extends Elementos {
     }
     public void clicarBotaoTecnico() {
         clicar(SELETOR_BOTAO_TECNICO);
+    }
+    public void clicarBotaoTecnicoFeedback() {
+        clicar(SELETOR_BOTAO_TECNICO_FEEDBACK);
     }
     public void clicarBotaoVoltar() {
         clicar(SELETOR_BOTAO_VOLTAR);

@@ -2,6 +2,7 @@ package br.com.dbccompany.vemser.steps;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,7 @@ public class DemonstracaoStepTest extends Navegador {
     private static LoginPage loginPage = new LoginPage();
     private static AcessoPage acessoPage = new AcessoPage();
     private static MenuPage menuPage = new MenuPage();
+    private static ConfiguracoesPage configuracoesPage = new ConfiguracoesPage();
     public static EstagiariosPage estagiariosPage = new EstagiariosPage();
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
     @Test
@@ -22,12 +24,22 @@ public class DemonstracaoStepTest extends Navegador {
         loginPage.esperarTempo(delay);
         acessoPage.clicarBotaoAvaliacao();
         loginPage.esperarTempo(delay);
+        // endregion Acessar página de login
+        // region Navegar pelo menu
+        menuPage.clicarBotaoDashboard();
+        menuPage.clicarBotaoEstagiarios();
+        menuPage.clicarBotaoComportamental();
+        menuPage.clicarBotaoAcompanhamentos();
+        menuPage.clicarBotaoTecnico();
+        menuPage.clicarBotaoTecnicoFeedback();
+        menuPage.clicarBotaoConfiguracoes();
+        configuracoesPage.clicarBotaoProgramasConfig();
+        // endregion
+        // region Cadastrar Estagiário
         menuPage.clicarBotaoEstagiarios();
         loginPage.esperarTempo(delay);
         estagiariosPage.clicarBotaoCadastroEstagiario();
         loginPage.esperarTempo(delay);
-        // endregion Acessar página de login
-        // region Cadastrar Estagiário
         estagiariosCadastroPage.preencherCampoNomeValido();
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.preencherCampoCpfValido();
