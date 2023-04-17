@@ -90,9 +90,11 @@ public class DemonstracaoStepTest extends Navegador {
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.selecionarOpcaoStatus(0);
         loginPage.esperarTempo(delay);
-//        estagiariosCadastroPage.clicarBotaoCadastrar();
-        estagiariosPage.acessarPagina();
+        estagiariosCadastroPage.clicarBotaoCadastrar();
+//        estagiariosPage.acessarPagina();
         loginPage.esperarTempo(delay);
+        loginPage.esperarTempo(3000);
+        menuPage.clicarBotaoEstagiarios();
         // endregion
         // region Editar Estagiário
         estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
@@ -116,7 +118,8 @@ public class DemonstracaoStepTest extends Navegador {
         // endregion
         // region Desativar Estagiário
         menuPage.clicarBotaoEstagiarios();
-        estagiariosPage.esperarModalFechar();
+//        estagiariosPage.esperarModalFechar();
+        estagiariosPage.esperarTempo(3000);
         estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
         loginPage.esperarTempo(delay);
         estagiariosPage.clicarBotaoDesativarEstagiario();
@@ -124,7 +127,7 @@ public class DemonstracaoStepTest extends Navegador {
         estagiariosPage.preencherCampoMotivoDesativacaoValido();
         loginPage.esperarTempo(delay);
         estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
-        loginPage.esperarTempo(delay);
+//        loginPage.esperarTempo(delay);
         loginPage.esperarTempo(3000);
         // endregion
     }

@@ -112,6 +112,8 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
         return consultarValor(SELETOR_CAMPO_EMAIL_PESSOAL);
     }
     public String consultarCampoNome() {
+//        esperarConteudoNaoVazio(SELETOR_CAMPO_NOME);
+        esperarTempo(200);
         return consultarValor(SELETOR_CAMPO_NOME);
     }
     // region Metodos com retorno valido
