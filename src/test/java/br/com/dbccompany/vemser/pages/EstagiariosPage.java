@@ -11,9 +11,10 @@ import java.util.stream.Stream;
 public class EstagiariosPage extends Elementos {
     private static final String SELETOR_BOTAO_CADASTRO_ESTAGIARIO = "[data-testid=\"AddOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_INFORMACOES_VOLTAR = "[data-testid=\"programa-create-voltar-btn\"]";
-    private static final String SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO = "button.MuiButton-outlined.MuiButton-outlinedError";
+    private static final String SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO = "button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedError.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-root.MuiButton-outlined.MuiButton-outlinedError.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-mg7184";
     private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-id=\"1\"] [data-field=\"info\"] > div";
     private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";
+    private static final String SELETOR_BOTAO_EDITAR_ESTAGIARIO = "div > div.MuiBox-root.css-69i1ev > div.MuiBox-root.css-k9kc57 > button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-7j2ur2";
     private static final String SELETOR_CAMPO_BUSCAR_NOME_ESTAGIARIO = "[id=\"nome\"]";
     private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "[data-id=\"%s\"]";
     private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex=\"1\"]";
@@ -22,7 +23,7 @@ public class EstagiariosPage extends Elementos {
     private static final String SELETOR_BOTAO_DESATIVAR_ESTAGIARIO = "div > form > div > button";
     private static final String SELETOR_BOTAO_CAMPO_MOTIVO_DESATIVACAO = "[id=\"observacao\"]";
     public void clicarBotaoConfirmarDesativarEstagiario() {
-        clicar(SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO);
+        clicar(SELETOR_BOTAO_DESATIVAR_ESTAGIARIO);
     }
     public void preencherCampoMotivoDesativacao(String motivo) {
         preencher(SELETOR_BOTAO_CAMPO_MOTIVO_DESATIVACAO, motivo);
@@ -54,6 +55,12 @@ public class EstagiariosPage extends Elementos {
     public void clicarBotaoDetalhesDoEstagiarioPorId(String idEstagiario) {
         clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS);
     }
+    public void clicarBotaoDetalhesDoEstagiarioPorIdValido() {
+        clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(consultarIdsEstagiarios().get(0))) + " " + SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS);
+    }
+    public void clicarBotaoEditarEstagiario() {
+        clicar(SELETOR_BOTAO_EDITAR_ESTAGIARIO);
+    }
     public void clicarBotaoVoltarParaLista() {
         clicar(SELETOR_BOTAO_INFORMACOES_VOLTAR);
     }
@@ -80,5 +87,11 @@ public class EstagiariosPage extends Elementos {
     public boolean existeMensagemModal() {
         esperarConteudoNaoVazio(SELETOR_MODAL);
         return estaVisivel(SELETOR_MODAL);
+    }
+    // esperar modal fechar
+    public void esperarModalFechar() {
+        while (driver.findElement(By.cssSelector(SELETOR_MODAL)).isDisplayed()) {
+            esperarTempo(1000);
+        }
     }
 }

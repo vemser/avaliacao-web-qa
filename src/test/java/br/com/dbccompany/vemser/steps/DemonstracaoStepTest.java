@@ -16,7 +16,7 @@ public class DemonstracaoStepTest extends Navegador {
     @Test
     @DisplayName("Demonstração CRUD Estagiários")
     public void testDemonstracaoCRUDEstagiarios() {
-        int delay = 250;
+        int delay = 350;
         //region Acessar página de login
         loginPage.acessarPagina();
         loginPage.esperarTempo(delay);
@@ -27,19 +27,31 @@ public class DemonstracaoStepTest extends Navegador {
         // endregion Acessar página de login
         // region Navegar pelo menu
         menuPage.clicarBotaoDashboard();
+        loginPage.esperarTempo(delay);
         menuPage.clicarBotaoEstagiarios();
+        loginPage.esperarTempo(delay);
         menuPage.clicarBotaoComportamental();
+        loginPage.esperarTempo(delay);
         menuPage.clicarBotaoAcompanhamentos();
+        loginPage.esperarTempo(delay);
         menuPage.clicarBotaoTecnico();
+        loginPage.esperarTempo(delay);
         menuPage.clicarBotaoTecnicoFeedback();
+        loginPage.esperarTempo(delay);
         menuPage.clicarBotaoConfiguracoes();
+        loginPage.esperarTempo(delay);
         configuracoesPage.clicarBotaoProgramasConfig();
+        loginPage.esperarTempo(delay);
         // endregion
         // region Cadastrar Estagiário
         menuPage.clicarBotaoEstagiarios();
         loginPage.esperarTempo(delay);
         estagiariosPage.clicarBotaoCadastroEstagiario();
         loginPage.esperarTempo(delay);
+//        estagiariosCadastroPage.preencherCampoBuscaCpf("68426083765");
+//        loginPage.esperarTempo(delay);
+//        estagiariosCadastroPage.clicarBotaoBuscaCpf();
+//        loginPage.esperarTempo(delay);
         estagiariosCadastroPage.preencherCampoNomeValido();
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.preencherCampoCpfValido();
@@ -82,24 +94,30 @@ public class DemonstracaoStepTest extends Navegador {
         estagiariosPage.acessarPagina();
         loginPage.esperarTempo(delay);
         // endregion
-        // region Consultar Estagiário
-        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorId("0");
-        loginPage.esperarTempo(delay);
-        estagiariosPage.clicarAbaInformacoesDoPrograma();
-        loginPage.esperarTempo(delay);
-        estagiariosPage.clicarAbaAcompanhamentosDoEstagiario();
-        loginPage.esperarTempo(delay);
-        // endregion
         // region Editar Estagiário
+        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+        estagiariosPage.clicarBotaoEditarEstagiario();
+        loginPage.esperarTempo(delay);
         estagiariosCadastroPage.limparCampoNome();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoNome("Nome Editado Do Estagiário");
+        estagiariosCadastroPage.preencherCampoNome(" Editado Com Sucesso");
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.clicarBotaoEditar();
         loginPage.esperarTempo(delay);
         // endregion
+        // region Consultar Estagiário
+        menuPage.clicarBotaoEstagiarios();
+        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+        loginPage.esperarTempo(delay);
+        estagiariosPage.clicarAbaInformacoesDoPrograma();
+        loginPage.esperarTempo(delay);
+//        estagiariosPage.clicarAbaAcompanhamentosDoEstagiario();
+//        loginPage.esperarTempo(delay);
+        // endregion
         // region Desativar Estagiário
-        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorId("0");
+        menuPage.clicarBotaoEstagiarios();
+        estagiariosPage.esperarModalFechar();
+        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
         loginPage.esperarTempo(delay);
         estagiariosPage.clicarBotaoDesativarEstagiario();
         loginPage.esperarTempo(delay);
@@ -107,6 +125,7 @@ public class DemonstracaoStepTest extends Navegador {
         loginPage.esperarTempo(delay);
         estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
         loginPage.esperarTempo(delay);
+        loginPage.esperarTempo(3000);
         // endregion
     }
 }
