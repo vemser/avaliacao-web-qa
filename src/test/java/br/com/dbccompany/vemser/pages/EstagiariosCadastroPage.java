@@ -2,6 +2,7 @@ package br.com.dbccompany.vemser.pages;
 
 import dataFactory.EstagiarioDataFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EstagiariosCadastroPage extends EstagiariosPage{
     // region SELETORES BOTOES E CAMPOS
@@ -51,6 +52,9 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     public boolean estaNaPaginaCadastroEstagiario() {
         esperarUrl(URL_PAGINA);
         return driver.getCurrentUrl().equals(URL_PAGINA);
+    }
+    public void esperarBuscaDeCandidatoValido() {
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(By.cssSelector(SELETOR_CAMPO_NOME)),"value"));
     }
     public boolean existeMensagemDeCpfNaoEncontrado() {
         esperarUrl(URL_PAGINA);
@@ -112,8 +116,6 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
         return consultarValor(SELETOR_CAMPO_EMAIL_PESSOAL);
     }
     public String consultarCampoNome() {
-//        esperarConteudoNaoVazio(SELETOR_CAMPO_NOME);
-        esperarTempo(200);
         return consultarValor(SELETOR_CAMPO_NOME);
     }
     // region Metodos com retorno valido
@@ -160,7 +162,6 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
 
     public void limparCampoNome() {
         driver.findElement(By.cssSelector(SELETOR_CAMPO_NOME)).clear();
-//        limparCampo(SELETOR_CAMPO_NOME);
     }
 
     public void clicarBotaoEditar() {

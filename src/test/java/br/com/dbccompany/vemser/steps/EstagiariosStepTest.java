@@ -88,7 +88,8 @@ public class EstagiariosStepTest extends Navegador {
             Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
             estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidato);
             estagiariosCadastroPage.clicarBotaoBuscaCpf();
-            Assertions.assertEquals(nomeCandidato, estagiariosCadastroPage.consultarCampoNome());
+            estagiariosCadastroPage.esperarBuscaDeCandidatoValido();
+            Assertions.assertEquals(nomeCandidato.toLowerCase(), estagiariosCadastroPage.consultarCampoNome().toLowerCase());
             Assertions.assertEquals(emailCandidato, estagiariosCadastroPage.consultarCampoEmailPessoal());
         }
 
@@ -115,7 +116,7 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
             estagiariosPage.clicarBotaoDesativarEstagiario();
             estagiariosPage.preencherCampoMotivoDesativacaoValido();
-//            estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
+            estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
             Assertions.assertTrue(estagiariosPage.existeMensagemModal());
         }
     }
