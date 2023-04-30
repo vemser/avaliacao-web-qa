@@ -1,6 +1,8 @@
 package br.com.dbccompany.vemser.pages;
 
 import dataFactory.EstagiarioDataFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EstagiariosCadastroPage extends EstagiariosPage{
     // region SELETORES BOTOES E CAMPOS
@@ -27,7 +29,7 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     private static final String SELETOR_MENSAGEM_CPF_NAO_ENCONTRADO = "div.Toastify__toast-body > div:nth-child(2)";
     // endregion
     public static final String URL_PAGINA = EstagiariosPage.URL_PAGINA + "/cadastro";
-    private static final String SELETOR_BOTAO_EDITAR = "form > div > button";
+    private static final String SELETOR_BOTAO_EDITAR = "div > form > div > button";
 
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
@@ -50,6 +52,9 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     public boolean estaNaPaginaCadastroEstagiario() {
         esperarUrl(URL_PAGINA);
         return driver.getCurrentUrl().equals(URL_PAGINA);
+    }
+    public void esperarBuscaDeCandidatoValido() {
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(By.cssSelector(SELETOR_CAMPO_NOME)),"value"));
     }
     public boolean existeMensagemDeCpfNaoEncontrado() {
         esperarUrl(URL_PAGINA);
@@ -130,7 +135,8 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
         preencherCampoTelefone(EstagiarioDataFactory.gerarTelefoneValido());
     }
     public void preencherCampoDataNascimentoValido() {
-        preencherCampoDataNascimento(EstagiarioDataFactory.gerarDataNascimentoValida());
+//        preencherCampoDataNascimento(EstagiarioDataFactory.gerarDataNascimentoValida());
+        preencherCampoDataNascimento("01/01/1990");
     }
     public void preencherCampoEstadoValido() {
         preencherCampoEstado(EstagiarioDataFactory.gerarEstadoValido());
@@ -155,7 +161,7 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     }
 
     public void limparCampoNome() {
-        limparCampo(SELETOR_CAMPO_NOME);
+        driver.findElement(By.cssSelector(SELETOR_CAMPO_NOME)).clear();
     }
 
     public void clicarBotaoEditar() {

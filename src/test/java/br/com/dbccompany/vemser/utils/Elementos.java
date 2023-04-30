@@ -33,6 +33,17 @@ public class Elementos extends Navegador {
     public static void esperarElemento(By element){
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
+    // region Modal
+    public void esperarModalAbrir() {
+        esperarElemento(By.cssSelector(".Toastify__toast-body"));
+    }
+    public void esperarModalFechar() {
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".Toastify__toast-body"))));
+    }
+    public void fecharModal() {
+        clicar("button.Toastify__close-button");
+    }
+    // endregion
     public static void esperarTempo(int tempo){
         try {
             Thread.sleep(tempo);
@@ -58,6 +69,7 @@ public class Elementos extends Navegador {
     }
     public static void limparCampo(String seletor){
         esperarElemento(By.cssSelector(seletor));
+        driver.findElement(By.cssSelector(seletor)).click();
         driver.findElement(By.cssSelector(seletor)).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
     }
 }

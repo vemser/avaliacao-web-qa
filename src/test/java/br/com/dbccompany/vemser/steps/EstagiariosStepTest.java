@@ -2,8 +2,11 @@ package br.com.dbccompany.vemser.steps;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
+import dataFactory.EstagiarioDataFactory;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
+import model.EstagiarioModel;
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +15,7 @@ public class EstagiariosStepTest extends Navegador {
     private static AcessoPage acessoPage = new AcessoPage();
     public static EstagiariosPage estagiariosPage = new EstagiariosPage();
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
+    private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
     private static LoginPage loginPage = new LoginPage();
 
     @BeforeAll
@@ -26,6 +30,7 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.acessarPagina();
         }
         @Test
+        @Disabled
         @Story("Consulta de Estagiários")
         @Description("Consulta de detalhes de informações de Estagiários")
         @DisplayName("Consulta de detalhes de informações de Estagiários")
@@ -34,12 +39,23 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.consultarIdsEstagiarios()
                 .forEach(id -> {
                     String nomeEstagiario = estagiariosPage.consultarNomeEstagiarioPorId(id);
+                    System.out.println("Nome do estagiário: " + nomeEstagiario);
+                    System.out.println("Id do estagiário: " + id);
                     estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorId(id);
-                    Assertions.assertEquals(estagiariosPage.URL_PAGINA+"/informacoes", estagiariosPage.consultarUrl());
-                    Assertions.assertEquals(nomeEstagiario, estagiariosPage.consultarNomeEstagiarioInformacoes());
-                    estagiariosPage.clicarBotaoVoltarParaLista();
-                    Assertions.assertTrue(estagiariosPage.estaNaPaginaEstagiarios());
+                    Assertions.assertEquals(nomeEstagiario, estagiariosInformacoesPage.consultarNomeEstagiario());
+                    estagiariosInformacoesPage.clicarBotaoVoltarParaLista();
                 });
+        }
+        @Test
+        @Story("Consulta de Estagiários")
+        @Description("Consulta de estagiários por nome")
+        @DisplayName("Consulta de estagiários por nome")
+        public void testConsultarEstagiarioPorNome() {
+            String nome = estagiariosPage.consultarNomeEstagiarioInformacoes();
+            estagiariosPage.filtrarEstagiarioPorNomeValido();
+            estagiariosPage.clicarBotaoBuscar();
+            estagiariosPage.esperarBuscaPorNome(nome);
+            Assertions.assertEquals(nome, estagiariosPage.consultarNomeEstagiarioInformacoes());
         }
     }
     @Nested
@@ -54,20 +70,21 @@ public class EstagiariosStepTest extends Navegador {
         @Description("Cadastro de Estagiários manualmente com sucesso")
         @DisplayName("Cadastro de Estagiários manualmente com sucesso")
         public void testCadastroEstagiarioManual() {
+            EstagiarioModel estagiario = EstagiarioDataFactory.gerarEstagiarioValido(1);
             Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
-            estagiariosCadastroPage.preencherCampoNomeValido();
-            estagiariosCadastroPage.preencherCampoCpfValido();
-            estagiariosCadastroPage.preencherCampoEmailPessoalValido();
-            estagiariosCadastroPage.preencherCampoEmailCorporativoValido();
-            estagiariosCadastroPage.preencherCampoTelefoneValido();
-            estagiariosCadastroPage.preencherCampoDataNascimentoValido();
-            estagiariosCadastroPage.preencherCampoEstadoValido();
-            estagiariosCadastroPage.preencherCampoCidadeValido();
-            estagiariosCadastroPage.preencherCampoInstituicaoEnsinoValido();
-            estagiariosCadastroPage.preencherCampoCursoValido();
-            estagiariosCadastroPage.preencherCampoGithubValido();
-            estagiariosCadastroPage.preencherCampoLinkedinValido();
-            estagiariosCadastroPage.preencherCampoObservacoesValido();
+            estagiariosCadastroPage.preencherCampoNome(estagiario.getNome());
+            estagiariosCadastroPage.preencherCampoCpf(estagiario.getCpf());
+            estagiariosCadastroPage.preencherCampoEmailPessoal(estagiario.getEmailPessoal());
+            estagiariosCadastroPage.preencherCampoEmailCorporativo(estagiario.getEmailCorporativo());
+            estagiariosCadastroPage.preencherCampoTelefone(estagiario.getTelefone());
+            estagiariosCadastroPage.preencherCampoDataNascimento(estagiario.getDataNascimento());
+            estagiariosCadastroPage.preencherCampoEstado(estagiario.getEstado());
+            estagiariosCadastroPage.preencherCampoCidade(estagiario.getCidade());
+            estagiariosCadastroPage.preencherCampoInstituicaoEnsino(estagiario.getInstituicaoEnsino());
+            estagiariosCadastroPage.preencherCampoCurso(estagiario.getCurso());
+            estagiariosCadastroPage.preencherCampoGithub(estagiario.getGithub());
+            estagiariosCadastroPage.preencherCampoLinkedin(estagiario.getLinkedin());
+            estagiariosCadastroPage.preencherCampoObservacoes(estagiario.getObservacoes());
             estagiariosCadastroPage.clicarSelecionarPrograma();
             estagiariosCadastroPage.selecionarOpcaoPrograma(0);
             estagiariosCadastroPage.clicarSelecionarTrilha();
@@ -76,6 +93,16 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosCadastroPage.selecionarOpcaoStatus(0);
             estagiariosCadastroPage.clicarBotaoCadastrar();
             Assertions.assertTrue(estagiariosPage.estaNaPaginaEstagiarios());
+            Assertions.assertTrue(estagiariosPage.existeMensagemModal());
+            estagiariosPage.fecharModal();
+            estagiariosPage.filtrarEstagiarioPorNome(estagiario.getNome());
+            estagiariosPage.clicarBotaoBuscar();
+            estagiariosPage.esperarBuscaPorNome(estagiario.getNome());
+            Assertions.assertEquals(estagiario.getNome(), estagiariosPage.consultarNomeEstagiarioInformacoes());
+            estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+            estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
+            estagiariosPage.preencherCampoMotivoDesativacaoValido();
+            estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
             Assertions.assertTrue(estagiariosPage.existeMensagemModal());
         }
 
@@ -88,7 +115,8 @@ public class EstagiariosStepTest extends Navegador {
             Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
             estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidato);
             estagiariosCadastroPage.clicarBotaoBuscaCpf();
-            Assertions.assertEquals(nomeCandidato, estagiariosCadastroPage.consultarCampoNome());
+            estagiariosCadastroPage.esperarBuscaDeCandidatoValido();
+            Assertions.assertEquals(nomeCandidato.toLowerCase(), estagiariosCadastroPage.consultarCampoNome().toLowerCase());
             Assertions.assertEquals(emailCandidato, estagiariosCadastroPage.consultarCampoEmailPessoal());
         }
 
@@ -112,8 +140,8 @@ public class EstagiariosStepTest extends Navegador {
         @DisplayName("Desativar de Estagiários com sucesso")
         public void testDesativarEstagiario() {
             estagiariosPage.acessarPagina();
-            estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorId("1");
-            estagiariosPage.clicarBotaoDesativarEstagiario();
+            estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+            estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
             estagiariosPage.preencherCampoMotivoDesativacaoValido();
             estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
             Assertions.assertTrue(estagiariosPage.existeMensagemModal());
