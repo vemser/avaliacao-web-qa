@@ -39,8 +39,6 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.consultarIdsEstagiarios()
                 .forEach(id -> {
                     String nomeEstagiario = estagiariosPage.consultarNomeEstagiarioPorId(id);
-                    System.out.println("Nome do estagiário: " + nomeEstagiario);
-                    System.out.println("Id do estagiário: " + id);
                     estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorId(id);
                     Assertions.assertEquals(nomeEstagiario, estagiariosInformacoesPage.consultarNomeEstagiario());
                     estagiariosInformacoesPage.clicarBotaoVoltarParaLista();
