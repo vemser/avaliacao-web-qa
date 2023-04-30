@@ -4,20 +4,19 @@ import br.com.dbccompany.vemser.utils.Elementos;
 import br.com.dbccompany.vemser.utils.Tabelas;
 import org.junit.jupiter.params.provider.Arguments;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 public class EstagiariosPage extends Elementos {
     private static final String SELETOR_BOTAO_CADASTRO_ESTAGIARIO = "[data-testid=\"AddOutlinedIcon\"]";
-    private static final String SELETOR_BOTAO_INFORMACOES_VOLTAR = "[data-testid=\"programa-create-voltar-btn\"]";
-    private static final String SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO = "button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedError.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-root.MuiButton-outlined.MuiButton-outlinedError.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-mg7184";
-    private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-id=\"1\"] [data-field=\"info\"] > div";
+    private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-rowindex='0'] [data-field='nome'] div";
     private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_EDITAR_ESTAGIARIO = "div > div.MuiBox-root.css-69i1ev > div.MuiBox-root.css-k9kc57 > button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-7j2ur2";
-    private static final String SELETOR_CAMPO_BUSCAR_NOME_ESTAGIARIO = "[id=\"nome\"]";
+    private static final String SELETOR_CAMPO_FILTRO_NOME_ESTAGIARIO = "#nome";
     private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "[data-id=\"%s\"]";
-    private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex=\"1\"]";
+    private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex='1']";
     private static final String SELETOR_MODAL = "div.Toastify__toast-body > div:nth-child(2)";
     // region Página desativar estagiário
     private static final String SELETOR_BOTAO_DESATIVAR_ESTAGIARIO = "div > form > div > button";
@@ -46,35 +45,35 @@ public class EstagiariosPage extends Elementos {
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
     }
+    public void clicarBotaoBuscar() {
+        clicar("form button [data-testid='SearchIcon']");
+    }
     public void clicarBotaoCadastroEstagiario() {
         clicar(SELETOR_BOTAO_CADASTRO_ESTAGIARIO);
     }
-    public void clicarBotaoDesativarEstagiario() {
-        clicar(SELETOR_BOTAO_INFORMACOES_DESATIVAR_ESTAGIARIO);
-    }
     public void clicarBotaoDetalhesDoEstagiarioPorId(String idEstagiario) {
-        clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS);
+        clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + ">div");
     }
     public void clicarBotaoDetalhesDoEstagiarioPorIdValido() {
-        clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(consultarIdsEstagiarios().get(0))) + " " + SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS);
+        clicar(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(consultarIdsEstagiarios().get(0))));
     }
     public void clicarBotaoEditarEstagiario() {
         clicar(SELETOR_BOTAO_EDITAR_ESTAGIARIO);
     }
-    public void clicarBotaoVoltarParaLista() {
-        clicar(SELETOR_BOTAO_INFORMACOES_VOLTAR);
-    }
     public List<String> consultarIdsEstagiarios() {
-        //executa um getText para os 10 primeiros elementos correposndentes ao seletor
-//        return driver.findElements(By.cssSelector(SELETOR_COLUNA_IDS_ESTAGIARIOS)).stream().limit(10).map(webElement -> webElement.getText()).toList();
         return Tabelas.consultarIds(10);
     }
     public String consultarNomeEstagiarioPorId(String idEstagiario) {
-        return consultarTexto(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_CONSULTAR_NOME_ESTAGIARIO);
+        // return consultarTexto(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_CONSULTAR_NOME_ESTAGIARIO);
+        return Tabelas.consultarNomePorId(idEstagiario);
     }
     public String consultarNomeEstagiarioInformacoes() {
         esperarConteudoNaoVazio(SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO);
         return consultarTexto(SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO);
+    }
+    public void esperarBuscaPorNome(String nomeEstagiario) {
+        esperarConteudoNaoVazio(SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO), nomeEstagiario));
     }
     public String consultarMensagemModal() {
         esperarConteudoNaoVazio(SELETOR_MODAL);
@@ -88,10 +87,10 @@ public class EstagiariosPage extends Elementos {
         esperarConteudoNaoVazio(SELETOR_MODAL);
         return estaVisivel(SELETOR_MODAL);
     }
-    // esperar modal fechar
-    public void esperarModalFechar() {
-        while (driver.findElement(By.cssSelector(SELETOR_MODAL)).isDisplayed()) {
-            esperarTempo(1000);
-        }
+    public void filtrarEstagiarioPorNome(String string) {
+        preencher(SELETOR_CAMPO_FILTRO_NOME_ESTAGIARIO, string);
+    }
+    public void filtrarEstagiarioPorNomeValido() {
+        preencher(SELETOR_CAMPO_FILTRO_NOME_ESTAGIARIO, consultarNomeEstagiarioInformacoes());
     }
 }

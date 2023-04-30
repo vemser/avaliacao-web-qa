@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class DataFactory {
     public static Faker faker = new Faker(new Locale("pt-BR"));
-    public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     // region Login
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");
