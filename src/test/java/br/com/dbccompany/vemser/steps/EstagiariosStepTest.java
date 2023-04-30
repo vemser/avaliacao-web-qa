@@ -50,10 +50,11 @@ public class EstagiariosStepTest extends Navegador {
         @Story("Consulta de Estagiários")
         @Description("Consulta de estagiários por nome")
         @DisplayName("Consulta de estagiários por nome")
-        public void testConsultarEstadoPorNome() {
+        public void testConsultarEstagiarioPorNome() {
             String nome = estagiariosPage.consultarNomeEstagiarioInformacoes();
             estagiariosPage.filtrarEstagiarioPorNomeValido();
             estagiariosPage.clicarBotaoBuscar();
+            estagiariosPage.esperarBuscaPorNome(nome);
             Assertions.assertEquals(nome, estagiariosPage.consultarNomeEstagiarioInformacoes());
         }
     }
@@ -65,7 +66,6 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.clicarBotaoCadastroEstagiario();
         }
         @Test
-        // @Disabled
         @Story("Cadastro de Estagiários")
         @Description("Cadastro de Estagiários manualmente com sucesso")
         @DisplayName("Cadastro de Estagiários manualmente com sucesso")

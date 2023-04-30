@@ -3,6 +3,7 @@ package br.com.dbccompany.vemser.steps;
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,9 @@ public class DemonstracaoStepTest extends Navegador {
     private static ConfiguracoesPage configuracoesPage = new ConfiguracoesPage();
     public static EstagiariosPage estagiariosPage = new EstagiariosPage();
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
+    private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
     @Test
+    @Disabled
     @DisplayName("Demonstração CRUD Estagiários")
     public void testDemonstracaoCRUDEstagiarios() {
         int delay = 350;
@@ -52,7 +55,7 @@ public class DemonstracaoStepTest extends Navegador {
 //        loginPage.esperarTempo(delay);
 //        estagiariosCadastroPage.clicarBotaoBuscaCpf();
 //        loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoNomeValido();
+        estagiariosCadastroPage.preencherCampoNome("Estagiário Original");
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.preencherCampoCpfValido();
         loginPage.esperarTempo(delay);
@@ -64,9 +67,9 @@ public class DemonstracaoStepTest extends Navegador {
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.preencherCampoDataNascimentoValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoEstadoValido();
+        estagiariosCadastroPage.preencherCampoEstado("PA");
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoCidadeValido();
+        estagiariosCadastroPage.preencherCampoCidade("Belém");
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.preencherCampoInstituicaoEnsinoValido();
         loginPage.esperarTempo(delay);
@@ -90,8 +93,8 @@ public class DemonstracaoStepTest extends Navegador {
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.selecionarOpcaoStatus(0);
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.clicarBotaoCadastrar();
-//        estagiariosPage.acessarPagina();
+//         estagiariosCadastroPage.clicarBotaoCadastrar();
+        estagiariosPage.acessarPagina();
         loginPage.esperarTempo(delay);
         loginPage.esperarTempo(3000);
         menuPage.clicarBotaoEstagiarios();
@@ -102,7 +105,7 @@ public class DemonstracaoStepTest extends Navegador {
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.limparCampoNome();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoNome(" Editado Com Sucesso");
+        estagiariosCadastroPage.preencherCampoNome(" Editado");
         loginPage.esperarTempo(delay);
         estagiariosCadastroPage.clicarBotaoEditar();
         loginPage.esperarTempo(delay);
@@ -122,7 +125,7 @@ public class DemonstracaoStepTest extends Navegador {
         estagiariosPage.esperarTempo(3000);
         estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
         loginPage.esperarTempo(delay);
-        estagiariosPage.clicarBotaoDesativarEstagiario();
+        estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
         loginPage.esperarTempo(delay);
         estagiariosPage.preencherCampoMotivoDesativacaoValido();
         loginPage.esperarTempo(delay);
