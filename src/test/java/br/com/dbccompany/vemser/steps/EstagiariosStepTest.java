@@ -6,6 +6,7 @@ import dataFactory.EstagiarioDataFactory;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import model.EstagiarioModel;
+import service.EstagiarioService;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,6 +29,10 @@ public class EstagiariosStepTest extends Navegador {
         @BeforeEach
         public void acessarPaginaEstagiarios() {
             estagiariosPage.acessarPagina();
+        }
+        @AfterAll
+        public static void limparMassa() {
+            EstagiarioService.deletarEstagiariosTeste();
         }
         @Test
         @Disabled
