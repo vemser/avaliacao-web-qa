@@ -25,7 +25,6 @@ public class EstagiarioService {
             .extract()
             .jsonPath().getList("elementos", EstagiarioModel.class)
             .forEach(estagiario -> {
-                System.out.println("Deletando estagiário de id: " + estagiario.getIdEstagiario());
                 deletarEstagiarioPorIdEstagiario(estagiario.getIdEstagiario());
             });
         ;
@@ -40,8 +39,6 @@ public class EstagiarioService {
         .then()
             .statusCode(HttpStatus.SC_NO_CONTENT);
         ;
-        
-        System.out.println("Deletado estagiário de id: " + idEstagiario);
     }
     // endregion
 }
