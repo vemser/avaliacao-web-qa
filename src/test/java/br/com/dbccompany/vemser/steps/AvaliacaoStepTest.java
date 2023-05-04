@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
 import br.com.dbccompany.vemser.pages.AcessoPage;
 import br.com.dbccompany.vemser.pages.ConfiguracoesPage;
@@ -12,6 +13,7 @@ import br.com.dbccompany.vemser.pages.EstagiariosInformacoesPage;
 import br.com.dbccompany.vemser.pages.EstagiariosPage;
 import br.com.dbccompany.vemser.pages.LoginPage;
 import br.com.dbccompany.vemser.pages.MenuPage;
+import br.com.dbccompany.vemser.pages.TecnicoFeedbackPage;
 import br.com.dbccompany.vemser.utils.Navegador;
 import dataFactory.EstagiarioDataFactory;
 import model.EstagiarioModel;
@@ -25,6 +27,7 @@ public class AvaliacaoStepTest extends Navegador {
     public static EstagiariosPage estagiariosPage = new EstagiariosPage();
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
     private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
+    private static TecnicoFeedbackPage tecnicoFeedbackPage = new TecnicoFeedbackPage();
     private static String nomeEstagiario;
     @BeforeAll
     public static void loginECriarMassa() {
@@ -65,5 +68,9 @@ public class AvaliacaoStepTest extends Navegador {
     public void testFluxoDeAvaliacaoComSucesso() {
         menuPage.clicarBotaoTecnico();
         menuPage.clicarBotaoTecnicoFeedback();
+        tecnicoFeedbackPage.clicarAcompanhamento();
+        estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
+        estagiariosPage.esperarBuscaPorNome(nomeEstagiario);
+        tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
     }
 }
