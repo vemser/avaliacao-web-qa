@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EstagiariosCadastroPage extends EstagiariosPage{
     // region SELETORES BOTOES E CAMPOS
-    private static final String SELETOR_BOTAO_BUSCA_CPF = "form > div > button";
+    private static final String SELETOR_BOTAO_BUSCA_CPF = "div.MuiBox-root.css-uwa97r > div > form > div > button";
     private static final String SELETOR_CAMPO_BUSCA_CPF = "[id=\"cpfBusca\"]";
     private static final String SELETOR_CAMPO_NOME = "[id=\"nome\"]";
     private static final String SELETOR_CAMPO_CPF = "[id=\"cpf\"]";
@@ -25,7 +25,7 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     private static final String SELETOR_BOTAO_SELECIONAR_TRILHA = "[id=\"idTrilha\"]";
     private static final String SELETOR_BOTAO_SELECIONAR_STATUS = "[id=\"status\"]";
     private static final String SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES = "[id^=\"menu-\"] > div > ul > li";
-    private static final String SELETOR_BOTAO_CADASTRAR = "form:nth-child(3) > div > button";
+    private static final String SELETOR_BOTAO_CADASTRAR = "div.MuiBox-root.css-uwa97r > form > div > button";
     private static final String SELETOR_MENSAGEM_CPF_NAO_ENCONTRADO = "div.Toastify__toast-body > div:nth-child(2)";
     // endregion
     public static final String URL_PAGINA = EstagiariosPage.URL_PAGINA + "/cadastro";
