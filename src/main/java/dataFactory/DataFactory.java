@@ -14,6 +14,14 @@ import java.util.stream.Stream;
 public class DataFactory {
     public static Faker faker = new Faker(new Locale("pt-BR"));
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    // region Metodos comuns
+    public static String gerarNumeroInteiroNoIntervalo(int min, int max) {
+        return String.valueOf(faker.number().numberBetween(min, max));
+    }
+    public static String gerarNotaPositiva() {
+        return gerarNumeroInteiroNoIntervalo(60, 100);
+    }
+    // endregion
     // region Login
     private static final String USUARIO_VALIDO = System.getenv("DBC_USER");
     private static final String SENHA_VALIDO = System.getenv("DBC_PASSWORD");

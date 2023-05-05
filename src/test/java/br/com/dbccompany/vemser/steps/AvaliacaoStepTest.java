@@ -15,6 +15,7 @@ import br.com.dbccompany.vemser.pages.LoginPage;
 import br.com.dbccompany.vemser.pages.MenuPage;
 import br.com.dbccompany.vemser.pages.TecnicoFeedbackPage;
 import br.com.dbccompany.vemser.utils.Navegador;
+import dataFactory.DataFactory;
 import dataFactory.EstagiarioDataFactory;
 import model.EstagiarioModel;
 import service.EstagiarioService;
@@ -72,5 +73,10 @@ public class AvaliacaoStepTest extends Navegador {
         estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
         estagiariosPage.esperarBuscaPorNome(nomeEstagiario);
         tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
+        tecnicoFeedbackPage.clicarBotaoAvaliar();
+        tecnicoFeedbackPage.clicarTipoFeedback();
+        tecnicoFeedbackPage.selecionarTipoFeedback(0);
+        tecnicoFeedbackPage.preencherCampoDescricao("Aluno atendeu às expectativas.");
+        tecnicoFeedbackPage.preencherCampoNota(DataFactory.gerarNotaPositiva());
     }
 }
