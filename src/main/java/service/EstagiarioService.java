@@ -29,6 +29,53 @@ public class EstagiarioService {
             });
         ;
     }
+    public static String buscarNomeEstagiarioTesteFluxoAvaliacao() {
+        //Busca o nome de um estagiário que não tem avaliações no Acompanhamento em Aberto do Programa atual em Aberto
+        String token = UsuarioService.gerarToken();
+        int idPrograma = 
+            given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", token)
+                .baseUri(URL_AVALIACAO_API)
+            .when()
+                .get("/programa/get-open")
+            .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath()
+                .getInt("idPrograma");
+        int idAcompanhamento =
+            given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", token)
+                .baseUri(URL_AVALIACAO_API)
+                .pathParam("idPrograma", idPrograma)
+                .queryParam("pagina", 0)
+                .queryParam("tamanho", 10)
+            .when()
+                .get("/acompanhamento/list-by-programa/{idPrograma}")
+            .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath()
+                .getInt("acompanhamentos.elementos.find{it.status == 'ABERTO' && it.ativo == true}.idAcompanhamento");
+        String nomeEstagiario =
+            given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", token)
+                .baseUri(URL_AVALIACAO_API)
+                .pathParam("idAcompanhamento", idAcompanhamento)
+                .queryParam("pagina", 0)
+                .queryParam("tamanho", 10)
+            .when()
+                .get("/avaliacao/list-by-acompanhamento/{idAcompanhamento}")
+            .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath()
+                .getString("elementos.find{it.status == 'ABERTO' && it.qtdFeedBacks == 0}.nomeEstagiario");
+        return nomeEstagiario;
+    }
     // region DELETE Estagiario
     private static void deletarEstagiarioPorIdEstagiario(Integer idEstagiario) {
         given()
