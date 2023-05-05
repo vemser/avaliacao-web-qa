@@ -30,40 +30,18 @@ public class AvaliacaoStepTest extends Navegador {
     private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
     private static TecnicoFeedbackPage tecnicoFeedbackPage = new TecnicoFeedbackPage();
     private static String nomeEstagiario;
+    private static String idFeedBackTecnico;
+    private static String idFeedBackComportamental;
     @BeforeAll
-    public static void loginECriarMassa() {
+    public static void loginEBuscarMassa() {
         loginPage.realizarLoginComSucesso();
         acessoPage.estaNaPaginaAcesso();
         estagiariosPage.acessarPagina();
-        estagiariosPage.clicarBotaoCadastroEstagiario();
-        EstagiarioModel estagiario = EstagiarioDataFactory.gerarEstagiarioValido(1);
-        estagiariosCadastroPage.preencherCampoNome(estagiario.getNome());
-        estagiariosCadastroPage.preencherCampoCpf(estagiario.getCpf());
-        estagiariosCadastroPage.preencherCampoEmailPessoal(estagiario.getEmailPessoal());
-        estagiariosCadastroPage.preencherCampoEmailCorporativo(estagiario.getEmailCorporativo());
-        estagiariosCadastroPage.preencherCampoTelefone(estagiario.getTelefone());
-        estagiariosCadastroPage.preencherCampoDataNascimento(estagiario.getDataNascimento());
-        estagiariosCadastroPage.preencherCampoEstado(estagiario.getEstado());
-        estagiariosCadastroPage.preencherCampoCidade(estagiario.getCidade());
-        estagiariosCadastroPage.preencherCampoInstituicaoEnsino(estagiario.getInstituicaoEnsino());
-        estagiariosCadastroPage.preencherCampoCurso(estagiario.getCurso());
-        estagiariosCadastroPage.preencherCampoGithub(estagiario.getGithub());
-        estagiariosCadastroPage.preencherCampoLinkedin(estagiario.getLinkedin());
-        estagiariosCadastroPage.preencherCampoObservacoes(estagiario.getObservacoes());
-        estagiariosCadastroPage.clicarSelecionarPrograma();
-        estagiariosCadastroPage.selecionarOpcaoPrograma(0);
-        estagiariosCadastroPage.clicarSelecionarTrilha();
-        estagiariosCadastroPage.selecionarOpcaoTrilha(0);
-        estagiariosCadastroPage.clicarSelecionarStatus();
-        estagiariosCadastroPage.selecionarOpcaoStatus(0);
-        estagiariosCadastroPage.clicarBotaoCadastrar();
-        Assertions.assertTrue(estagiariosPage.existeMensagemModal());
-        estagiariosPage.fecharModal();
-        nomeEstagiario = estagiario.getNome();
+        nomeEstagiario = EstagiarioService.buscarNomeEstagiarioTesteFluxoAvaliacao();
     }
     @AfterAll
     public static void limparMassa() {
-        EstagiarioService.deletarEstagiariosTeste();
+        EstagiarioService.deletarFeedBackById(Integer.parseInt(idFeedBackTecnico));
     }
     @Test
     public void testFluxoDeAvaliacaoComSucesso() {
@@ -78,5 +56,9 @@ public class AvaliacaoStepTest extends Navegador {
         tecnicoFeedbackPage.selecionarTipoFeedback(0);
         tecnicoFeedbackPage.preencherCampoDescricao("Aluno atendeu às expectativas.");
         tecnicoFeedbackPage.preencherCampoNota(DataFactory.gerarNotaPositiva());
+        tecnicoFeedbackPage.clicarBotaoCadastrar();
+        tecnicoFeedbackPage.esperarModalAbrir();
+        tecnicoFeedbackPage.fecharModal();
+        idFeedBackTecnico = tecnicoFeedbackPage.pegarIdFeedback();
     }
 }

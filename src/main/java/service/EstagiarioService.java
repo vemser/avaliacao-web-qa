@@ -88,4 +88,17 @@ public class EstagiarioService {
         ;
     }
     // endregion
+    // region Feedback
+    public static void deletarFeedBackById(Integer idFeedback) {
+        given()
+            .header("Authorization", UsuarioService.gerarToken())
+            .baseUri(URL_AVALIACAO_API)
+            .pathParam("idFeedback", idFeedback)
+        .when()
+            .delete("/feedback/delete/{idFeedback}")
+        .then()
+            .statusCode(HttpStatus.SC_NO_CONTENT);
+        ;
+    }
+    // endregion
 }

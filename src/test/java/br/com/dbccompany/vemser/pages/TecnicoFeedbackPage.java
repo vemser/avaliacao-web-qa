@@ -8,8 +8,12 @@ public class TecnicoFeedbackPage extends Elementos {
     private static final String SELETOR_BOTOES_DETALHES = "[data-field='acoes'] [title='Botão Visualizar']";
     // region Pagina detalhes
     private static final String SELETOR_BOTAO_AVALIAR = "[title='Botão Avaliar']";
+    private static final String SELETOR_TEXTO_ID_FEEDBACK = "[data-id='1'] > [data-field='data'] > div";
     public void clicarBotaoAvaliar() {
         clicar(SELETOR_BOTAO_AVALIAR);
+    }
+    public String pegarIdFeedback() {
+        return consultarTexto(SELETOR_TEXTO_ID_FEEDBACK);
     }
     // endregion
     // region Pagina Criar Feedback
@@ -17,6 +21,7 @@ public class TecnicoFeedbackPage extends Elementos {
     private static final String SELETOR_OPCOES_TIPO_FEEDBACK = "[id='menu-tipoFeedback'] li";
     private static final String SELETOR_CAMPO_DESCRICAO = "[id='descricao']";
     private static final String SELETOR_CAMPO_NOTA = "[id='nota']";
+    private static final String SELETOR_BOTAO_CADASTRAR = "div.MuiBox-root > div > form > div > button";
     public void clicarTipoFeedback() {
         clicar(SELETOR_BOTAO_TIPO_FEEDBACK);
     }
@@ -28,6 +33,9 @@ public class TecnicoFeedbackPage extends Elementos {
     }
     public void preencherCampoNota(String nota) {
         preencher(SELETOR_CAMPO_NOTA, nota);
+    }
+    public void clicarBotaoCadastrar() {
+        clicar(SELETOR_BOTAO_CADASTRAR);
     }
     // endregion
     public void acessarPagina() {
