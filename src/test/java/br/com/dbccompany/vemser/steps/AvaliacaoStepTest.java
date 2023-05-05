@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
 import br.com.dbccompany.vemser.pages.AcessoPage;
+import br.com.dbccompany.vemser.pages.AcompanhamentosPage;
 import br.com.dbccompany.vemser.pages.ConfiguracoesPage;
 import br.com.dbccompany.vemser.pages.EstagiariosCadastroPage;
 import br.com.dbccompany.vemser.pages.EstagiariosInformacoesPage;
@@ -21,6 +22,7 @@ import model.EstagiarioModel;
 import service.EstagiarioService;
 
 public class AvaliacaoStepTest extends Navegador {
+    private static AcompanhamentosPage acompanhamentosPage = new AcompanhamentosPage();
     private static LoginPage loginPage = new LoginPage();
     private static AcessoPage acessoPage = new AcessoPage();
     private static MenuPage menuPage = new MenuPage();
@@ -60,5 +62,15 @@ public class AvaliacaoStepTest extends Navegador {
         tecnicoFeedbackPage.esperarModalAbrir();
         tecnicoFeedbackPage.fecharModal();
         idFeedBackTecnico = tecnicoFeedbackPage.pegarIdFeedback();
+        menuPage.clicarBotaoComportamental();
+        menuPage.clicarBotaoAcompanhamentos();
+        estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
+        estagiariosPage.esperarBuscaPorNome(nomeEstagiario);
+        tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
+        acompanhamentosPage.clicarBotaoAgendarHorario();
+        acompanhamentosPage.clicarBotaoSelecionarDia();
+        acompanhamentosPage.selecionarOpcaoDia(0);
+        acompanhamentosPage.clicarBotaoSelecionarHorario();
+        acompanhamentosPage.selecionarOpcaoHorario(0);
     }
 }
