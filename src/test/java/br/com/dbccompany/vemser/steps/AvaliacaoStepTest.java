@@ -61,7 +61,7 @@ public class AvaliacaoStepTest extends Navegador {
         tecnicoFeedbackPage.clicarBotaoCadastrar();
         tecnicoFeedbackPage.esperarModalAbrir();
         tecnicoFeedbackPage.fecharModal();
-        idFeedBackTecnico = tecnicoFeedbackPage.pegarIdFeedback();
+        idFeedBackTecnico = tecnicoFeedbackPage.consultarIdFeedback();
         menuPage.clicarBotaoComportamental();
         menuPage.clicarBotaoAcompanhamentos();
         estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
@@ -71,6 +71,16 @@ public class AvaliacaoStepTest extends Navegador {
         acompanhamentosPage.clicarBotaoSelecionarDia();
         acompanhamentosPage.selecionarOpcaoDia(0);
         acompanhamentosPage.clicarBotaoSelecionarHorario();
-        acompanhamentosPage.selecionarOpcaoHorario(0);
+        acompanhamentosPage.selecionarOpcaoHorario(1);
+        acompanhamentosPage.clicarBotaoAgendar();
+        acompanhamentosPage.esperarModalAbrir();
+        acompanhamentosPage.fecharModal();
+        estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
+        estagiariosPage.esperarBuscaPorNome(nomeEstagiario);
+        tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
+        // acompanhamentosPage.clicarBotaoAvaliarEstagiario();
+        // acompanhamentosPage.consultarIdFeedback();
+        acompanhamentosPage.clicarBotaoCancelarAgendamento();
+        acompanhamentosPage.clicarBotaoConfirmarCancelarAgendamento();
     }
 }

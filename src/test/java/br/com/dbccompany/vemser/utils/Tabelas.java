@@ -15,6 +15,9 @@ public class Tabelas extends Elementos {
     public static List<WebElement> consultarColunaPorDataField(String dataField) {
         return driver.findElements(By.cssSelector(String.format(SELETOR_COLUNA_POR_DATAFIELD, dataField)));
     }
+    public static String consultarTextoPorDataIdDataField(String dataId, String dataField) {
+        return consultarTexto(String.format(SELETOR_TEXTO_POR_DATAFIELD_POR_ID, dataId, dataField));
+    }
     public static String consultarNomePorId(String id) {
         return consultarTexto(String.format(SELETOR_TEXTO_POR_DATAFIELD_POR_ID, id, "nome"));
     }

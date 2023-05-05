@@ -1,6 +1,7 @@
 package br.com.dbccompany.vemser.pages;
 
 import br.com.dbccompany.vemser.utils.Elementos;
+import br.com.dbccompany.vemser.utils.Tabelas;
 
 public class TecnicoFeedbackPage extends Elementos {
     public static final String URL_PAGINA = URL_BASE + "/avaliacao-front/tecnico/feedback";
@@ -8,12 +9,11 @@ public class TecnicoFeedbackPage extends Elementos {
     private static final String SELETOR_BOTOES_DETALHES = "[data-field='acoes'] [title='Botão Visualizar']";
     // region Pagina detalhes
     private static final String SELETOR_BOTAO_AVALIAR = "[title='Botão Avaliar']";
-    private static final String SELETOR_TEXTO_ID_FEEDBACK = "[data-id='1'] > [data-field='data'] > div";
     public void clicarBotaoAvaliar() {
         clicar(SELETOR_BOTAO_AVALIAR);
     }
-    public String pegarIdFeedback() {
-        return consultarTexto(SELETOR_TEXTO_ID_FEEDBACK);
+    public String consultarIdFeedback() {
+        return Tabelas.consultarTextoPorDataIdDataField("1", "data");
     }
     // endregion
     // region Pagina Criar Feedback
