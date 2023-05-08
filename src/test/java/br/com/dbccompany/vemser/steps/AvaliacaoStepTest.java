@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import br.com.dbccompany.vemser.pages.AcessoPage;
 import br.com.dbccompany.vemser.pages.AcompanhamentosPage;
 import br.com.dbccompany.vemser.pages.ConfiguracoesPage;
+import br.com.dbccompany.vemser.pages.CriarFeedBackPage;
 import br.com.dbccompany.vemser.pages.EstagiariosCadastroPage;
 import br.com.dbccompany.vemser.pages.EstagiariosInformacoesPage;
 import br.com.dbccompany.vemser.pages.EstagiariosPage;
@@ -31,9 +32,9 @@ public class AvaliacaoStepTest extends Navegador {
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
     private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
     private static TecnicoFeedbackPage tecnicoFeedbackPage = new TecnicoFeedbackPage();
+    private static CriarFeedBackPage criarFeedBackPage = new CriarFeedBackPage();
     private static String nomeEstagiario;
-    private static String idFeedBackTecnico;
-    private static String idFeedBackComportamental;
+    private static String idAvaliacao;
     @BeforeAll
     public static void loginEBuscarMassa() {
         loginPage.realizarLoginComSucesso();
@@ -43,7 +44,7 @@ public class AvaliacaoStepTest extends Navegador {
     }
     @AfterAll
     public static void limparMassa() {
-        EstagiarioService.deletarFeedBackById(Integer.parseInt(idFeedBackTecnico));
+        EstagiarioService.deletarFeedBacksByIdAvaliacao(Integer.parseInt(idAvaliacao));
     }
     @Test
     public void testFluxoDeAvaliacaoComSucesso() {
@@ -61,7 +62,8 @@ public class AvaliacaoStepTest extends Navegador {
         tecnicoFeedbackPage.clicarBotaoCadastrar();
         tecnicoFeedbackPage.esperarModalAbrir();
         tecnicoFeedbackPage.fecharModal();
-        idFeedBackTecnico = tecnicoFeedbackPage.consultarIdFeedback();
+        String url = tecnicoFeedbackPage.consultarUrl();
+        idAvaliacao = url.substring(url.lastIndexOf('/') + 1);
         menuPage.clicarBotaoComportamental();
         menuPage.clicarBotaoAcompanhamentos();
         estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
@@ -69,7 +71,7 @@ public class AvaliacaoStepTest extends Navegador {
         tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
         acompanhamentosPage.clicarBotaoAgendarHorario();
         acompanhamentosPage.clicarBotaoSelecionarDia();
-        acompanhamentosPage.selecionarOpcaoDia(0);
+        acompanhamentosPage.selecionarOpcaoDia(1);
         acompanhamentosPage.clicarBotaoSelecionarHorario();
         acompanhamentosPage.selecionarOpcaoHorario(1);
         acompanhamentosPage.clicarBotaoAgendar();
@@ -78,8 +80,21 @@ public class AvaliacaoStepTest extends Navegador {
         estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
         estagiariosPage.esperarBuscaPorNome(nomeEstagiario);
         tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
-        // acompanhamentosPage.clicarBotaoAvaliarEstagiario();
-        // acompanhamentosPage.consultarIdFeedback();
+        acompanhamentosPage.clicarBotaoAvaliarEstagiario();
+        criarFeedBackPage.clicarTipoFeedback();
+        criarFeedBackPage.selecionarTipoFeedback(0);
+        criarFeedBackPage.preencherCampoDescricao("Aluno atendeu às expectativas.");
+        criarFeedBackPage.preencherCampoNota(DataFactory.gerarNotaPositiva());
+        criarFeedBackPage.preencherCampoObjetivo("Aluno com objetivo de se tornar um grande programador.");
+        criarFeedBackPage.preencherCampoRecomendacao("Recomendo ao aluno realizar cursos de programação no LinkedIn Learning.");
+        criarFeedBackPage.clicarTipoStatus();
+        criarFeedBackPage.selecionarTipoStatus(0);
+        criarFeedBackPage.clicarBotaoCadastrar();
+        acompanhamentosPage.esperarModalAbrir();
+        acompanhamentosPage.fecharModal();
+        estagiariosPage.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
+        estagiariosPage.esperarBuscaPorNome(nomeEstagiario);
+        tecnicoFeedbackPage.clicarPrimeiroBotaoDetalhes();
         acompanhamentosPage.clicarBotaoCancelarAgendamento();
         acompanhamentosPage.clicarBotaoConfirmarCancelarAgendamento();
     }

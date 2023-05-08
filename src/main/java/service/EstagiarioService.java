@@ -2,6 +2,7 @@ package service;
 
 import io.restassured.response.Response;
 import model.EstagiarioModel;
+import model.FeedBackModel;
 
 import static io.restassured.RestAssured.given;
 
@@ -89,6 +90,22 @@ public class EstagiarioService {
     }
     // endregion
     // region Feedback
+    public static void deletarFeedBacksByIdAvaliacao(Integer idAvaliacao) {
+        given()
+            .header("Authorization", UsuarioService.gerarToken())
+            .baseUri(URL_AVALIACAO_API)
+            .pathParam("idAvaliacao", idAvaliacao)
+        .when()
+            .get("/avaliacao/get-by-id/{idAvaliacao}")
+        .then()
+            .statusCode(HttpStatus.SC_OK)
+            .extract()
+            .jsonPath()
+            .getList("feedbacks", FeedBackModel.class)
+            .forEach(feedBack -> {
+                deletarFeedBackById(feedBack.getIdFeedBack());
+            });
+    }
     public static void deletarFeedBackById(Integer idFeedback) {
         given()
             .header("Authorization", UsuarioService.gerarToken())
