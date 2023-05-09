@@ -12,31 +12,31 @@ public class CriarFeedBackPage extends Elementos{
     private static final String SELETOR_CAMPO_OBJETIVO = "[id='objetivoProfissional']";
     private static final String SELETOR_CAMPO_RECOMENDACAO = "[id='recomendacaoMelhorias']";
     private static final String SELETOR_BOTAO_CADASTRAR = "div.MuiBox-root > div > form > div > button";
-    public void clicarTipoFeedback() {
+    public static void clicarTipoFeedback() {
         clicar(SELETOR_BOTAO_TIPO_FEEDBACK);
     }
-    public void selecionarTipoFeedback(int index) {
+    public static void selecionarTipoFeedback(int index) {
         clicarNoElementoIndex(SELETOR_OPCOES_TIPO_FEEDBACK, index);
     }
-    public void preencherCampoDescricao(String descricao) {
+    public static void preencherCampoDescricao(String descricao) {
         preencher(SELETOR_CAMPO_DESCRICAO, descricao);
     }
-    public void preencherCampoNota(String nota) {
+    public static void preencherCampoNota(String nota) {
         preencher(SELETOR_CAMPO_NOTA, nota);
     }
-    public void clicarBotaoCadastrar() {
+    public static void clicarBotaoCadastrar() {
         clicar(SELETOR_BOTAO_CADASTRAR);
     }
-    public void clicarTipoStatus() {
+    public static void clicarTipoStatus() {
         clicar(SELETOR_BOTAO_TIPO_STATUS);
     }
-    public void selecionarTipoStatus(int index) {
+    public static void selecionarTipoStatus(int index) {
         clicarNoElementoIndex(SELETOR_OPCOES_TIPO_STATUS, index);
     }
-    public void preencherCampoObjetivo(String objetivo) {
+    public static void preencherCampoObjetivo(String objetivo) {
         preencher(SELETOR_CAMPO_OBJETIVO, objetivo);
     }
-    public void preencherCampoRecomendacao(String recomendacao) {
+    public static void preencherCampoRecomendacao(String recomendacao) {
         preencher(SELETOR_CAMPO_RECOMENDACAO, recomendacao);
     }
 }

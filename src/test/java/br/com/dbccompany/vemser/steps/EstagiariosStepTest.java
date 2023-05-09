@@ -11,6 +11,7 @@ import service.EstagiarioService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.openqa.selenium.Keys;
 
 public class EstagiariosStepTest extends Navegador {
     private static AcessoPage acessoPage = new AcessoPage();
@@ -57,7 +58,7 @@ public class EstagiariosStepTest extends Navegador {
             String nome = estagiariosPage.consultarNomeEstagiarioInformacoes();
             estagiariosPage.filtrarEstagiarioPorNomeValido();
             estagiariosPage.clicarBotaoBuscar();
-            estagiariosPage.esperarBuscaPorNome(nome);
+            EstagiariosPage.Busca.esperarBuscaPorNome(nome);
             Assertions.assertEquals(nome, estagiariosPage.consultarNomeEstagiarioInformacoes());
         }
     }
@@ -96,17 +97,16 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosCadastroPage.selecionarOpcaoStatus(0);
             estagiariosCadastroPage.clicarBotaoCadastrar();
             Assertions.assertTrue(estagiariosPage.estaNaPaginaEstagiarios());
-            Assertions.assertTrue(estagiariosPage.existeMensagemModal());
-            estagiariosPage.fecharModal();
-            estagiariosPage.filtrarEstagiarioPorNome(estagiario.getNome());
-            estagiariosPage.clicarBotaoBuscar();
-            estagiariosPage.esperarBuscaPorNome(estagiario.getNome());
+            Assertions.assertTrue(EstagiariosPage.Modal.existeMensagemModal());
+            EstagiariosPage.Modal.fecharModal();
+            EstagiariosPage.Busca.filtrarEstagiarioPorNome(estagiario.getNome() + Keys.ENTER);
+            EstagiariosPage.Busca.esperarBuscaPorNome(estagiario.getNome());
             Assertions.assertEquals(estagiario.getNome(), estagiariosPage.consultarNomeEstagiarioInformacoes());
             estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
             estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
             estagiariosPage.preencherCampoMotivoDesativacaoValido();
             estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
-            Assertions.assertTrue(estagiariosPage.existeMensagemModal());
+            Assertions.assertTrue(EstagiariosPage.Modal.existeMensagemModal());
         }
 
         @ParameterizedTest(name = "Candidato {index}- CPF: {0}")
@@ -143,11 +143,11 @@ public class EstagiariosStepTest extends Navegador {
         @DisplayName("Desativar de Estagiários com sucesso")
         public void testDesativarEstagiario() {
             estagiariosPage.acessarPagina();
-            estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+            EstagiariosPage.Tabela.clicarBotaoDetalhes();
             estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
             estagiariosPage.preencherCampoMotivoDesativacaoValido();
             estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
-            Assertions.assertTrue(estagiariosPage.existeMensagemModal());
+            Assertions.assertTrue(EstagiariosPage.Modal.existeMensagemModal());
         }
     }
 }

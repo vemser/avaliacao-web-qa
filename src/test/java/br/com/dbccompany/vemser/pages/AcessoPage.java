@@ -29,7 +29,7 @@ public class AcessoPage extends Elementos {
         esperarConteudoNaoVazio(SELETOR_USUARIO);
         return consultarTexto(SELETOR_USUARIO).toLowerCase();
     }
-    public Boolean estaNaPaginaAcesso() {
+    public static Boolean estaNaPaginaAcesso() {
         esperarUrl(URL_PAGINA);
         return driver.getCurrentUrl().equals(URL_PAGINA);
     }

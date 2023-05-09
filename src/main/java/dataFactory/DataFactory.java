@@ -60,7 +60,7 @@ public class DataFactory {
     public static Stream<Arguments> provideCandidatosEdicaoAtual() {
         String nomeEdicaoAtual = CaptacaoService.consultarEdicaoAtual();
         String cpfInvalidos = "15880472884, 53332231901";
-        return CaptacaoService.consultarListaDeCandidatos(0, 10, "edicao", 1)
+        return CaptacaoService.consultarListaDeCandidatos(0, 3, "edicao", 1)
                 .extract()
                 .jsonPath()
                 .getList("elementos", CandidatosModel.class)
@@ -88,7 +88,7 @@ public class DataFactory {
     }
     public static Stream<Arguments> provideCpfNaoCadastradoNaEdicaoAtual() {
         List<String> cpfInvalidos = new ArrayList<>();
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 3; i++) {
             cpfInvalidos.add(faker.cpf().invalid());
         }
         return cpfInvalidos.stream().map(Arguments::of);

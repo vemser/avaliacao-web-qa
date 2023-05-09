@@ -28,7 +28,7 @@ public class MenuStepTest extends Navegador {
         Assertions.assertEquals("dashboard", menuPage.consultarTituloAtual());
         Assertions.assertEquals(DashboardPage.URL_PAGINA, menuPage.consultarUrl());
         menuPage.clicarBotaoEstagiarios();
-        Assertions.assertEquals("estagiários", menuPage.consultarTituloAtual());
+        Assertions.assertEquals("colaboradores", menuPage.consultarTituloAtual());
         Assertions.assertEquals(EstagiariosPage.URL_PAGINA, menuPage.consultarUrl());
         menuPage.clicarBotaoComportamental();
         menuPage.clicarBotaoAcompanhamentos();

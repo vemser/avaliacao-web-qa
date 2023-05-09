@@ -14,10 +14,10 @@ public class MenuPage extends Elementos {
     private static final String SELETOR_BOTAO_TECNICO_FEEDBACK = "nav svg[data-testid=\"ThumbUpOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_VOLTAR = "[data-testid=\"sair-menu-btn\"]";
     private static final String SELETOR_TITULO_ATUAL = "[data-testid*=\"header\"] h1";
-    public void clicarBotaoAcompanhamentos() {
+    public static void clicarBotaoAcompanhamentos() {
         clicar(SELETOR_BOTAO_ACOMPANHAMENTOS);
     }
-    public void clicarBotaoComportamental() {
+    public static void clicarBotaoComportamental() {
         clicar(SELETOR_BOTAO_COMPORTAMENTAL);
     }
     public void clicarBotaoConfiguracoes() {
@@ -32,10 +32,10 @@ public class MenuPage extends Elementos {
     public void clicarBotaoMenu() {
         clicar(SELETOR_BOTAO_MENU);
     }
-    public void clicarBotaoTecnico() {
+    public static void clicarBotaoTecnico() {
         clicar(SELETOR_BOTAO_TECNICO);
     }
-    public void clicarBotaoTecnicoFeedback() {
+    public static void clicarBotaoTecnicoFeedback() {
         clicar(SELETOR_BOTAO_TECNICO_FEEDBACK);
     }
     public void clicarBotaoVoltar() {
