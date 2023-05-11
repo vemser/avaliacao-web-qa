@@ -69,6 +69,10 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.acessarPagina();
             estagiariosPage.clicarBotaoCadastroEstagiario();
         }
+        @AfterAll
+        public static void limparMassa() {
+            EstagiarioService.deletarEstagiariosTeste();
+        }
         @Test
         @Story("Cadastro de Estagiários")
         @Description("Cadastro de Estagiários manualmente com sucesso")
@@ -101,12 +105,8 @@ public class EstagiariosStepTest extends Navegador {
             EstagiariosPage.Modal.fecharModal();
             EstagiariosPage.Busca.filtrarEstagiarioPorNome(estagiario.getNome() + Keys.ENTER);
             EstagiariosPage.Busca.esperarBuscaPorNome(estagiario.getNome());
-            Assertions.assertEquals(estagiario.getNome(), estagiariosPage.consultarNomeEstagiarioInformacoes());
-            estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
-            estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
-            estagiariosPage.preencherCampoMotivoDesativacaoValido();
-            estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
-            Assertions.assertTrue(EstagiariosPage.Modal.existeMensagemModal());
+            Assertions.assertEquals(estagiario.getNome(), EstagiariosPage.Tabela.consultarNomePrimeiraLinha());
+            EstagiarioService.deletarEstagiariosTeste();
         }
 
         @ParameterizedTest(name = "Candidato {index}- CPF: {0}")

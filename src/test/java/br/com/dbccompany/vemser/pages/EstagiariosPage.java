@@ -1,20 +1,12 @@
 package br.com.dbccompany.vemser.pages;
 
-import br.com.dbccompany.vemser.utils.Elementos;
-import org.junit.jupiter.params.provider.Arguments;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.List;
-import java.util.stream.Stream;
 
 public class EstagiariosPage extends SearchPage {
     private static final String SELETOR_BOTAO_CADASTRO_ESTAGIARIO = "[data-testid=\"AddOutlinedIcon\"]";
     private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-rowindex='0'] [data-field='nome'] div";
-    private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_EDITAR_ESTAGIARIO = "div > div.MuiBox-root.css-69i1ev > div.MuiBox-root.css-k9kc57 > button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-7j2ur2";
     private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "[data-id=\"%s\"]";
-    private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex='1']";
     // region Página desativar estagiário
     private static final String SELETOR_BOTAO_DESATIVAR_ESTAGIARIO = "div > form > div > button";
     private static final String SELETOR_BOTAO_CAMPO_MOTIVO_DESATIVACAO = "[id=\"observacao\"]";
@@ -61,7 +53,6 @@ public class EstagiariosPage extends SearchPage {
         return Tabela.consultarIds(10);
     }
     public String consultarNomeEstagiarioPorId(String idEstagiario) {
-        // return consultarTexto(String.format(SELETOR_CONSULTAR_LINHA_ESTAGIARIO.formatted(idEstagiario)) + " " + SELETOR_CONSULTAR_NOME_ESTAGIARIO);
         return Tabela.consultarNomePorId(idEstagiario);
     }
     public String consultarNomeEstagiarioInformacoes() {

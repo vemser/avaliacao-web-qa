@@ -45,7 +45,7 @@ public class MenuPage extends Elementos {
         esperarConteudoNaoVazio(SELETOR_NOME_USUARIO);
         return consultarTexto(SELETOR_NOME_USUARIO).toLowerCase();
     }
-    public String consultarTituloAtual() {
+    public static String consultarTituloAtual() {
         esperarConteudoNaoVazio(SELETOR_TITULO_ATUAL);
         return consultarTexto(SELETOR_TITULO_ATUAL).toLowerCase();
     }

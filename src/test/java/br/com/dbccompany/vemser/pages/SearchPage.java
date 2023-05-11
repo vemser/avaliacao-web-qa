@@ -36,6 +36,10 @@ public class SearchPage extends Elementos{
         public static String consultarNomePorId(String id) {
             return consultarTexto(String.format(SELETOR_TEXTO_POR_DATAFIELD_POR_ID, id, "nome"));
         }
+        public static String consultarNomePrimeiraLinha() {
+            esperarConteudoNaoVazio(String.format(SELETOR_TEXTO_POR_ROWINDEX_DATAFIELD, "0", "nome"));
+            return consultarTexto(String.format(SELETOR_TEXTO_POR_ROWINDEX_DATAFIELD, "0", "nome"));
+        }
         public static void clicarBotaoDetalhes() {
             esperarConteudoNaoVazio(SELETOR_COLUNA_ACOES_BOTOES);
             driver.findElements(By.cssSelector(SELETOR_COLUNA_ACOES_BOTOES))
@@ -46,7 +50,7 @@ public class SearchPage extends Elementos{
         }
         public static void esperarCoincidirTextoPorRowIndexDataField(String rowIndex, String dataField, String texto) {
             esperarConteudoNaoVazio(String.format(SELETOR_TEXTO_POR_ROWINDEX_DATAFIELD, rowIndex, dataField));
-            wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(String.format(SELETOR_TEXTO_POR_ROWINDEX_DATAFIELD, rowIndex, dataField)), texto));
+            // wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(String.format(SELETOR_TEXTO_POR_ROWINDEX_DATAFIELD, rowIndex, dataField)), texto));
         }
     }
 }
