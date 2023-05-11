@@ -46,27 +46,31 @@ public class AvaliacaoStepTest extends Navegador {
         TecnicoFeedbackPage.Busca.esperarBuscaPorNome(nomeEstagiario);
         TecnicoFeedbackPage.Tabela.clicarBotaoDetalhes();
         TecnicoFeedbackPage.clicarBotaoAvaliar();
+        Assertions.assertEquals("criando feedback", MenuPage.consultarTituloAtual());
         CriarFeedBackPage.clicarTipoFeedback();
         CriarFeedBackPage.selecionarTipoFeedback(0);
         CriarFeedBackPage.preencherCampoDescricao("Aluno atendeu às expectativas.");
         CriarFeedBackPage.preencherCampoNota(DataFactory.gerarNotaPositiva());
         CriarFeedBackPage.clicarBotaoCadastrar();
         TecnicoFeedbackPage.Modal.esperarModalAbrir();
+        Assertions.assertEquals("Feedback cadastrado com sucesso!", TecnicoFeedbackPage.Modal.consultarMensagemModal());
         TecnicoFeedbackPage.Modal.fecharModal();
         String url = TecnicoFeedbackPage.consultarUrl();
         idAvaliacao = url.substring(url.lastIndexOf('/') + 1);
         MenuPage.clicarBotaoComportamental();
         MenuPage.clicarBotaoAcompanhamentos();
+        Assertions.assertEquals("acompanhamentos", MenuPage.consultarTituloAtual());
         AcompanhamentosPage.Busca.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
         AcompanhamentosPage.Busca.esperarBuscaPorNome(nomeEstagiario);
         AcompanhamentosPage.Tabela.clicarBotaoDetalhes();
         AcompanhamentosPage.clicarBotaoAgendarHorario();
         AcompanhamentosPage.clicarBotaoSelecionarDia();
-        AcompanhamentosPage.selecionarOpcaoDia(2);
+        AcompanhamentosPage.selecionarOpcaoDia(0);
         AcompanhamentosPage.clicarBotaoSelecionarHorario();
-        AcompanhamentosPage.selecionarOpcaoHorario(1);
+        AcompanhamentosPage.selecionarOpcaoHorario(0);
         AcompanhamentosPage.clicarBotaoAgendar();
         AcompanhamentosPage.Modal.esperarModalAbrir();
+        Assertions.assertEquals("Agendamento realizado com sucesso!", AcompanhamentosPage.Modal.consultarMensagemModal());
         AcompanhamentosPage.Modal.fecharModal();
         AcompanhamentosPage.Busca.filtrarEstagiarioPorNome(nomeEstagiario + Keys.ENTER);
         AcompanhamentosPage.Busca.esperarBuscaPorNome(nomeEstagiario);
@@ -88,5 +92,8 @@ public class AvaliacaoStepTest extends Navegador {
         AcompanhamentosPage.Tabela.clicarBotaoDetalhes();
         AcompanhamentosPage.clicarBotaoCancelarAgendamento();
         AcompanhamentosPage.clicarBotaoConfirmarCancelarAgendamento();
+        AcompanhamentosPage.Modal.esperarModalAbrir();
+        Assertions.assertEquals("Agendamento Deletado com sucesso!", AcompanhamentosPage.Modal.consultarMensagemModal());
+        AcompanhamentosPage.Modal.fecharModal();
     }
 }
