@@ -1,6 +1,6 @@
 package br.com.dbccompany.vemser.pages;
 
-import dataFactory.EstagiarioDataFactory;
+import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 

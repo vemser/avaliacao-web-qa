@@ -2,10 +2,10 @@ package br.com.dbccompany.vemser.steps;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
-import dataFactory.EstagiarioDataFactory;
+import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
-import model.EstagiarioModel;
+import br.com.dbcompany.vemser.model.EstagiarioModel;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
