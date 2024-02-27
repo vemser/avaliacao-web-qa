@@ -1,4 +1,4 @@
-package br.com.dbccompany.vemser.steps;
+package br.com.dbccompany.vemser.tests;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class MenuStepTest extends Navegador {
+public class MenuTest extends Navegador {
     private static LoginPage loginPage = new LoginPage();
     private static AcessoPage acessoPage = new AcessoPage();
     private static MenuPage menuPage = new MenuPage();
@@ -28,7 +28,7 @@ public class MenuStepTest extends Navegador {
         Assertions.assertEquals("dashboard", menuPage.consultarTituloAtual());
         Assertions.assertEquals(DashboardPage.URL_PAGINA, menuPage.consultarUrl());
         menuPage.clicarBotaoEstagiarios();
-        Assertions.assertEquals("estagiários", menuPage.consultarTituloAtual());
+        Assertions.assertEquals("colaboradores", menuPage.consultarTituloAtual());
         Assertions.assertEquals(EstagiariosPage.URL_PAGINA, menuPage.consultarUrl());
         menuPage.clicarBotaoComportamental();
         menuPage.clicarBotaoAcompanhamentos();

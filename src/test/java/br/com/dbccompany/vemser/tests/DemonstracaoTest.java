@@ -1,13 +1,13 @@
-package br.com.dbccompany.vemser.steps;
+package br.com.dbccompany.vemser.tests;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class DemonstracaoStepTest extends Navegador {
+public class DemonstracaoTest extends Navegador {
+
     private static LoginPage loginPage = new LoginPage();
     private static AcessoPage acessoPage = new AcessoPage();
     private static MenuPage menuPage = new MenuPage();
@@ -15,6 +15,7 @@ public class DemonstracaoStepTest extends Navegador {
     public static EstagiariosPage estagiariosPage = new EstagiariosPage();
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
     private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
+
     @Test
     @Disabled
     @DisplayName("Demonstração CRUD Estagiários")

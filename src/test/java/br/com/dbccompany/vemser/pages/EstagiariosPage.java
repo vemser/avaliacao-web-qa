@@ -15,7 +15,7 @@ public class EstagiariosPage extends Elementos {
     private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_EDITAR_ESTAGIARIO = "div > div.MuiBox-root.css-69i1ev > div.MuiBox-root.css-k9kc57 > button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-7j2ur2";
     private static final String SELETOR_CAMPO_FILTRO_NOME_ESTAGIARIO = "#nome";
-    private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "[data-id=\"%s\"]";
+    private static final String SELETOR_CONSULTAR_LINHA_ESTAGIARIO = "div[class='MuiDataGrid-virtualScrollerRenderZone css-1inm7gi'] div:nth-child(1) div:nth-child(7) div:nth-child(1) button:nth-child(1)";
     private static final String SELETOR_CONSULTAR_NOME_ESTAGIARIO = "[data-colindex='1']";
     private static final String SELETOR_MODAL = "div.Toastify__toast-body > div:nth-child(2)";
     // region Página desativar estagiário
@@ -41,7 +41,8 @@ public class EstagiariosPage extends Elementos {
         clicar(SELETOR_BOTAO_ABA_ACOMPANHAMENTOS_DO_ESTAGIARIO);
     }
     // endregion
-    public static final String URL_PAGINA = URL_BASE + "/avaliacao-front/estagiarios";
+    public static final String URL_PAGINA = URL_BASE + "/avaliacao-front/colaboradores";
+    public static final String URL_PAGINA_CADASTRO = URL_BASE + "/avaliacao-front/colaboradores/cadastro";
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
     }
@@ -80,8 +81,8 @@ public class EstagiariosPage extends Elementos {
         return consultarTexto(SELETOR_MODAL);
     }
     public boolean estaNaPaginaEstagiarios() {
-        esperarUrl(URL_PAGINA);
-        return driver.getCurrentUrl().equals(URL_PAGINA);
+        esperarUrl(URL_PAGINA_CADASTRO);
+        return driver.getCurrentUrl().equals(URL_PAGINA_CADASTRO);
     }
     public boolean existeMensagemModal() {
         esperarConteudoNaoVazio(SELETOR_MODAL);

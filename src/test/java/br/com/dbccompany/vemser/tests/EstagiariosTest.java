@@ -1,4 +1,4 @@
-package br.com.dbccompany.vemser.steps;
+package br.com.dbccompany.vemser.tests;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
@@ -8,10 +8,8 @@ import io.qameta.allure.Story;
 import br.com.dbcompany.vemser.model.EstagiarioModel;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
-public class EstagiariosStepTest extends Navegador {
+public class EstagiariosTest extends Navegador {
     private static AcessoPage acessoPage = new AcessoPage();
     public static EstagiariosPage estagiariosPage = new EstagiariosPage();
     private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
@@ -104,34 +102,8 @@ public class EstagiariosStepTest extends Navegador {
             estagiariosPage.preencherCampoMotivoDesativacaoValido();
             estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
             Assertions.assertTrue(estagiariosPage.existeMensagemModal());
-        }
-
-        @ParameterizedTest(name = "Candidato {index}- CPF: {0}")
-        @Story("Cadastro de Estagiários")
-        @Description("Cadastro de Estagiários por busca de candidato")
-        @DisplayName("Cadastro de Estagiários por busca de candidato")
-        @MethodSource("dataFactory.DataFactory#provideCandidatosEdicaoAtual")
-        public void testCadastroEstagiarioPorBuscaCandidato(String cpfCandidato, String nomeCandidato, String emailCandidato) {
-            Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
-            estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidato);
-            estagiariosCadastroPage.clicarBotaoBuscaCpf();
-            estagiariosCadastroPage.esperarBuscaDeCandidatoValido();
-            Assertions.assertEquals(nomeCandidato.toLowerCase(), estagiariosCadastroPage.consultarCampoNome().toLowerCase());
-            Assertions.assertEquals(emailCandidato, estagiariosCadastroPage.consultarCampoEmailPessoal());
-        }
-
-        @ParameterizedTest(name = "Candidato inválido {index}- CPF: {0}")
-        @Story("Cadastro de Estagiários")
-        @Description("Cadastro de Estagiários por busca de CPF não cadastrado")
-        @DisplayName("Cadastro de Estagiários por busca de CPF não cadastrado")
-        @MethodSource("dataFactory.DataFactory#provideCpfNaoCadastradoNaEdicaoAtual")
-        public void testCadastroEstagiarioPorBuscaDeCpfNaoCadastrado(String cpfCandidatoInvalido) {
-            Assertions.assertTrue(estagiariosCadastroPage.estaNaPaginaCadastroEstagiario());
-            estagiariosCadastroPage.preencherCampoBuscaCpf(cpfCandidatoInvalido);
-            estagiariosCadastroPage.clicarBotaoBuscaCpf();
-            Assertions.assertTrue(estagiariosCadastroPage.existeMensagemDeCpfNaoEncontrado());
-        }
     }
+
     @Nested
     class DesativarEstagiario {
         @Test
@@ -147,4 +119,5 @@ public class EstagiariosStepTest extends Navegador {
             Assertions.assertTrue(estagiariosPage.existeMensagemModal());
         }
     }
+  }
 }

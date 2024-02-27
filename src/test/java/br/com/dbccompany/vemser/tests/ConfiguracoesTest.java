@@ -1,4 +1,4 @@
-package br.com.dbccompany.vemser.steps;
+package br.com.dbccompany.vemser.tests;
 
 import br.com.dbccompany.vemser.pages.AcessoPage;
 import br.com.dbccompany.vemser.pages.ConfiguracoesPage;
@@ -9,7 +9,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-public class ConfiguracoesStepTest extends Navegador {
+public class ConfiguracoesTest extends Navegador {
     static LoginPage loginPage = new LoginPage();
     static AcessoPage acessoPage = new AcessoPage();
     static ConfiguracoesPage configuracoesPage = new ConfiguracoesPage();
@@ -21,7 +21,6 @@ public class ConfiguracoesStepTest extends Navegador {
         configuracoesPage.acessarPagina();
     }
     @Test
-    @Disabled
     @Story("Configurações de Programas")
     @Description("Criar um novo programa")
     @DisplayName("Criar um novo programa")

@@ -23,7 +23,7 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     private static final String SELETOR_CAMPO_OBSERVACOES = "[id=\"observacoes\"]";
     private static final String SELETOR_BOTAO_SELECIONAR_PROGRAMA = "[id=\"programa\"]";
     private static final String SELETOR_BOTAO_SELECIONAR_TRILHA = "[id=\"idTrilha\"]";
-    private static final String SELETOR_BOTAO_SELECIONAR_STATUS = "[id=\"status\"]";
+    private static final String SELETOR_BOTAO_SELECIONAR_STATUS = "#status";
     private static final String SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES = "[id^=\"menu-\"] > div > ul > li";
     private static final String SELETOR_BOTAO_CADASTRAR = "form:nth-child(3) > div > button";
     private static final String SELETOR_MENSAGEM_CPF_NAO_ENCONTRADO = "div.Toastify__toast-body > div:nth-child(2)";
