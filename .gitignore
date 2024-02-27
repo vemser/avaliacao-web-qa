@@ -6,7 +6,6 @@ target/
 .allure
 
 allure-results
-src/properties
 
 ### STS ###
 .apt_generated
