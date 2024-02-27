@@ -5,9 +5,10 @@ import br.com.dbccompany.vemser.utils.Elementos;
 public class MenuPage extends Elementos {
     private static final String SELETOR_NOME_USUARIO = "div.MuiDrawer-docked > div > aside > div.MuiBox-root > p > span > strong";
     private static final String SELETOR_BOTAO_ACOMPANHAMENTOS = "[data-testid=\"acompanhamentos-menu-btn\"]";
-    private static final String SELETOR_BOTAO_COMPORTAMENTAL = "[data-testid=\"AssignmentIndIcon\"]";
+    private static final String SELETOR_BOTAO_COMPORTAMENTAL = "body > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(3) > nav:nth-child(1) > div:nth-child(3) > div:nth-child(2) > span:nth-child(1)";
+    private static final String SELETOC_BOTAO_ACOMPANHAMENTO_GP = "div[class='MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-wqyty6'] span[class='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-ikw04q']";
     private static final String SELETOR_BOTAO_CONFIGURACOES = "[data-testid=\"configuracoes-menu-btn\"]";
-    private static final String SELETOR_BOTAO_DASHBOARD = "[data-testid=\"dashboard-menu-btn\"]";
+    private static final String SELETOR_BOTAO_DASHBOARD = "div[class='MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-1l8j5k8'] div:nth-child(1) div:nth-child(2) span:nth-child(1)";
     private static final String SELETOR_BOTAO_ESTAGIARIOS = "[data-testid=\"estagiarios-menu-btn\"]";
     private static final String SELETOR_BOTAO_MENU = "[data-testid=\"MenuIcon\"]";
     private static final String SELETOR_BOTAO_TECNICO = "[data-testid=\"tecnico-menu-btn\"]";
@@ -19,6 +20,7 @@ public class MenuPage extends Elementos {
     }
     public static void clicarBotaoComportamental() {
         clicar(SELETOR_BOTAO_COMPORTAMENTAL);
+        clicar(SELETOC_BOTAO_ACOMPANHAMENTO_GP);
     }
     public void clicarBotaoConfiguracoes() {
         clicar(SELETOR_BOTAO_CONFIGURACOES);

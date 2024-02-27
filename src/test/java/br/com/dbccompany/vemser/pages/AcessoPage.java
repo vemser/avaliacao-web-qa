@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 
 public class AcessoPage extends Elementos {
     public static final String SELETOR_BOTAO_SAIR = "[data-testid=\"LogoutIcon\"]";
-    public static final String SELETOR_ICONE_USUARIO = "[data-testid=\"imagem-usuario\"]";
+    public static final String SELETOR_ICONE_USUARIO = ".MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-154ogbs";
     public static final String SELETOR_NOME_USUARIO = "div.nome-usuario > h3";
-    public static final String SELETOR_USUARIO = "div.nome-usuario > span";
+    public static final String SELETOR_USUARIO = "div[class='nome-usuario MuiBox-root css-12wr06q'] span";
     public static final String URL_PAGINA = URL_BASE + "/vemser-front/acesso";
     public void acessarPagina() {
         acessarUrl(URL_PAGINA);
