@@ -1,5 +1,6 @@
 package br.com.dbccompany.vemser.pages;
 
+import br.com.dbccompany.vemser.pages.SearchPage.Tabela;
 import br.com.dbccompany.vemser.utils.Elementos;
 import br.com.dbccompany.vemser.utils.Tabelas;
 

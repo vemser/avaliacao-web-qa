@@ -1,42 +1,40 @@
-package br.com.dbccompany.vemser.steps;
+package br.com.dbccompany.vemser.tests;
 
+import br.com.dbccompany.vemser.pages.AcessoPage;
+import br.com.dbccompany.vemser.pages.AcompanhamentosPage;
+import br.com.dbccompany.vemser.pages.ColaboradoresPage;
+import br.com.dbccompany.vemser.pages.CriarFeedBackPage;
+import br.com.dbccompany.vemser.pages.LoginPage;
+import br.com.dbccompany.vemser.pages.MenuPage;
+import br.com.dbccompany.vemser.pages.TecnicoFeedbackPage;
+import br.com.dbccompany.vemser.utils.Navegador;
+import br.com.dbcompany.vemser.dataFactory.DataFactory;
+import br.com.dbcompany.vemser.service.ColaboradorService;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
-import br.com.dbccompany.vemser.pages.AcessoPage;
-import br.com.dbccompany.vemser.pages.AcompanhamentosPage;
-import br.com.dbccompany.vemser.pages.CriarFeedBackPage;
-import br.com.dbccompany.vemser.pages.EstagiariosCadastroPage;
-import br.com.dbccompany.vemser.pages.EstagiariosInformacoesPage;
-import br.com.dbccompany.vemser.pages.EstagiariosPage;
-import br.com.dbccompany.vemser.pages.LoginPage;
-import br.com.dbccompany.vemser.pages.MenuPage;
-import br.com.dbccompany.vemser.pages.TecnicoFeedbackPage;
-import br.com.dbccompany.vemser.utils.Navegador;
-import dataFactory.DataFactory;
-import dataFactory.EstagiarioDataFactory;
-import model.EstagiarioModel;
-import service.EstagiarioService;
-
-public class AvaliacaoStepTest extends Navegador {
+public class AvaliacaoTest extends Navegador {
     private static LoginPage loginPage = new LoginPage();
-    public static EstagiariosPage estagiariosPage = new EstagiariosPage();
+    public static ColaboradoresPage estagiariosPage = new ColaboradoresPage();
     private static String nomeEstagiario;
     private static String idAvaliacao;
+
     @BeforeAll
     public static void loginEBuscarMassa() {
         loginPage.realizarLoginComSucesso();
         AcessoPage.estaNaPaginaAcesso();
         estagiariosPage.acessarPagina();
-        nomeEstagiario = EstagiarioService.buscarNomeEstagiarioTesteFluxoAvaliacao();
+        nomeEstagiario = ColaboradorService.buscarNomeEstagiarioTesteFluxoAvaliacao();
     }
+
     @AfterAll
     public static void limparMassa() {
-        EstagiarioService.deletarFeedBacksByIdAvaliacao(Integer.parseInt(idAvaliacao));
+        ColaboradorService.deletarFeedBacksByIdAvaliacao(Integer.parseInt(idAvaliacao));
     }
+
     @Test
     public void testFluxoDeAvaliacaoComSucesso() {
         MenuPage.clicarBotaoTecnico();

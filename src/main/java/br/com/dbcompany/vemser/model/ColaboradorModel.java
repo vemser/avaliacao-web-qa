@@ -1,6 +1,6 @@
 package br.com.dbcompany.vemser.model;
 
-public class EstagiarioModel {
+public class ColaboradorModel {
     /*
     Atributos
 
@@ -47,10 +47,10 @@ public class EstagiarioModel {
     private String programa;
     private Integer idPrograma;
 
-    public EstagiarioModel() {
+    public ColaboradorModel() {
     }
 
-    public EstagiarioModel(Integer idTrilha, String trilha, String nome, String cpf, String emailPessoal, String emailCorporativo, String telefone, String dataNascimento, String estado, String cidade, String curso, String instituicaoEnsino, String linkedin, String github, String observacoes, String status) {
+    public ColaboradorModel(Integer idTrilha, String trilha, String nome, String cpf, String emailPessoal, String emailCorporativo, String telefone, String dataNascimento, String estado, String cidade, String curso, String instituicaoEnsino, String linkedin, String github, String observacoes, String status) {
         this.idTrilha = idTrilha;
         this.nome = nome;
         this.cpf = cpf;
@@ -68,7 +68,7 @@ public class EstagiarioModel {
         this.status = status;
     }
 
-    public EstagiarioModel(Integer idTrilha, String trilha, String nome, String cpf, String emailPessoal, String emailCorporativo, String telefone, String dataNascimento, String estado, String cidade, String curso, String instituicaoEnsino, String linkedin, String github, String observacoes, String status, Integer idEstagiario, Integer pontuacao, Boolean ativo) {
+    public ColaboradorModel(Integer idTrilha, String trilha, String nome, String cpf, String emailPessoal, String emailCorporativo, String telefone, String dataNascimento, String estado, String cidade, String curso, String instituicaoEnsino, String linkedin, String github, String observacoes, String status, Integer idEstagiario, Integer pontuacao, Boolean ativo) {
         this.idTrilha = idTrilha;
         this.trilha = trilha;
         this.nome = nome;
@@ -260,7 +260,7 @@ public class EstagiarioModel {
 
     @Override
     public String toString() {
-        return "EstagiarioModel{" +
+        return "ColaboradorModel{" +
                 "idTrilha=" + idTrilha +
                 ", trilha='" + trilha + '\'' +
                 ", nome='" + nome + '\'' +

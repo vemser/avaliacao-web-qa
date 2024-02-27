@@ -84,7 +84,7 @@ public class DemonstracaoTest extends Navegador {
         loginPage.esperarTempo(delay);
         colaboradoresCadastroPage.clicarSelecionarPrograma();
         loginPage.esperarTempo(delay);
-        colaboradoresCadastroPage.selecionarOpcaoPrograma(0);
+        colaboradoresCadastroPage.selecionarOpcaoPrograma();
         loginPage.esperarTempo(delay);
         colaboradoresCadastroPage.clicarSelecionarTrilha();
         loginPage.esperarTempo(delay);

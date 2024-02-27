@@ -1,7 +1,6 @@
-package service;
+package br.com.dbcompany.vemser.service;
 
-import io.restassured.response.Response;
-import model.EstagiarioModel;
+import br.com.dbcompany.vemser.model.ColaboradorModel;
 import model.FeedBackModel;
 
 import static io.restassured.RestAssured.given;
@@ -10,7 +9,7 @@ import org.apache.http.HttpStatus;
 
 import io.restassured.http.ContentType;
 
-public class EstagiarioService {
+public class ColaboradorService {
     private static final String URL_AVALIACAO_API = "http://vemser-dbc.dbccompany.com.br:39000/vemser/avaliacao-back";
     public static void deletarEstagiariosTeste() {
         given()
@@ -24,7 +23,7 @@ public class EstagiarioService {
         .then()
             .statusCode(HttpStatus.SC_OK)
             .extract()
-            .jsonPath().getList("elementos", EstagiarioModel.class)
+            .jsonPath().getList("elementos", ColaboradorModel.class)
             .forEach(estagiario -> {
                 deletarEstagiarioPorIdEstagiario(estagiario.getIdEstagiario());
             });

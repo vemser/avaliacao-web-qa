@@ -109,8 +109,8 @@ public class ColaboradoresCadastroPage extends ColaboradoresPage {
     public void selecionarOpcaoTrilha(Integer index) {
         clicarNoElementoIndex(SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES, index);
     }
-    public void selecionarOpcaoPrograma(Integer index) {
-        clicarNoElementoIndex(SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES, index);
+    public void selecionarOpcaoPrograma() {
+        clicar(SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES);
     }
     public String consultarCampoEmailPessoal() {
         return consultarValor(SELETOR_CAMPO_EMAIL_PESSOAL);

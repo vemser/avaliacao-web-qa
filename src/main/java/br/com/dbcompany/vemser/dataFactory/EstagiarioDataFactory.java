@@ -1,10 +1,9 @@
 package br.com.dbcompany.vemser.dataFactory;
 
-//import br.com.dbcompany.vemser.model.EstagiarioModel;
+//import br.com.dbcompany.vemser.model.ColaboradorModel;
 //import br.com.dbcompany.vemser.model.TrilhaModel;
+import br.com.dbcompany.vemser.model.ColaboradorModel;
 import org.junit.jupiter.params.provider.Arguments;
-
-import br.com.dbcompany.vemser.model.EstagiarioModel;
 
 import java.util.Random;
 import java.util.stream.Stream;
@@ -18,8 +17,8 @@ public class EstagiarioDataFactory extends DataFactory {
         return faker.cpf().valid().replace(".", "").replace("-", "");
     }
 
-    public static EstagiarioModel gerarEstagiarioValido(Integer idTrilha) {
-        EstagiarioModel estagiario = new EstagiarioModel();
+    public static ColaboradorModel gerarEstagiarioValido(Integer idTrilha) {
+        ColaboradorModel estagiario = new ColaboradorModel();
         estagiario.setIdTrilha(idTrilha);
         estagiario.setNome(gerarNomeValido());
         estagiario.setCpf(gerarCpfValido());
