@@ -2,14 +2,12 @@ package br.com.dbccompany.vemser.pages;
 
 import br.com.dbccompany.vemser.utils.Elementos;
 import br.com.dbccompany.vemser.utils.Tabelas;
-import org.junit.jupiter.params.provider.Arguments;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-public class EstagiariosPage extends Elementos {
+public class ColaboradoresPage extends Elementos {
     private static final String SELETOR_BOTAO_CADASTRO_ESTAGIARIO = "[data-testid=\"AddOutlinedIcon\"]";
     private static final String SELETOR_CONSULTAR_INFORMACOES_NOME_ESTAGIARIO = "[data-rowindex='0'] [data-field='nome'] div";
     private static final String SELETOR_BOTOES_DETELHES_DOS_ESTAGIARIOS = "[data-testid=\"ArticleOutlinedIcon\"]";

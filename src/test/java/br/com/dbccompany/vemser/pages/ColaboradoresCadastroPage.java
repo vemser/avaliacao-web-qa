@@ -4,7 +4,7 @@ import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class EstagiariosCadastroPage extends EstagiariosPage{
+public class ColaboradoresCadastroPage extends ColaboradoresPage {
     // region SELETORES BOTOES E CAMPOS
     private static final String SELETOR_BOTAO_BUSCA_CPF = "form > div > button";
     private static final String SELETOR_CAMPO_BUSCA_CPF = "[id=\"cpfBusca\"]";
@@ -28,7 +28,7 @@ public class EstagiariosCadastroPage extends EstagiariosPage{
     private static final String SELETOR_BOTAO_CADASTRAR = "form:nth-child(3) > div > button";
     private static final String SELETOR_MENSAGEM_CPF_NAO_ENCONTRADO = "div.Toastify__toast-body > div:nth-child(2)";
     // endregion
-    public static final String URL_PAGINA = EstagiariosPage.URL_PAGINA + "/cadastro";
+    public static final String URL_PAGINA = ColaboradoresPage.URL_PAGINA + "/cadastro";
     private static final String SELETOR_BOTAO_EDITAR = "div > form > div > button";
 
     public void acessarPagina() {

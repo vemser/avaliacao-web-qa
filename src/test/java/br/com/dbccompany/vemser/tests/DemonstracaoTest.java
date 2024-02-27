@@ -12,9 +12,9 @@ public class DemonstracaoTest extends Navegador {
     private static AcessoPage acessoPage = new AcessoPage();
     private static MenuPage menuPage = new MenuPage();
     private static ConfiguracoesPage configuracoesPage = new ConfiguracoesPage();
-    public static EstagiariosPage estagiariosPage = new EstagiariosPage();
-    private static EstagiariosCadastroPage estagiariosCadastroPage = new EstagiariosCadastroPage();
-    private static EstagiariosInformacoesPage estagiariosInformacoesPage = new EstagiariosInformacoesPage();
+    public static ColaboradoresPage colaboradoresPage = new ColaboradoresPage();
+    private static ColaboradoresCadastroPage colaboradoresCadastroPage = new ColaboradoresCadastroPage();
+    private static ColaboradoresInformacoesPage colaboradoresInformacoesPage = new ColaboradoresInformacoesPage();
 
     @Test
     @Disabled
@@ -50,72 +50,72 @@ public class DemonstracaoTest extends Navegador {
         // region Cadastrar Estagiário
         menuPage.clicarBotaoEstagiarios();
         loginPage.esperarTempo(delay);
-        estagiariosPage.clicarBotaoCadastroEstagiario();
+        colaboradoresPage.clicarBotaoCadastroEstagiario();
         loginPage.esperarTempo(delay);
 //        estagiariosCadastroPage.preencherCampoBuscaCpf("68426083765");
 //        loginPage.esperarTempo(delay);
 //        estagiariosCadastroPage.clicarBotaoBuscaCpf();
 //        loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoNome("Estagiário Original");
+        colaboradoresCadastroPage.preencherCampoNome("Estagiário Original");
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoCpfValido();
+        colaboradoresCadastroPage.preencherCampoCpfValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoEmailPessoalValido();
+        colaboradoresCadastroPage.preencherCampoEmailPessoalValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoEmailCorporativoValido();
+        colaboradoresCadastroPage.preencherCampoEmailCorporativoValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoTelefoneValido();
+        colaboradoresCadastroPage.preencherCampoTelefoneValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoDataNascimentoValido();
+        colaboradoresCadastroPage.preencherCampoDataNascimentoValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoEstado("PA");
+        colaboradoresCadastroPage.preencherCampoEstado("PA");
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoCidade("Belém");
+        colaboradoresCadastroPage.preencherCampoCidade("Belém");
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoInstituicaoEnsinoValido();
+        colaboradoresCadastroPage.preencherCampoInstituicaoEnsinoValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoCursoValido();
+        colaboradoresCadastroPage.preencherCampoCursoValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoGithubValido();
+        colaboradoresCadastroPage.preencherCampoGithubValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoLinkedinValido();
+        colaboradoresCadastroPage.preencherCampoLinkedinValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoObservacoesValido();
+        colaboradoresCadastroPage.preencherCampoObservacoesValido();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.clicarSelecionarPrograma();
+        colaboradoresCadastroPage.clicarSelecionarPrograma();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.selecionarOpcaoPrograma(0);
+        colaboradoresCadastroPage.selecionarOpcaoPrograma(0);
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.clicarSelecionarTrilha();
+        colaboradoresCadastroPage.clicarSelecionarTrilha();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.selecionarOpcaoTrilha(0);
+        colaboradoresCadastroPage.selecionarOpcaoTrilha(0);
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.clicarSelecionarStatus();
+        colaboradoresCadastroPage.clicarSelecionarStatus();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.selecionarOpcaoStatus(0);
+        colaboradoresCadastroPage.selecionarOpcaoStatus(0);
         loginPage.esperarTempo(delay);
 //         estagiariosCadastroPage.clicarBotaoCadastrar();
-        estagiariosPage.acessarPagina();
+        colaboradoresPage.acessarPagina();
         loginPage.esperarTempo(delay);
         loginPage.esperarTempo(3000);
         menuPage.clicarBotaoEstagiarios();
         // endregion
         // region Editar Estagiário
-        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
-        estagiariosPage.clicarBotaoEditarEstagiario();
+        colaboradoresPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+        colaboradoresPage.clicarBotaoEditarEstagiario();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.limparCampoNome();
+        colaboradoresCadastroPage.limparCampoNome();
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.preencherCampoNome(" Editado");
+        colaboradoresCadastroPage.preencherCampoNome(" Editado");
         loginPage.esperarTempo(delay);
-        estagiariosCadastroPage.clicarBotaoEditar();
+        colaboradoresCadastroPage.clicarBotaoEditar();
         loginPage.esperarTempo(delay);
         // endregion
         // region Consultar Estagiário
         menuPage.clicarBotaoEstagiarios();
-        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+        colaboradoresPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
         loginPage.esperarTempo(delay);
-        estagiariosPage.clicarAbaInformacoesDoPrograma();
+        colaboradoresPage.clicarAbaInformacoesDoPrograma();
         loginPage.esperarTempo(delay);
 //        estagiariosPage.clicarAbaAcompanhamentosDoEstagiario();
 //        loginPage.esperarTempo(delay);
@@ -123,14 +123,14 @@ public class DemonstracaoTest extends Navegador {
         // region Desativar Estagiário
         menuPage.clicarBotaoEstagiarios();
 //        estagiariosPage.esperarModalFechar();
-        estagiariosPage.esperarTempo(3000);
-        estagiariosPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
+        colaboradoresPage.esperarTempo(3000);
+        colaboradoresPage.clicarBotaoDetalhesDoEstagiarioPorIdValido();
         loginPage.esperarTempo(delay);
-        estagiariosInformacoesPage.clicarBotaoDesativarEstagiario();
+        colaboradoresInformacoesPage.clicarBotaoDesativarEstagiario();
         loginPage.esperarTempo(delay);
-        estagiariosPage.preencherCampoMotivoDesativacaoValido();
+        colaboradoresPage.preencherCampoMotivoDesativacaoValido();
         loginPage.esperarTempo(delay);
-        estagiariosPage.clicarBotaoConfirmarDesativarEstagiario();
+        colaboradoresPage.clicarBotaoConfirmarDesativarEstagiario();
 //        loginPage.esperarTempo(delay);
         loginPage.esperarTempo(3000);
         // endregion
