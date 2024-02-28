@@ -1,6 +1,6 @@
 package br.com.dbccompany.vemser.pages;
 
-import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
+import br.com.dbcompany.vemser.utils.DataFakerGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -120,44 +120,44 @@ public class ColaboradoresCadastroPage extends ColaboradoresPage {
     }
     // region Metodos com retorno valido
     public void preencherCampoNomeValido() {
-        preencherCampoNome(EstagiarioDataFactory.gerarNomeValido());
+        preencherCampoNome(DataFakerGenerator.nomeFaker());
     }
     public void preencherCampoCpfValido() {
-        preencherCampoCpf(EstagiarioDataFactory.gerarCpfValido());
+        preencherCampoCpf(DataFakerGenerator.cpfFaker());
     }
     public void preencherCampoEmailPessoalValido() {
-        preencherCampoEmailPessoal(EstagiarioDataFactory.gerarEmailPessoalValido());
+        preencherCampoEmailPessoal(DataFakerGenerator.emailFaker());
     }
     public void preencherCampoEmailCorporativoValido() {
-        preencherCampoEmailCorporativo(EstagiarioDataFactory.gerarEmailDbcValido());
+        preencherCampoEmailCorporativo(DataFakerGenerator.emailDbcFaker());
     }
     public void preencherCampoTelefoneValido() {
-        preencherCampoTelefone(EstagiarioDataFactory.gerarTelefoneValido());
+        preencherCampoTelefone(DataFakerGenerator.telefoneFaker());
     }
     public void preencherCampoDataNascimentoValido() {
 //        preencherCampoDataNascimento(EstagiarioDataFactory.gerarDataNascimentoValida());
         preencherCampoDataNascimento("01/01/1990");
     }
     public void preencherCampoEstadoValido() {
-        preencherCampoEstado(EstagiarioDataFactory.gerarEstadoValido());
+        preencherCampoEstado(DataFakerGenerator.estadoValidoFaker());
     }
     public void preencherCampoCidadeValido() {
-        preencherCampoCidade(EstagiarioDataFactory.gerarCidadeValida());
+        preencherCampoCidade(DataFakerGenerator.gerarCidadeValida());
     }
     public void preencherCampoInstituicaoEnsinoValido() {
-        preencherCampoInstituicaoEnsino(EstagiarioDataFactory.gerarInstituicaoEnsinoValida());
+        preencherCampoInstituicaoEnsino(DataFakerGenerator.gerarInstituicaoEnsinoValida());
     }
     public void preencherCampoCursoValido() {
-        preencherCampoCurso(EstagiarioDataFactory.gerarCursoValido());
+        preencherCampoCurso(DataFakerGenerator.gerarCursoValido());
     }
     public void preencherCampoGithubValido() {
-        preencherCampoGithub(EstagiarioDataFactory.gerarGithubValido());
+        preencherCampoGithub(DataFakerGenerator.gitHubFaker());
     }
     public void preencherCampoLinkedinValido() {
-        preencherCampoLinkedin(EstagiarioDataFactory.gerarLinkedinValido());
+        preencherCampoLinkedin(DataFakerGenerator.linkedinFaker());
     }
     public void preencherCampoObservacoesValido() {
-        preencherCampoObservacoes(EstagiarioDataFactory.gerarObservacoesValidas());
+        preencherCampoObservacoes(DataFakerGenerator.observacoesFaker());
     }
 
     public void limparCampoNome() {
