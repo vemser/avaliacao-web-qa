@@ -12,11 +12,11 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    bat 'mvn -e clean test -Dmaven.test.failure.ignore=true'
+                    bat 'mvn -e clean test'
                 }
             }
         }
-        stage('Publis Allure Report') {
+        stage('Publish Allure Report') {
             steps {
                 script {
                     bat 'allure generate allure-results -o allure-report'
@@ -32,7 +32,7 @@ pipeline {
             allure(
                 includeProperties: false,
                 jdk: '',
-                results: [[path: 'allure/results']]
+                results: [[path: 'allure-results']]
             )
         }
     }
