@@ -135,20 +135,20 @@ public class ColaboradoresCadastroPage extends ColaboradoresPage {
         preencherCampoTelefone(DataFakerGenerator.telefoneFaker());
     }
     public void preencherCampoDataNascimentoValido() {
-//        preencherCampoDataNascimento(EstagiarioDataFactory.gerarDataNascimentoValida());
+//        preencherCampoDataNascimento(EstagiarioData.gerarDataNascimentoValida());
         preencherCampoDataNascimento("01/01/1990");
     }
     public void preencherCampoEstadoValido() {
-        preencherCampoEstado(DataFakerGenerator.estadoValidoFaker());
+        preencherCampoEstado(DataFakerGenerator.estadoFaker());
     }
     public void preencherCampoCidadeValido() {
-        preencherCampoCidade(DataFakerGenerator.gerarCidadeValida());
+        preencherCampoCidade(DataFakerGenerator.cidadeFaker());
     }
     public void preencherCampoInstituicaoEnsinoValido() {
-        preencherCampoInstituicaoEnsino(DataFakerGenerator.gerarInstituicaoEnsinoValida());
+        preencherCampoInstituicaoEnsino(DataFakerGenerator.instituicaoDeEnsinoFaker());
     }
     public void preencherCampoCursoValido() {
-        preencherCampoCurso(DataFakerGenerator.gerarCursoValido());
+        preencherCampoCurso(DataFakerGenerator.cursoFaker());
     }
     public void preencherCampoGithubValido() {
         preencherCampoGithub(DataFakerGenerator.gitHubFaker());

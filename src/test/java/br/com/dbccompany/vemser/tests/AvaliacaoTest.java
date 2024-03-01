@@ -48,7 +48,7 @@ public class AvaliacaoTest extends Navegador {
         CriarFeedBackPage.clicarTipoFeedback();
         CriarFeedBackPage.selecionarTipoFeedback(0);
         CriarFeedBackPage.preencherCampoDescricao("Aluno atendeu às expectativas.");
-        CriarFeedBackPage.preencherCampoNota(DataFactory.gerarNotaPositiva());
+        CriarFeedBackPage.preencherCampoNota("70");
         CriarFeedBackPage.clicarBotaoCadastrar();
         TecnicoFeedbackPage.Modal.esperarModalAbrir();
         Assertions.assertEquals("Feedback cadastrado com sucesso!", TecnicoFeedbackPage.Modal.consultarMensagemModal());
@@ -77,7 +77,7 @@ public class AvaliacaoTest extends Navegador {
         CriarFeedBackPage.clicarTipoFeedback();
         CriarFeedBackPage.selecionarTipoFeedback(0);
         CriarFeedBackPage.preencherCampoDescricao("Aluno atendeu às expectativas.");
-        CriarFeedBackPage.preencherCampoNota(DataFactory.gerarNotaPositiva());
+        CriarFeedBackPage.preencherCampoNota("90");
         CriarFeedBackPage.preencherCampoObjetivo("Aluno com objetivo de se tornar um grande programador.");
         CriarFeedBackPage.preencherCampoRecomendacao("Recomendo ao aluno realizar cursos de programação no LinkedIn Learning.");
         CriarFeedBackPage.clicarTipoStatus();

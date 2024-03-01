@@ -3,15 +3,20 @@ package br.com.dbcompany.vemser.utils;
 import com.github.javafaker.Faker;
 
 import java.text.SimpleDateFormat;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 import br.com.caelum.stella.format.CPFFormatter;
 
 public class DataFakerGenerator {
+
     private static final Faker faker = new Faker(new Locale("pt-BR"));
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     public static Random random = new Random();
+
     public static String emailFaker() {
         return "teste." + faker.internet().emailAddress();
     }
@@ -36,6 +41,18 @@ public class DataFakerGenerator {
     }
     public static String telefoneFaker() {
         return faker.numerify("###########");
+    }
+    public static String dataInicialFaker(){
+        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataInicial = dataAtual.plusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return dataInicial.format(formatter);
+    }
+    public static String dataFimFaker(){
+        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataInicial = dataAtual.plusDays(20);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return dataInicial.format(formatter);
     }
     public static String dataNascimentoFaker() {
         return dateFormat.format(faker.date().birthday(18, 100));
@@ -62,16 +79,16 @@ public class DataFakerGenerator {
         cpfInvalido = cpfInvalido.replace(cpfInvalido.charAt(2), ' ');
         return cpfInvalido;
     }
-    public static String gerarCidadeValida() {
+    public static String cidadeFaker() {
         return faker.address().city();
     }
-    public static String gerarInstituicaoEnsinoValida() {
+    public static String instituicaoDeEnsinoFaker() {
         return faker.educator().university();
     }
-    public static String gerarCursoValido() {
+    public static String cursoFaker() {
         return faker.educator().course();
     }
-    public static String estadoValidoFaker() {
+    public static String estadoFaker() {
         String[] siglas = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
                 "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
         Random random = new Random();
