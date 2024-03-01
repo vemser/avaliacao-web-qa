@@ -13,8 +13,8 @@ public class AcompanhamentoData {
         acompanhamentoDTO.setTitulo("Teste " + DataFakerGenerator.observacoesFaker());
         acompanhamentoDTO.setDataInicio(DataFakerGenerator.dataInicialFaker());
         acompanhamentoDTO.setDataFim(DataFakerGenerator.dataFimFaker());
-        acompanhamentoDTO.setHoraInicio(String.valueOf(Time.valueOf("08:00:00")));
-        acompanhamentoDTO.setHoraFim(String.valueOf(Time.valueOf("12:00:00")));
+        acompanhamentoDTO.setHoraInicio("08:00");
+        acompanhamentoDTO.setHoraFim("12:00");
         acompanhamentoDTO.setSessao(30);
         acompanhamentoDTO.setResposaveis(1);
         acompanhamentoDTO.setDescricao(DataFakerGenerator.observacoesFaker());
@@ -26,8 +26,8 @@ public class AcompanhamentoData {
         acompanhamentoDTO.setTitulo(StringUtils.EMPTY);
         acompanhamentoDTO.setDataInicio(DataFakerGenerator.dataInicialFaker());
         acompanhamentoDTO.setDataFim(DataFakerGenerator.dataFimFaker());
-        acompanhamentoDTO.setHoraInicio(String.valueOf(Time.valueOf("08:00:00")));
-        acompanhamentoDTO.setHoraFim(String.valueOf(Time.valueOf("12:00:00")));
+        acompanhamentoDTO.setHoraInicio("08:00");
+        acompanhamentoDTO.setHoraFim("12:00");
         acompanhamentoDTO.setSessao(30);
         acompanhamentoDTO.setResposaveis(1);
         acompanhamentoDTO.setDescricao(DataFakerGenerator.observacoesFaker());
@@ -39,8 +39,8 @@ public class AcompanhamentoData {
         acompanhamentoDTO.setTitulo("Teste " + DataFakerGenerator.observacoesFaker());
         acompanhamentoDTO.setDataInicio(DataFakerGenerator.dataInicialFaker());
         acompanhamentoDTO.setDataFim(DataFakerGenerator.dataFimFaker());
-        acompanhamentoDTO.setHoraInicio(String.valueOf(Time.valueOf("08:00:00")));
-        acompanhamentoDTO.setHoraFim(String.valueOf(Time.valueOf("12:00:00")));
+        acompanhamentoDTO.setHoraInicio("08:00");
+        acompanhamentoDTO.setHoraFim("12:00");
         acompanhamentoDTO.setSessao(30);
         acompanhamentoDTO.setResposaveis(0);
         acompanhamentoDTO.setDescricao(DataFakerGenerator.observacoesFaker());
@@ -52,8 +52,8 @@ public class AcompanhamentoData {
         acompanhamentoDTO.setTitulo("Teste " + DataFakerGenerator.observacoesFaker());
         acompanhamentoDTO.setDataInicio(DataFakerGenerator.dataInicialFaker());
         acompanhamentoDTO.setDataFim(DataFakerGenerator.dataFimFaker());
-        acompanhamentoDTO.setHoraInicio(String.valueOf(Time.valueOf("12:00:00")));
-        acompanhamentoDTO.setHoraFim(String.valueOf(Time.valueOf("12:00:00")));
+        acompanhamentoDTO.setHoraInicio("08:00");
+        acompanhamentoDTO.setHoraFim("12:00");
         acompanhamentoDTO.setSessao(30);
         acompanhamentoDTO.setResposaveis(1);
         acompanhamentoDTO.setDescricao(DataFakerGenerator.observacoesFaker());
@@ -65,8 +65,8 @@ public class AcompanhamentoData {
         acompanhamentoDTO.setTitulo("Teste " + DataFakerGenerator.observacoesFaker());
         acompanhamentoDTO.setDataInicio("10-04-2024");
         acompanhamentoDTO.setDataFim("10-03-2024");
-        acompanhamentoDTO.setHoraInicio(String.valueOf(Time.valueOf("08:00:00")));
-        acompanhamentoDTO.setHoraFim(String.valueOf(Time.valueOf("12:00:00")));
+        acompanhamentoDTO.setHoraInicio("08:00");
+        acompanhamentoDTO.setHoraFim("12:00");
         acompanhamentoDTO.setSessao(30);
         acompanhamentoDTO.setResposaveis(1);
         acompanhamentoDTO.setDescricao(DataFakerGenerator.observacoesFaker());

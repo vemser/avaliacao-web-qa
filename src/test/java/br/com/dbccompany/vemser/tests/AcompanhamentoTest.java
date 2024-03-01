@@ -11,12 +11,13 @@ public class AcompanhamentoTest extends AcompanhamentoPage {
     @BeforeAll
     public static void fluxoDeLoginNoSite(){
         fluxoDeLogin();
+        refresh();
     }
 
     @Test
     public void criarAcompanhamentoDeProgramaComSucesso(){
         fluxoAcompanhamento();
         AcompanhamentoModel acompanhamento = AcompanhamentoData.acompanhamentoComDadosValidos();
-        preencherDeAcompanhamentoValido(acompanhamento);
+        preencherAcompanhamentoValido(acompanhamento);
     }
 }

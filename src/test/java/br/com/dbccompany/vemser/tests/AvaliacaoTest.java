@@ -25,7 +25,7 @@ public class AvaliacaoTest extends Navegador {
     @BeforeAll
     public static void loginEBuscarMassa() {
         loginPage.realizarLoginComSucesso();
-        AcessoPage.estaNaPaginaAcesso();
+        Assertions.assertTrue(loginPage.validaLoginComSucesso());
         estagiariosPage.acessarPagina();
         nomeEstagiario = ColaboradorService.buscarNomeEstagiarioTesteFluxoAvaliacao();
     }

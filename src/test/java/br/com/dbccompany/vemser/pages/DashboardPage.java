@@ -12,7 +12,7 @@ public class DashboardPage extends Elementos {
     private static final String DASH_DIV_RANKING = "#root > div.MuiBox-root.css-1ecwpr0 > div > div.MuiBox-root.css-i51og3 > div.MuiBox-root.css-0";
     private static final String DASH_DIV_ATIVOS = "#bar-chart";
 
-    // Estes métodos abaixos ACESSAR PAGINMA E ESTANAPAGINA serão retirados
+    // Estes métodos abaixos ACESSAR PAGINA E ESTANAPAGINA serão retirados
     public static final String URL_PAGINA = URL_BASE + "/avaliacao-front";
     public static void acessarPagina() {
         acessarUrl(URL_PAGINA);
@@ -26,16 +26,13 @@ public class DashboardPage extends Elementos {
         login.realizarLoginComSucesso();
     }
     public static boolean validaTrilhasNaTela() {
-        esperarUrl(DASH_DIV_TRILHAS);
-        return validarElementoNaTela(DASH_DIV_TRILHAS);
+        return estaVisivel(DASH_DIV_TRILHAS);
     }
     public static boolean validarRankingNaTela() {
-        esperarUrl(DASH_DIV_RANKING);
-        return validarElementoNaTela(DASH_DIV_RANKING);
+        return estaVisivel(DASH_DIV_RANKING);
     }
     public static boolean validarAtivosNaTela() {
-        esperarUrl(DASH_DIV_ATIVOS);
-        return validarElementoNaTela(DASH_DIV_ATIVOS);
+        return estaVisivel(DASH_DIV_ATIVOS);
     }
 
     // Este método adicionar todas as validações de elementos na tela e colocar em um Array

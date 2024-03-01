@@ -19,7 +19,7 @@ public class ColaboradoresTest extends Navegador {
     @BeforeAll
     public static void acessarPaginaAvaliacao() {
         loginPage.realizarLoginComSucesso();
-        acessoPage.estaNaPaginaAcesso();
+        Assertions.assertTrue(loginPage.validaLoginComSucesso());
     }
 
     @Nested
