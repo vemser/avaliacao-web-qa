@@ -1,6 +1,7 @@
 package br.com.dbccompany.vemser.pages;
 
 import br.com.dbccompany.vemser.utils.Elementos;
+import org.openqa.selenium.By;
 
 public class MenuPage extends Elementos {
     private static final String SELETOR_NOME_USUARIO = "div.MuiDrawer-docked > div > aside > div.MuiBox-root > p > span > strong";
@@ -15,6 +16,8 @@ public class MenuPage extends Elementos {
     private static final String SELETOR_BOTAO_TECNICO_FEEDBACK = "nav svg[data-testid=\"ThumbUpOutlinedIcon\"]";
     private static final String SELETOR_BOTAO_VOLTAR = "[data-testid=\"sair-menu-btn\"]";
     private static final String SELETOR_TITULO_ATUAL = "[data-testid*=\"header\"] h1";
+
+
     public static void clicarBotaoAcompanhamentos() {
         clicar(SELETOR_BOTAO_ACOMPANHAMENTOS);
     }
@@ -23,6 +26,7 @@ public class MenuPage extends Elementos {
         clicar(SELETOC_BOTAO_ACOMPANHAMENTO_GP);
     }
     public void clicarBotaoConfiguracoes() {
+        esperarElementoSerClicavel(By.cssSelector(SELETOR_BOTAO_CONFIGURACOES));
         clicar(SELETOR_BOTAO_CONFIGURACOES);
     }
     public void clicarBotaoDashboard() {

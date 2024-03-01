@@ -2,7 +2,7 @@ package br.com.dbccompany.vemser.tests;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
-import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
+import br.com.dbcompany.vemser.dataFactory.EstagiarioData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import br.com.dbcompany.vemser.model.ColaboradorModel;
@@ -70,7 +70,7 @@ public class ColaboradoresTest extends Navegador {
         @Description("Cadastro de Estagiários manualmente com sucesso")
         @DisplayName("Cadastro de Estagiários manualmente com sucesso")
         public void testCadastroEstagiarioManual() {
-            ColaboradorModel estagiario = EstagiarioDataFactory.gerarEstagiarioValido(1);
+            ColaboradorModel estagiario = EstagiarioData.gerarEstagiarioValido(1);
             Assertions.assertTrue(colaboradoresCadastroPage.estaNaPaginaCadastroEstagiario());
             colaboradoresCadastroPage.preencherCampoNome(estagiario.getNome());
             colaboradoresCadastroPage.preencherCampoCpf(estagiario.getCpf());

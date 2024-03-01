@@ -11,9 +11,10 @@ public class LoginPage extends Elementos {
     private static final String SELETOR_BOTAO_LOGIN = "#root > div.MuiBox-root.css-9yu00z > main > div > div.MuiBox-root.css-1v9gjd5 > form > button";
     private static final String SELETOR_BOTAO_MOSTRAR_SENHA = "#root > div.MuiBox-root.css-9yu00z > main > div > div.MuiBox-root.css-1v9gjd5 > form > div.MuiFormControl-root.css-1179acg > div > div > button > svg";
     private static final String SELETOR_MODAL_SESSAO_EXPIRADA = "div.Toastify__toast-body > div:nth-child(2)";
-    private static final String USUARIO_VALIDO = getProp().getProperty("UsuárioAdministrador");
-    private static final String SENHA_VALIDO = getProp().getProperty("SenhaAdministrador");;
-    public static final String URL_PAGINA = URL_BASE + "/vemser-front";
+    private static final String USUARIO_VALIDO = getProp().getProperty("UsuárioPessoal");
+    private static final String SENHA_VALIDO = getProp().getProperty("SenhaPessoal");;
+    public static final String URL_PAGINA = URL_BASE;
+
     // endregion
 
     public void acessarPagina() {

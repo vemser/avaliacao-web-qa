@@ -2,11 +2,17 @@ package br.com.dbccompany.vemser.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Elementos extends Navegador {
+
     public static void acessarUrl(String url){
         driver.navigate().to(url);
+    }
+    public static Boolean validarElementoNaTela(String elemento) {
+        return driver.findElement(By.cssSelector(elemento)).isDisplayed();
     }
     public static void clicar(String seletor){
         esperarElemento(By.cssSelector(seletor));
@@ -32,6 +38,9 @@ public class Elementos extends Navegador {
     }
     public static void esperarElemento(By element){
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    }
+    public static void esperarElementoSerClicavel(By element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
     public static void esperarTempo(int tempo){
         try {

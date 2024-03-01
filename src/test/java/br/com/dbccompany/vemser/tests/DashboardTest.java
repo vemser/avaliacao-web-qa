@@ -11,23 +11,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class DashboardTest extends Navegador {
-    private static AcessoPage acessoPage = new AcessoPage();
-    private static LoginPage loginPage = new LoginPage();
+public class DashboardTest extends DashboardPage {
     private static DashboardPage dashboardPage = new DashboardPage();
 
     @BeforeAll
-    public static void acessarPaginaAvaliacao() {
-        loginPage.realizarLoginComSucesso();
-        acessoPage.estaNaPaginaAcesso();
-        dashboardPage.acessarPagina();
+    public static void fluxoDeLoginNoSite() {
+        fluxoDeLogin();
     }
 
     @Test
     @DisplayName("Acessar página Dashboard")
     @Story("Acessar página Dashboard")
     @Description("Acessar página Dashboard")
-    public void testAcessarPaginaAvaliacao() {
-        Assertions.assertTrue(dashboardPage.estaNaPaginaDashboard());
+    public void validarPaginaDashboardInicialHighCredentials() {
+        Assertions.assertTrue(dashboardPage.validarElementosNaTelaDashboardHighCredentials());
     }
 }
