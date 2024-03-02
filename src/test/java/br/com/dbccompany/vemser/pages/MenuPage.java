@@ -26,7 +26,6 @@ public class MenuPage extends Elementos {
         clicar(SELETOC_BOTAO_ACOMPANHAMENTO_GP);
     }
     public void clicarBotaoConfiguracoes() {
-        esperarElementoSerClicavel(By.cssSelector(SELETOR_BOTAO_CONFIGURACOES));
         clicar(SELETOR_BOTAO_CONFIGURACOES);
     }
     public void clicarBotaoDashboard() {

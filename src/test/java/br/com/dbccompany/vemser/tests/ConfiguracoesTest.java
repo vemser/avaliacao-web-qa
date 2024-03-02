@@ -5,6 +5,7 @@ import br.com.dbccompany.vemser.pages.ConfiguracoesPage;
 import br.com.dbccompany.vemser.pages.ConfiguracoesProgramasPage;
 import br.com.dbccompany.vemser.pages.LoginPage;
 import br.com.dbccompany.vemser.utils.Navegador;
+import dev.failsafe.internal.util.Assert;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
@@ -17,8 +18,7 @@ public class ConfiguracoesTest extends Navegador {
     @BeforeAll
     public static void acessarPaginaAvaliacao() {
         loginPage.realizarLoginComSucesso();
-        acessoPage.estaNaPaginaAcesso();
-        configuracoesPage.acessarPagina();
+        Assertions.assertTrue(loginPage.validaLoginComSucesso());
     }
     @Test
     @Story("Configurações de Programas")

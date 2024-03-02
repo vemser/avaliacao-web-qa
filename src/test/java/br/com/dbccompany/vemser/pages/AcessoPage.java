@@ -8,13 +8,9 @@ public class AcessoPage extends Elementos {
     public static final String SELETOR_ICONE_USUARIO = ".MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-154ogbs";
     public static final String SELETOR_NOME_USUARIO = "div.nome-usuario > h3";
     public static final String SELETOR_USUARIO = "div[class='nome-usuario MuiBox-root css-12wr06q'] span";
-    public static final String URL_PAGINA = URL_BASE + "/acesso";
     public static final String SELETOR_AVALIACAO = "#root > div.CardList_container__EPfbg > a:nth-child(1) > div";
-    public static final String URL_SITE = "https://avaliacao-front-five.vercel.app";
+    public static final String URL_SITE = "https://avaliacao-front-five.vercel.app/login";
 
-    public void acessarPagina() {
-        acessarUrl(URL_PAGINA);
-    }
     public void acessarPaginaAvaliacao() {
         acessarUrl(URL_SITE);
     }
@@ -36,10 +32,7 @@ public class AcessoPage extends Elementos {
         esperarConteudoNaoVazio(SELETOR_USUARIO);
         return consultarTexto(SELETOR_USUARIO).toLowerCase();
     }
-    public static Boolean estaNaPaginaAcesso() {
-        esperarUrl(URL_PAGINA);
-        return driver.getCurrentUrl().equals(URL_PAGINA);
-    }
+
     public void realizarLogoutComSucesso() {
         clicarIconeUsuario();
         clicarBotaoSair();
