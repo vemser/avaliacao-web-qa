@@ -8,12 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Elementos extends Navegador {
 
+    public static void refresh(){
+        driver.navigate().refresh();
+    }
+
     public static void acessarUrl(String url){
         driver.navigate().to(url);
     }
-    public static Boolean validarElementoNaTela(String elemento) {
-        return driver.findElement(By.cssSelector(elemento)).isDisplayed();
-    }
+
     public static void clicar(String seletor){
         esperarElemento(By.cssSelector(seletor));
         driver.findElement(By.cssSelector(seletor)).click();

@@ -12,12 +12,12 @@ import java.util.concurrent.TimeUnit;
 public class Navegador {
     public static WebDriver driver;
     public static WebDriverWait wait;
-    public static final String URL_BASE = "https://vemser-front.vercel.app";
+    public static final String URL_BASE = "https://avaliacao-front-five.vercel.app";
     @BeforeAll
     public static void abrirNavegador(){
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        driver.navigate().to(URL_BASE + "/vemser-front");
+        driver.navigate().to(URL_BASE + "/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.manage().window().maximize();
     }

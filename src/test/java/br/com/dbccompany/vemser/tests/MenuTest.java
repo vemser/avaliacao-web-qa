@@ -16,7 +16,7 @@ public class MenuTest extends Navegador {
     @BeforeAll
     public static void acessarPaginaAvaliacao() {
         loginPage.realizarLoginComSucesso();
-        acessoPage.estaNaPaginaAcesso();
+        Assertions.assertTrue(loginPage.validaLoginComSucesso());
         menuPage.acessarPagina();
     }
     @Test
