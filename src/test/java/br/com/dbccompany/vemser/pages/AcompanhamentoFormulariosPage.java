@@ -3,6 +3,8 @@ package br.com.dbccompany.vemser.pages;
 
 import br.com.dbccompany.vemser.utils.Elementos;
 import br.com.dbcompany.vemser.model.AcompanhamentoModel;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 /*
     private String titulo;
@@ -15,14 +17,12 @@ import br.com.dbcompany.vemser.model.AcompanhamentoModel;
     private String descricao;
 */
 
-public class AcompanhamentoPage extends Elementos {
-    static LoginPage login = new LoginPage();
-    static AcessoPage acesso = new AcessoPage();
+public class AcompanhamentoFormulariosPage extends Elementos {
     static MenuPage menu = new MenuPage();
     private static final String BTN_ACOMPANHAMENTO = "#root > div.MuiBox-root.css-s8njx9 > div > div:nth-child(3) > div.MuiBox-root.css-0";
-    private static final String BTN_PROGRAMA_ATIVO = "#root > div.MuiBox-root.css-s8njx9 > div > div:nth-child(3) > div.MuiBox-root.css-0";
     private static final String BTN_CRIAR_ACOMPANHAMENTO = "[data-testid='programas-create-btn']";
     private static final String CAMPO_TITULO = "#titulo";
+    private static final String CAMPO_INSTRUTORES = "[data-testid=\"instructor-Instrutor Back2\"]";
     private static final String CAMPO_DATA_INICIO = "#dataInicio";
     private static final String CAMPO_DATA_FIM = "#dataFim";
     private static final String CAMPO_HORA_INICIO= "#horarioInicio";
@@ -32,6 +32,7 @@ public class AcompanhamentoPage extends Elementos {
     private static final String CAMPO_DESCRICAO= "#descricao";
     private static final String BTN_SUBMIT_ACOMPANHAMENTO = "div#root button";
 
+    // Métodos de CLICAR
     public static void clicarAcompanhamento() {
         clicar(BTN_ACOMPANHAMENTO);
     }
@@ -42,8 +43,13 @@ public class AcompanhamentoPage extends Elementos {
         clicar(BTN_SUBMIT_ACOMPANHAMENTO);
     }
 
-    public static void preencherAcompanhamentoValido(AcompanhamentoModel acompanhamento){
+    // Métodos de MENSAGEM
+    public String msgRetornoSucesso(){
+        return Elementos.Modal.consultarMensagemModal();
+    }
+    public void preencherAcompanhamentoValido(AcompanhamentoModel acompanhamento){
         preencher(CAMPO_TITULO, acompanhamento.getTitulo());
+        clicar(CAMPO_INSTRUTORES);
         preencher(CAMPO_DATA_INICIO, acompanhamento.getDataInicio());
         preencher(CAMPO_DATA_FIM, acompanhamento.getDataFim());
         preencher(CAMPO_HORA_INICIO, acompanhamento.getHoraInicio());
@@ -55,11 +61,7 @@ public class AcompanhamentoPage extends Elementos {
         esperarTempo(3000);
     }
 
-    public static void fluxoDeLogin(){
-        login.realizarLoginComSucesso();
-    }
-
-    public static void fluxoAcompanhamento(){
+    public void fluxoAcompanhamento(){
         menu.clicarBotaoConfiguracoes();
         clicarAcompanhamento();
         clicarCriarAcompanhamento();

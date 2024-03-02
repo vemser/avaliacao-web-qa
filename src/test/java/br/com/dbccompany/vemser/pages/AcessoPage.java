@@ -9,7 +9,7 @@ public class AcessoPage extends Elementos {
     public static final String SELETOR_NOME_USUARIO = "div.nome-usuario > h3";
     public static final String SELETOR_USUARIO = "div[class='nome-usuario MuiBox-root css-12wr06q'] span";
     public static final String SELETOR_AVALIACAO = "#root > div.CardList_container__EPfbg > a:nth-child(1) > div";
-    public static final String URL_SITE = "https://avaliacao-front-five.vercel.app/login";
+    public static final String URL_SITE = "https://avaliacao-front-five.vercel.app";
 
     public void acessarPaginaAvaliacao() {
         acessarUrl(URL_SITE);

@@ -41,8 +41,12 @@ public class Elementos extends Navegador {
     public static void esperarElemento(By element){
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
-    public static void esperarElementoSerClicavel(By element){
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+
+    public static void esperarElementoSemVisivel(String elemento){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elemento)));
+    }
+    public static void esperarElementoSerClicavel(String element){
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(element)));
     }
     public static void esperarTempo(int tempo){
         try {
@@ -74,6 +78,7 @@ public class Elementos extends Navegador {
     }
     public class Modal {
         private static final String SELETOR_MODAL = "div.Toastify__toast-body > div:nth-child(2)";
+
         public static String consultarMensagemModal() {
             esperarConteudoNaoVazio(SELETOR_MODAL);
             return consultarTexto(SELETOR_MODAL);

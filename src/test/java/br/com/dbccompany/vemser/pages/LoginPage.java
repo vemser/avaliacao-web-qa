@@ -3,7 +3,6 @@ package br.com.dbccompany.vemser.pages;
 import static br.com.dbccompany.vemser.utils.Manipulation.getProp;
 
 import br.com.dbccompany.vemser.utils.Elementos;
-import br.com.dbcompany.vemser.dataFactory.LoginData;
 import br.com.dbcompany.vemser.model.LoginModel;
 
 public class LoginPage extends Elementos {
@@ -35,15 +34,12 @@ public class LoginPage extends Elementos {
     public void preencherSenha(String senha) {
         preencher(SELETOR_CAMPO_SENHA, senha);
     }
-
     public String msgErroEmailInvalido(){
         return consultarTexto(MSG_ERRO_EMAIL_INVALIDO);
     }
-
     public String msgErroSenhaInvalida(){
-        return consultarTexto(MSG_ERRO_SENHA_INVALIDA);
+        return Elementos.Modal.consultarMensagemModal();
     }
-
     public String msgDeLoginEmBranco(){
         return consultarTexto(MSG_ERRO_LOGIN_EM_BRANCO);
     }
@@ -52,7 +48,12 @@ public class LoginPage extends Elementos {
     }
 
 
-
+    public void fluxoDeLoginHighCredentials(){
+        realizarLoginComSucessoHighCredentials();
+        esperarTempo(1000);
+        refresh();
+        esperarTempo(1000);
+    }
     public boolean validaPaginaDeLogin() {
         return estaVisivel(SELETOR_BOTAO_LOGIN)
                 && estaVisivel(SELETOR_CAMPO_SENHA)
@@ -60,31 +61,33 @@ public class LoginPage extends Elementos {
                 && driver.getCurrentUrl().equals(URL_PAGINA)
                 ;
     }
-    public boolean realizarLoginComSucesso() {
+    public boolean realizarLoginComSucessoHighCredentials() {
         preencherUsuario(USUARIO_VALIDO);
         preencherSenha(SENHA_VALIDO);
         clicarBotaoLogin();
         return validaLoginComSucesso();
     }
-
+    public boolean realiazarLoginComSucessoAluno() {
+        preencherUsuario(USUARIO_VALIDO);
+        preencherSenha(SENHA_VALIDO);
+        clicarBotaoLogin();
+        return validaLoginComSucesso();
+    }
     public void realizarLoginComEmailInvalido(LoginModel login) {
         preencherUsuario(login.getLogin());
         preencherSenha(login.getSenha());
         clicarBotaoLogin();
     }
-
     public void  realizarloginSenhaInvalida(LoginModel login) {
         preencherUsuario(USUARIO_VALIDO);
         preencherSenha(login.getSenha());
         clicarBotaoLogin();
     }
-
     public void  realizarlloginEmailEmBranco(LoginModel login) {
         preencherUsuario(login.getLogin());
         preencherSenha(login.getSenha());
         clicarBotaoLogin();
     }
-
     public void  realizarlloginSenhaEmBranco(LoginModel login) {
         preencherUsuario(USUARIO_VALIDO);
         preencherSenha(login.getSenha());

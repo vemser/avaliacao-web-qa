@@ -18,7 +18,7 @@ public class ColaboradoresTest extends Navegador {
 
     @BeforeAll
     public static void acessarPaginaAvaliacao() {
-        loginPage.realizarLoginComSucesso();
+        loginPage.realizarLoginComSucessoHighCredentials();
         Assertions.assertTrue(loginPage.validaLoginComSucesso());
     }
 

@@ -3,7 +3,7 @@ package br.com.dbccompany.vemser.pages;
 import br.com.dbccompany.vemser.utils.Elementos;
 
 public class AcompanhamentosPage extends SearchPage {
-    public static final String URL_PAGINA = URL_BASE + "/avaliacao-front/comportamental/acompanhamentos";
+
     // region Informações Avaliação
     private static final String SELETOR_BOTAO_AGENDAR_HORARIO = "[data-testid='AccessTimeOutlinedIcon']";
     private static final String SELETOR_BOTAO_CANCELAR_AGENDAMENTO = "div.css-k9kc57:nth-child(1) > button.MuiButton-outlined.MuiButton-outlinedError";
@@ -50,11 +50,5 @@ public class AcompanhamentosPage extends SearchPage {
     public static void clicarBotaoAgendar() {
         clicar(SELETOR_BOTAO_AGENDAR);
     }
-    // endregion
-    public void acessarPagina() {
-        acessarUrl(URL_PAGINA);
-    }
-    public boolean estaNaPaginaDashboard() {
-        return driver.getCurrentUrl().equals(URL_PAGINA);
-    }
+
 }
