@@ -8,6 +8,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AcompanhamentoModel {
     private String titulo;
+    private String instrutores;
     private String dataInicio;
     private String dataFim;
     private String horaInicio;
