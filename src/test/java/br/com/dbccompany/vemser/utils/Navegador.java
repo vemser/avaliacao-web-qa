@@ -16,8 +16,9 @@ public class Navegador {
     @BeforeEach
     public void abrirNavegador(){
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("headless");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.navigate().to(URL_BASE + "/login");
