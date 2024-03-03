@@ -63,6 +63,10 @@ public class DataFakerGenerator {
     public static int gerarNumeroIntRandomico(){
         return random.nextInt(10);
     }
+
+    public static int gerarNumeroIntAlto(){
+        return random.nextInt(1000000);
+    }
     public static String cpfDigitosValidos(){
         ArrayList<Integer> listaCpfDigitos = new ArrayList<>();
         for(int i = 0; i < 10; i++){

@@ -38,6 +38,7 @@ public class LoginPage extends Elementos {
         return consultarTexto(MSG_ERRO_EMAIL_INVALIDO);
     }
     public String msgErroSenhaInvalida(){
+        Elementos.Modal.esperarModalAbrir();
         return Elementos.Modal.consultarMensagemModal();
     }
     public String msgDeLoginEmBranco(){
