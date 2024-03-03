@@ -22,7 +22,7 @@ public class Navegador {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-debugging-port=9222");
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(50));
         driver.navigate().to(URL_BASE + "/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.manage().window().maximize();
