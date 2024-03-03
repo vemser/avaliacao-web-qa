@@ -5,8 +5,6 @@ const buildNumber = process.argv[2];
 const client = new ImgurClient({ clientId: "91cb4ba1e87bbab" }); 
 
 async function captureScreenshotAndUpload() {
-    const puppeteerConfig = { waitUntil: 'domcontentloaded' };
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -15,29 +13,27 @@ async function captureScreenshotAndUpload() {
         height: 1080, 
     });
 
-    await page.goto('https://rodent-dynamic-dane.ngrok-free.app/login', puppeteerConfig); 
-    // await new Promise(resolve => setTimeout(resolve, 15000));
+    await page.goto('https://rodent-dynamic-dane.ngrok-free.app/login'); 
+     await new Promise(resolve => setTimeout(resolve, 15000));
     try {
         await page.click('#root > div > main > div > div > section.mb-4.border.border-gray-300.bg-white.drop-shadow-md > div > footer > button');
-        await page.waitForNavigation({ waitUntil: 'domcontentloaded' })
     } catch (error) {
         console.log(error)
     }
 
-    // await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
     try {
         await page.type('#j_username', 'admin'); 
         await page.type('#j_password', 'ADMIN'); 
         await page.click('form[name="login"] > button[type="submit"]'); 
-        await page.waitForNavigation({ waitUntil: 'domcontentloaded' })
     } catch (error) {
         console.log(error)
     }
 
-    // await new Promise(resolve => setTimeout(resolve, 5000));
-    await page.goto(`https://rodent-dynamic-dane.ngrok-free.app/job/VemSerWEBTestsPipeline/${buildNumber}/allure/`, puppeteerConfig);
-    // await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    await page.goto(`https://rodent-dynamic-dane.ngrok-free.app/job/VemSerWEBTestsPipeline/${buildNumber}/allure/`);
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
     await page.screenshot({ path: 'screenshot.png' });
 
