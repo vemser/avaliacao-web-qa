@@ -15,9 +15,10 @@ public class Navegador {
     public static final String URL_BASE = "https://avaliacao-front-five.vercel.app";
     @BeforeEach
     public void abrirNavegador(){
-        //ChromeOptions semInterface = new ChromeOptions();
-        //semInterface.addArguments("--headless=new");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.navigate().to(URL_BASE + "/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
