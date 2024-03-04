@@ -1,5 +1,7 @@
 package br.com.dbccompany.vemser.tests;
 
+import static br.com.dbccompany.vemser.utils.Elementos.esperarTempo;
+
 import br.com.dbccompany.vemser.pages.AcompanhamentoFormulariosPage;
 import br.com.dbccompany.vemser.pages.LoginPage;
 import br.com.dbccompany.vemser.utils.Navegador;
@@ -18,6 +20,7 @@ public class AcompanhamentoFormularioTest extends Navegador {
     @Test
     public void criarAcompanhamentoDeProgramaComSucesso(){
         fluxoDeLogin();
+        esperarTempo(10000);
         acompanhamentoFormulariosPage.fluxoAcompanhamento();
         AcompanhamentoModel acompanhamento = AcompanhamentoData.acompanhamentoComDadosValidos();
         acompanhamentoFormulariosPage.preencherAcompanhamentoValido(acompanhamento);

@@ -24,7 +24,7 @@ public class AcompanhamentoFormulariosPage extends Elementos {
     private static final String BTN_ACOMPANHAMENTO = "#root > div.MuiBox-root.css-s8njx9 > div > div:nth-child(3) > div.MuiBox-root.css-0";
     private static final String BTN_CRIAR_ACOMPANHAMENTO = "[data-testid='programas-create-btn']";
     private static final String CAMPO_TITULO = "#titulo";
-    private static final String CAMPO_DROPDOWN_INSTRUTORES ="[data-testid=\"selectInstrutores\"] > input";
+    private static final String CAMPO_DROPDOWN_INSTRUTORES ="#instrutores";
     private static final String CAMPO_DATA_INICIO = "#dataInicio";
     private static final String CAMPO_DATA_FIM = "#dataFim";
     private static final String CAMPO_HORA_INICIO= "#horarioInicio";
@@ -33,6 +33,7 @@ public class AcompanhamentoFormulariosPage extends Elementos {
     private static final String CAMPO_RESPONSAVEIS= "#numeroResponsaveis";
     private static final String CAMPO_DESCRICAO= "#descricao";
     private static final String BTN_SUBMIT_ACOMPANHAMENTO = "div#root button";
+    private static final String SELECT_INSTRUTORES = "#\\:rp\\: > option:nth-child(1)";
 
     // Métodos de CLICAR
     public static void clicarAcompanhamento() {
@@ -52,9 +53,11 @@ public class AcompanhamentoFormulariosPage extends Elementos {
         return Elementos.Modal.consultarMensagemModal();
     }
     public void preencherAcompanhamentoValido(AcompanhamentoModel acompanhamento){
+        esperarTempo(10000);
         preencher(CAMPO_TITULO, acompanhamento.getTitulo());
-        WebElement campoInstrutores = driver.findElement(By.cssSelector(CAMPO_DROPDOWN_INSTRUTORES));
-        campoInstrutores.sendKeys(Keys.ENTER, Keys.DOWN, Keys.DOWN, Keys.ENTER);
+        // WebElement campoInstrutores = driver.findElement(By.cssSelector(CAMPO_DROPDOWN_INSTRUTORES));
+        clicar(CAMPO_DROPDOWN_INSTRUTORES);
+        clicar(SELECT_INSTRUTORES);
         preencher(CAMPO_DATA_INICIO, acompanhamento.getDataInicio());
         preencher(CAMPO_DATA_FIM, acompanhamento.getDataFim());
         preencher(CAMPO_HORA_INICIO, acompanhamento.getHoraInicio());
@@ -75,9 +78,4 @@ public class AcompanhamentoFormulariosPage extends Elementos {
     public static void preencherDeAcompanhamentoHorariosIguais(){
 
     }
-
-
-
-
-
 }
