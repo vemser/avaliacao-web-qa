@@ -9,7 +9,7 @@ public class LoginPage extends Elementos {
     private static final String SELETOR_CAMPO_USUARIO = "#usuario";
     private static final String SELETOR_CAMPO_SENHA = "#senha";
     private static final String SELETOR_BOTAO_LOGIN = "#botao-logar";
-    private static final String VALIDAR_LOGIN_SUCESSO = "div#root p > span";
+    private static final String VALIDAR_LOGIN_SUCESSO = "[data-testid=\"logout-btn\"]";
     private static final String USUARIO_VALIDO = getProp().getProperty("UsuárioAdministrador");
     private static final String SENHA_VALIDO = getProp().getProperty("SenhaAdministrador");
     private static final String MSG_ERRO_EMAIL_INVALIDO = "p#erro-email";
