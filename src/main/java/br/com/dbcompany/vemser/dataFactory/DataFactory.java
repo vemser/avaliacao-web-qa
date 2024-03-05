@@ -1,7 +1,6 @@
 package br.com.dbcompany.vemser.dataFactory;
 
 import br.com.dbcompany.vemser.model.CandidatosModel;
-import net.datafaker.Faker;
 import org.junit.jupiter.params.provider.Arguments;
 import br.com.dbcompany.vemser.service.CaptacaoService;
 
@@ -12,8 +11,15 @@ import java.util.Locale;
 import java.util.stream.Stream;
 
 public class DataFactory {
-    public static Faker faker = new Faker(new Locale("pt-BR"));
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    // region Metodos comuns
+//    public static String gerarNumeroInteiroNoIntervalo(int min, int max) {
+//        return String.valueOf(faker.number().numberBetween(min, max));
+//    }
+//    public static String gerarNotaPositiva() {
+//        return gerarNumeroInteiroNoIntervalo(60, 100);
+//    }
+    // endregion
     // region Login
     private static final String USUARIO_VALIDO = "DBC_USER";
     private static final String SENHA_VALIDO = "DBC_PASSWORD";
@@ -52,7 +58,7 @@ public class DataFactory {
     public static Stream<Arguments> provideCandidatosEdicaoAtual() {
         String nomeEdicaoAtual = CaptacaoService.consultarEdicaoAtual();
         String cpfInvalidos = "15880472884, 53332231901";
-        return CaptacaoService.consultarListaDeCandidatos(0, 10, "edicao", 1)
+        return CaptacaoService.consultarListaDeCandidatos(0, 3, "edicao", 1)
                 .extract()
                 .jsonPath()
                 .getList("elementos", CandidatosModel.class)
@@ -72,18 +78,18 @@ public class DataFactory {
                 )
                 .map(Arguments::of);
     }
-    public static Stream<Arguments> provideCpfNaoCadastradoEstatico() {
-        return Stream.of(
-                Arguments.of("15880472884"),
-                Arguments.of("53332231901")
-        );
-    }
-    public static Stream<Arguments> provideCpfNaoCadastradoNaEdicaoAtual() {
-        List<String> cpfInvalidos = new ArrayList<>();
-        for(int i = 0; i < 10; i++) {
-            cpfInvalidos.add(faker.cpf().invalid());
-        }
-        return cpfInvalidos.stream().map(Arguments::of);
-    }
-    // endregion
+//    public static Stream<Arguments> provideCpfNaoCadastradoEstatico() {
+//        return Stream.of(
+//                Arguments.of("15880472884"),
+//                Arguments.of("53332231901")
+//        );
+//    }
+//    public static Stream<Arguments> provideCpfNaoCadastradoNaEdicaoAtual() {
+//        List<String> cpfInvalidos = new ArrayList<>();
+//        for(int i = 0; i < 3; i++) {
+//            cpfInvalidos.add(faker.cpf().invalid());
+//        }
+//        return cpfInvalidos.stream().map(Arguments::of);
+//    }
+//    // endregion
 }

@@ -1,12 +1,12 @@
 package br.com.dbccompany.vemser.pages;
 
-import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
+import br.com.dbcompany.vemser.utils.DataFakerGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ColaboradoresCadastroPage extends ColaboradoresPage {
     // region SELETORES BOTOES E CAMPOS
-    private static final String SELETOR_BOTAO_BUSCA_CPF = "form > div > button";
+    private static final String SELETOR_BOTAO_BUSCA_CPF = "div.MuiBox-root.css-uwa97r > div > form > div > button";
     private static final String SELETOR_CAMPO_BUSCA_CPF = "[id=\"cpfBusca\"]";
     private static final String SELETOR_CAMPO_NOME = "[id=\"nome\"]";
     private static final String SELETOR_CAMPO_CPF = "[id=\"cpf\"]";
@@ -25,7 +25,7 @@ public class ColaboradoresCadastroPage extends ColaboradoresPage {
     private static final String SELETOR_BOTAO_SELECIONAR_TRILHA = "[id=\"idTrilha\"]";
     private static final String SELETOR_BOTAO_SELECIONAR_STATUS = "#status";
     private static final String SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES = "[id^=\"menu-\"] > div > ul > li";
-    private static final String SELETOR_BOTAO_CADASTRAR = "form:nth-child(3) > div > button";
+    private static final String SELETOR_BOTAO_CADASTRAR = "div.MuiBox-root.css-uwa97r > form > div > button";
     private static final String SELETOR_MENSAGEM_CPF_NAO_ENCONTRADO = "div.Toastify__toast-body > div:nth-child(2)";
     // endregion
     public static final String URL_PAGINA = ColaboradoresPage.URL_PAGINA + "/cadastro";
@@ -109,8 +109,8 @@ public class ColaboradoresCadastroPage extends ColaboradoresPage {
     public void selecionarOpcaoTrilha(Integer index) {
         clicarNoElementoIndex(SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES, index);
     }
-    public void selecionarOpcaoPrograma(Integer index) {
-        clicarNoElementoIndex(SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES, index);
+    public void selecionarOpcaoPrograma() {
+        clicar(SELETOR_BOTAO_SELECIONAR_GERAL_OPCOES);
     }
     public String consultarCampoEmailPessoal() {
         return consultarValor(SELETOR_CAMPO_EMAIL_PESSOAL);
@@ -120,44 +120,44 @@ public class ColaboradoresCadastroPage extends ColaboradoresPage {
     }
     // region Metodos com retorno valido
     public void preencherCampoNomeValido() {
-        preencherCampoNome(EstagiarioDataFactory.gerarNomeValido());
+        preencherCampoNome(DataFakerGenerator.nomeFaker());
     }
     public void preencherCampoCpfValido() {
-        preencherCampoCpf(EstagiarioDataFactory.gerarCpfValido());
+        preencherCampoCpf(DataFakerGenerator.cpfFaker());
     }
     public void preencherCampoEmailPessoalValido() {
-        preencherCampoEmailPessoal(EstagiarioDataFactory.gerarEmailPessoalValido());
+        preencherCampoEmailPessoal(DataFakerGenerator.emailFaker());
     }
     public void preencherCampoEmailCorporativoValido() {
-        preencherCampoEmailCorporativo(EstagiarioDataFactory.gerarEmailDbcValido());
+        preencherCampoEmailCorporativo(DataFakerGenerator.emailDbcFaker());
     }
     public void preencherCampoTelefoneValido() {
-        preencherCampoTelefone(EstagiarioDataFactory.gerarTelefoneValido());
+        preencherCampoTelefone(DataFakerGenerator.telefoneFaker());
     }
     public void preencherCampoDataNascimentoValido() {
-//        preencherCampoDataNascimento(EstagiarioDataFactory.gerarDataNascimentoValida());
+//        preencherCampoDataNascimento(EstagiarioData.gerarDataNascimentoValida());
         preencherCampoDataNascimento("01/01/1990");
     }
     public void preencherCampoEstadoValido() {
-        preencherCampoEstado(EstagiarioDataFactory.gerarEstadoValido());
+        preencherCampoEstado(DataFakerGenerator.estadoFaker());
     }
     public void preencherCampoCidadeValido() {
-        preencherCampoCidade(EstagiarioDataFactory.gerarCidadeValida());
+        preencherCampoCidade(DataFakerGenerator.cidadeFaker());
     }
     public void preencherCampoInstituicaoEnsinoValido() {
-        preencherCampoInstituicaoEnsino(EstagiarioDataFactory.gerarInstituicaoEnsinoValida());
+        preencherCampoInstituicaoEnsino(DataFakerGenerator.instituicaoDeEnsinoFaker());
     }
     public void preencherCampoCursoValido() {
-        preencherCampoCurso(EstagiarioDataFactory.gerarCursoValido());
+        preencherCampoCurso(DataFakerGenerator.cursoFaker());
     }
     public void preencherCampoGithubValido() {
-        preencherCampoGithub(EstagiarioDataFactory.gerarGithubValido());
+        preencherCampoGithub(DataFakerGenerator.gitHubFaker());
     }
     public void preencherCampoLinkedinValido() {
-        preencherCampoLinkedin(EstagiarioDataFactory.gerarLinkedinValido());
+        preencherCampoLinkedin(DataFakerGenerator.linkedinFaker());
     }
     public void preencherCampoObservacoesValido() {
-        preencherCampoObservacoes(EstagiarioDataFactory.gerarObservacoesValidas());
+        preencherCampoObservacoes(DataFakerGenerator.observacoesFaker());
     }
 
     public void limparCampoNome() {

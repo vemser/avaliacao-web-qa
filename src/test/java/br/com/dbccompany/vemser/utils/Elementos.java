@@ -2,17 +2,25 @@ package br.com.dbccompany.vemser.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Elementos extends Navegador {
+
+    public static void refresh(){
+        driver.navigate().refresh();
+    }
+
     public static void acessarUrl(String url){
         driver.navigate().to(url);
     }
-    public void clicar(String seletor){
+
+    public static void clicar(String seletor){
         esperarElemento(By.cssSelector(seletor));
         driver.findElement(By.cssSelector(seletor)).click();
     }
-    public void clicarNoElementoIndex(String seletor, int index){
+    public static void clicarNoElementoIndex(String seletor, int index){
         esperarElemento(By.cssSelector(seletor));
         driver.findElements(By.cssSelector(seletor)).get(index).click();
     }
@@ -33,17 +41,13 @@ public class Elementos extends Navegador {
     public static void esperarElemento(By element){
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
-    // region Modal
-    public void esperarModalAbrir() {
-        esperarElemento(By.cssSelector(".Toastify__toast-body"));
+
+    public static void esperarElementoSerVisivel(String elemento){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elemento)));
     }
-    public void esperarModalFechar() {
-        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".Toastify__toast-body"))));
+    public static void esperarElementoSerClicavel(String element){
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(element)));
     }
-    public void fecharModal() {
-        clicar("button.Toastify__close-button");
-    }
-    // endregion
     public static void esperarTempo(int tempo){
         try {
             Thread.sleep(tempo);
@@ -71,5 +75,26 @@ public class Elementos extends Navegador {
         esperarElemento(By.cssSelector(seletor));
         driver.findElement(By.cssSelector(seletor)).click();
         driver.findElement(By.cssSelector(seletor)).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+    }
+    public class Modal {
+        private static final String SELETOR_MODAL = "div.Toastify__toast-body > div:nth-child(2)";
+
+        public static String consultarMensagemModal() {
+            esperarConteudoNaoVazio(SELETOR_MODAL);
+            return consultarTexto(SELETOR_MODAL);
+        }
+        public static boolean existeMensagemModal() {
+            esperarConteudoNaoVazio(SELETOR_MODAL);
+            return estaVisivel(SELETOR_MODAL);
+        }
+        public static void esperarModalAbrir() {
+            esperarElemento(By.cssSelector(".Toastify__toast-body"));
+        }
+        public static void esperarModalFechar() {
+            wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".Toastify__toast-body"))));
+        }
+        public static void fecharModal() {
+            clicar("button.Toastify__close-button");
+        }
     }
 }

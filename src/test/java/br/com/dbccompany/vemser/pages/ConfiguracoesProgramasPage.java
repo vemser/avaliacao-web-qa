@@ -1,5 +1,6 @@
 package br.com.dbccompany.vemser.pages;
 
+import br.com.dbccompany.vemser.pages.SearchPage.Tabela;
 import br.com.dbccompany.vemser.utils.Elementos;
 import br.com.dbccompany.vemser.utils.Tabelas;
 
@@ -49,7 +50,7 @@ public class ConfiguracoesProgramasPage extends Elementos {
         preencherDepoisDeLimpar(SELETOR_CAMPO_CRIAR_DATA_FIM_PROGRAMA, dataFim);
     }
     public List<String> consultarIdsProgramas() {
-        return Tabelas.consultarIds(10);
+        return Tabela.consultarIds(10);
     }
     public boolean estaNaPaginaConfiguracoesProgramas() {
         esperarUrl(URL_PAGINA);

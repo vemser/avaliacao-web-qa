@@ -92,4 +92,8 @@ public class ColaboradoresPage extends Elementos {
     public void filtrarEstagiarioPorNomeValido() {
         preencher(SELETOR_CAMPO_FILTRO_NOME_ESTAGIARIO, consultarNomeEstagiarioInformacoes());
     }
+
+    public void fecharModal() {
+
+    }
 }

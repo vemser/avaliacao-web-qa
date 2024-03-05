@@ -1,33 +1,23 @@
 package br.com.dbccompany.vemser.tests;
 
-import br.com.dbccompany.vemser.pages.AcessoPage;
 import br.com.dbccompany.vemser.pages.DashboardPage;
 import br.com.dbccompany.vemser.pages.LoginPage;
 import br.com.dbccompany.vemser.utils.Navegador;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class DashboardTest extends Navegador {
-    private static AcessoPage acessoPage = new AcessoPage();
-    private static LoginPage loginPage = new LoginPage();
-    private static DashboardPage dashboardPage = new DashboardPage();
-
-    @BeforeAll
-    public static void acessarPaginaAvaliacao() {
-        loginPage.realizarLoginComSucesso();
-        acessoPage.estaNaPaginaAcesso();
-        dashboardPage.acessarPagina();
-    }
+    LoginPage login = new LoginPage();
+    DashboardPage dashboardPage = new DashboardPage();
 
     @Test
-    @DisplayName("Acessar página Dashboard")
-    @Story("Acessar página Dashboard")
-    @Description("Acessar página Dashboard")
-    public void testAcessarPaginaAvaliacao() {
-        Assertions.assertTrue(dashboardPage.estaNaPaginaDashboard());
+    @DisplayName("Validar página Dashboard após o login")
+    @Story("Validar página Dashboard após o login")
+    @Description("Validar página Dashboard após o login")
+    public void validarPaginaDashboardInicialHighCredentials() {
+        login.fluxoDeLoginHighCredentials();
+        Assertions.assertTrue(dashboardPage.validarDadosDashboard());
     }
+
 }

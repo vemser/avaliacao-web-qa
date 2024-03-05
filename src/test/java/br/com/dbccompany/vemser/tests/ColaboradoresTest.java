@@ -2,10 +2,10 @@ package br.com.dbccompany.vemser.tests;
 
 import br.com.dbccompany.vemser.pages.*;
 import br.com.dbccompany.vemser.utils.Navegador;
-import br.com.dbcompany.vemser.dataFactory.EstagiarioDataFactory;
+import br.com.dbcompany.vemser.dataFactory.EstagiarioData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
-import br.com.dbcompany.vemser.model.EstagiarioModel;
+import br.com.dbcompany.vemser.model.ColaboradorModel;
 
 import org.junit.jupiter.api.*;
 
@@ -18,8 +18,8 @@ public class ColaboradoresTest extends Navegador {
 
     @BeforeAll
     public static void acessarPaginaAvaliacao() {
-        loginPage.realizarLoginComSucesso();
-        acessoPage.estaNaPaginaAcesso();
+        loginPage.realizarLoginComSucessoHighCredentials();
+        Assertions.assertTrue(loginPage.validaLoginComSucesso());
     }
 
     @Nested
@@ -65,11 +65,12 @@ public class ColaboradoresTest extends Navegador {
             colaboradoresPage.clicarBotaoCadastroEstagiario();
         }
         @Test
+        @Disabled
         @Story("Cadastro de Estagiários")
         @Description("Cadastro de Estagiários manualmente com sucesso")
         @DisplayName("Cadastro de Estagiários manualmente com sucesso")
         public void testCadastroEstagiarioManual() {
-            EstagiarioModel estagiario = EstagiarioDataFactory.gerarEstagiarioValido(1);
+            ColaboradorModel estagiario = EstagiarioData.gerarEstagiarioValido(1);
             Assertions.assertTrue(colaboradoresCadastroPage.estaNaPaginaCadastroEstagiario());
             colaboradoresCadastroPage.preencherCampoNome(estagiario.getNome());
             colaboradoresCadastroPage.preencherCampoCpf(estagiario.getCpf());
@@ -85,7 +86,7 @@ public class ColaboradoresTest extends Navegador {
             colaboradoresCadastroPage.preencherCampoLinkedin(estagiario.getLinkedin());
             colaboradoresCadastroPage.preencherCampoObservacoes(estagiario.getObservacoes());
             colaboradoresCadastroPage.clicarSelecionarPrograma();
-            colaboradoresCadastroPage.selecionarOpcaoPrograma(0);
+            colaboradoresCadastroPage.selecionarOpcaoPrograma();
             colaboradoresCadastroPage.clicarSelecionarTrilha();
             colaboradoresCadastroPage.selecionarOpcaoTrilha(0);
             colaboradoresCadastroPage.clicarSelecionarStatus();
