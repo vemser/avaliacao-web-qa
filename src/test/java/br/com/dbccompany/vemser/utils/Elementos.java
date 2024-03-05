@@ -42,7 +42,7 @@ public class Elementos extends Navegador {
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 
-    public static void esperarElementoSemVisivel(String elemento){
+    public static void esperarElementoSerVisivel(String elemento){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elemento)));
     }
     public static void esperarElementoSerClicavel(String element){

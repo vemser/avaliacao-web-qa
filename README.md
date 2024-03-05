@@ -130,7 +130,74 @@ Se tudo foi devidamente configurado, os testes vão começar a ser executados.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
+## Testes realizados / futuros
 
+#### Este tópico lista os testes que já foram cobertos ou que ainda deverão ser criados para garantir a qualidade da aplicação. 
+
+- [x] Página de acesso
+- [x] Formulario de acompanhamento
+- [x] Acompanhamentos
+- [x] Cadastro de colaboradores
+- [x] Informações dos colaboradores
+- [x] Colaboradores
+- [x] Configurações
+- [x] Configurações de programas
+- [x] Criação de programas
+- [x] Criação de feedbacks
+- [x] Dashboard
+- [x] Login
+- [x] Menu / navegação
+- [x] Busca / filtros das páginas
+- [x] Criação de feedbacks técnicos
+- [ ] Edição de feebacks
+- [ ] Edição de acompanhamentos
+- [ ] Edição de colaboradores e suas informações
+- [ ] Edição de programas
+- [ ] Criação de trilhas
+- [ ] Edição de trilhas
+- [ ] Ausencias 
+
+## Colaboradores
+
+<table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/Vinicius-Oliveira-Bk">
+          <img src="https://avatars.githubusercontent.com/u/37668297?v=4" width="100px;" alt="Foto de Vinicius-Oliveira-Bk no GitHub"/><br>
+          <sub>
+            <b>Vinicius Oliveira VS-13</b>
+          </sub>
+        </a>
+      </td>
+       <td align="center">
+        <a href="https://github.com/wcavalheiro">
+          <img src="https://avatars.githubusercontent.com/u/63076498?v=4" width="100px;" alt="Foto de wcavalheiro no GitHub"/><br>
+          <sub>
+            <b>Willian Cavalheiro VS-13</b>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/GabrielJohann">
+          <img src="https://avatars.githubusercontent.com/u/114251516?v=4" width="100px;" alt="Foto de GabrielJohann no GitHub"/><br>
+          <sub>
+            <b>Gabriel A. Johann VS-13</b>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/gregsnn">
+          <img src="https://avatars.githubusercontent.com/u/74692139?v=4" width="100px;" alt="Foto de gregsnn no GitHub"/><br>
+          <sub>
+            <b>Grégori Nunes VS-13</b>
+          </sub>
+        </a>
+      </td>
+  </table>
+
+## Melhorias sugeridas
+
+##### :warning: Tópico em construção :warning: </strong>
 
 <!-- Adicionar contato e QAs envolvidos em cada edição do Vem Ser
 ## Contact

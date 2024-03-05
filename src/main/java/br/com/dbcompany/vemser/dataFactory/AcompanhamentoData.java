@@ -11,7 +11,7 @@ public class AcompanhamentoData {
     public static AcompanhamentoModel acompanhamentoComDadosValidos(){
         AcompanhamentoModel acompanhamentoDTO = new AcompanhamentoModel();
         acompanhamentoDTO.setTitulo("Teste " + DataFakerGenerator.observacoesFaker());
-        acompanhamentoDTO.setInstrutores("instrutor.back1");
+        acompanhamentoDTO.setInstrutores("Instrutor Teste");
         acompanhamentoDTO.setDataInicio(DataFakerGenerator.dataInicialFaker());
         acompanhamentoDTO.setDataFim(DataFakerGenerator.dataFimFaker());
         acompanhamentoDTO.setHoraInicio("08:00");
